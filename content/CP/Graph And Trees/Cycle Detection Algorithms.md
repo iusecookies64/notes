@@ -39,6 +39,7 @@ bool printAnyCycle(vector<vector<int>>& neighbours, vector<int>& parent, vector<
 	visited[node] = 1;
 	for(int adjNode:neighbours[node])
 	{
+		if(p == adjNode) continue;
 		if(!visited[adjNode])
 		{
 			bool cycleFound = printAnyCycle(neighbours, parent, visited, adjNode, node);
@@ -66,7 +67,8 @@ bool printAnyCycle(vector<vector<int>>& neighbours, vector<int>& parent, vector<
 **Problem:** Counting Number Of Nodes that are part of atleast 1 cycle.  
 **Solution:** This problem is not easy to solve, the idea of solution is that when we detect a cycle then in dfs will will have all elements of that cycle present, if we add 1 to currentNode and add -1 to parent of last node in cycle (like we do in partial sums) then we can later do prefix sum in such an order of nodes that the 1 propagates to all parents of this node and gets cancelled by -1 of node that is parent of last node.
 
-<img src="graph1.png" height="400px"></img>
+![[graph1.png | center | 400]]
+
 
 Look at the above graph, here when we reach `4` and explore the edge `(4,2)` we see that `2` is already visited, then we add +1 to `cnt[4]` and -1 to `cnt[1]` which is parent of `2`, now along with this we will also store the dfs order of nodes i.e order in which there dfs was ended, a possible dfs order of above graph can be
 
@@ -85,6 +87,7 @@ void dfs(vector<int> graph[], int node, int p)
 	parent[node] = 1;
 	for(int adjNode:graph[node])
 	{
+		if(adjNode == p) continue;
 		if(!visited[node])
 		{
 			dfs(graph, adjNode, node);
@@ -194,7 +197,7 @@ void solve()
 
 The algorithm used for undirected graphs where we check if there is a node which is visited and is not parent node, then we say there is a cycle, this won't work in case of directed graph, because any node which has two other nodes pointing to it will cause above algorithm to return true, but in reality there might be no cycle. Like in the example below, in dfs we go to node 8 -> 9 -> 10 and mask 10 as visited and then we return back to 8 and when we explore edge (8, 10) we see that 10 is visited but we cannot say that there is a cycle.
 
-<img src="graph1.png" height="400px"></img>
+![[graph1.png | center | 400]]
 
 For cycle to exist when we see that a node is visited then if that node also present in current dfs path, then it means there is path from that node to current node and there is edge between current node and that node. Like in above example we see that when dfs reached 4 it has a neighbour 2 which is already visited and it also in current dfs path so we say there a cycle. Hence we keep track of what nodes are currently in dfs using another array as shown in code below.
 
@@ -253,7 +256,7 @@ bool isCyclicKahnAlgorithm(int v, vector<int> adj[])
 
     for(int i = 0; i < v; i++)
     {
-        if(inDegree[i] == 0) q.push(i);
+	    if(inDegree[i] == 0) q.push(i);
     }
 
     vector<int> ans;
@@ -263,11 +266,11 @@ bool isCyclicKahnAlgorithm(int v, vector<int> adj[])
         int node = q.front();
         q.pop();
         ans.push_back(node);
-        for(int adjNode:adj[node])
-        {
-            inDegree[adjNode]--;
-            if(inDegree[adjNode] == 0) q.push(adjNode);
-        }
+		for(int adjNode:adj[node])
+		{
+			inDegree[adjNode]--;
+			if(inDegree[adjNode] == 0) q.push(adjNode);
+		}
     }
 
     return (ans.size() != v);

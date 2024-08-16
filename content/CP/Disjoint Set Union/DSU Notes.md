@@ -24,7 +24,7 @@ DSU can perform all these operations in constant time i.e $O(1)$ average time.
 
 This is also called **Union Find** Algorithm.
 
-There are 2 primary implementations of union find algorithm, one is union by rank and other is union by size.
+There are 2 primary implementations of union find algorithm, one is **union by rank** and other is **union by size**.
 
 ## Union By Rank
 
@@ -40,13 +40,13 @@ Parent array stores the parent of the current element in the set's tree. Parent 
 
 If we want to merge two elements `a` and `b` then first we find the representative elements of set in which `a` and `b` are present, let they be `ra` and `rb`. Now we find the the heights of the sets through `rank[ra]` and `rank[rb]` and then we compare them. There are 2 cases that arise,
 
-1. `rank[ra] > rank[rb]`: in this case we simply make `ra` the parent of `rb` and thats it. Since `rank[rb]` is smaller then `rank[ra]` then height of tree doesn't change. This is shown in below diagram. The case of `rank[rb] > rank[ra]` is similar.
+1. `rank[ra] > rank[rb]`: in this case we simply make `ra` the parent of `rb` and that's it. Since `rank[rb]` is smaller then `rank[ra]` then height of tree doesn't change. This is shown in below diagram. The case of `rank[rb] > rank[ra]` is similar.
 
-   ![image-20240605144516072](./image-20240605144516072.png)
+   ![image-20240605144516072 | center](./image-20240605144516072.png)
 
 2. `rank[ra] == rank[rb]`: In this we can make any one the parent of other and increase its rank by $1$. For example we make `ra` the parent of `rb`, then `rank[ra]` increases by $1$. This is shown in example below.
 
-   ![image-20240605145006299](./image-20240605145006299.png)
+   ![image-20240605145006299 | center](./image-20240605145006299.png)
 
 **Time Complexity:** In this way the number of operations where the height increases is actually very small and it have been shown that for `n` elements the height increases at most by $\log(n)$​​​.
 

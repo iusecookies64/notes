@@ -2,7 +2,7 @@
 
 In this section we will discuss some problems, in which we have to formulate graph from the given problem. Some times the graph that we need to use to solve the problem is not same as the graph that is given in the problem.
 
-**Problem 1: ** Given a map of a country which is in the form of an undirected graph. Bob is currently in city `A` in his car and wants to go to city `B`. There are roads in between some cities of different lengths, Bob's car uses 1 litre of fuel per unit of distance travelled. Currently the fuel tank of the car is empty and it has a capacity of `C`.  Each city has different prices for petrol per litre. Find the minimum cost required for bob to reach destination.
+**Problem 1:** Given a map of a country which is in the form of an undirected graph. Bob is currently in city `A` in his car and wants to go to city `B`. There are roads in between some cities of different lengths, Bob's car uses 1 litre of fuel per unit of distance travelled. Currently the fuel tank of the car is empty and it has a capacity of `C`.  Each city has different prices for petrol per litre. Find the minimum cost required for bob to reach destination.
 
 **Solution:** The idea is simple we will formulate a graph where node of graph will be a `{nodeNumber, remainingFuel}`. Clearly the starting node for our problem will then be `{A, 0}`. When we are at some node `u`  and remaining fuel is `rf`, then we can choose to either take a road and move to another city `v` if `distance[u][v] <= rf`, this will take us to node `{v, rf - distance[u][v]}` and not extra cost is required. Of if the tank is not full we can choose to add 1 litre of fuel which will take us to node `{u, rf+1}` and we need to pay cost of petrol for that city.
 

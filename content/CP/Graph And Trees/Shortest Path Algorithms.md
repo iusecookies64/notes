@@ -493,7 +493,7 @@ vector<int> dijkstra(int v, vector<vector<pair<int, int>>> graph, int s)
                 // deleting {oldDistance, adjNode}
 				st.erase({distance[adjNode], adjNode});
                 distance[adjNode] = distance[node] + w;
-                st.insert({distance[adjNode], adjNode});
+	            st.insert({distance[adjNode], adjNode});
             }
         }
     }
@@ -508,7 +508,7 @@ Notes About Dijkstra's Algorithm:
 
 **Printing The Smallest Path**
 
-If we want to print the shortest path from source node to target node then we can simply modify dijkstra a little bit, we can maintain a parent array which stores the node which is the parent of current node in the path from source to the node. When ever we get in the condition of the relax operation i.e distance[adjNode] > distance[node] + w we update parent[adjNode] = node. Then to get the path we will start with target node and keep going to parent of current node until we get the source node.
+If we want to print the shortest path from source node to target node then we can simply modify dijkstra a little bit, we can maintain a parent array which stores the node which is the parent of current node in the path from source to the node. When ever we get in the condition of the relax operation i.e `distance[adjNode] > distance[node] + w` we update `parent[adjNode] = node`. Then to get the path we will start with target node and keep going to parent of current node until we get the source node.
 
 ```c++
 vector<int> shortestPath(vector<vector<pair<int, int>>> &adj, int n, int source, int target)
@@ -627,13 +627,13 @@ This algorithm is also single source shortest path algorithm. This works in case
 
 Below is a dry run for the algorithm, here we can see that initially `distance[source] = 0`, and for other nodes distance of other nodes is infinity. After iteration 2 we have distances for all nodes, but for the -ve weight cycle, in further iterations they still will get relaxed and give smaller and smaller results.
 
-<img src="./image-20240524173959243.png" height = "350px"/>
+![[image-20240524173959243.png | center | 400]]
 
-<img src="./image-20240524174204824.png" height="350px"/>
+![[image-20240524174204824.png | center | 400]]
 
-<img src="./image-20240524174442631.png" height="350px"/>
+![[image-20240524174442631.png | center | 400]]
 
-Time complexity of this algorithm is O(v \* e) which in very dense graph will be O(v^3).
+Time complexity of this algorithm is O(v * e) which in very dense graph will be O(v^3).
 
 ```c++
 vector<int> bellman_ford(int v, vector<vector<pair<int, int>>> &g, int s)

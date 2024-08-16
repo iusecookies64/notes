@@ -2,7 +2,7 @@
 
 We use the recursion state `rec(i)` which gives the maximum length of increasing sequence ending at index $i$. This approach has $O(n^2)$ time complexity, but we can do better and there is an approach that takes $O(nlogn)$ time. 
 
-**Idea:** The idea is that we will maintain a data structure that stores the `{last, len}` i.e store the smallest possible ending of increasing sequence of length, at any point the largest length is actually the length of **LIS**. Now when inserting a new element, if this element is greater than $last$ of maximum length, in that case we just push a new `{last, len}` in our structure with current element and new maximum possible length. If this is not the case then we need to find first element that is $\geq arr[i]$ in our structure (lower_bound), let it be at position $x$, now clearly $last_x$ $ is $>= arr[i]$ and $last_{x-1} \lt arr[i]$, this means $arr[i]$ can also be an end of an increasing sequence of length $x$ and updating the value `{last, x}` with $arr[i]$ gives better chances of getting increasing sequence of lengths $\gt x$. Hence we update `{last, len}` with `{arr[i], x}`.
+**Idea:** The idea is that we will maintain a data structure that stores the `{last, len}` i.e store the smallest possible ending of increasing sequence of length, at any point the largest length is actually the length of **LIS**. Now when inserting a new element, if this element is greater than $last$ of maximum length, in that case we just push a new `{last, len}` in our structure with current element and new maximum possible length. If this is not the case then we need to find first element that is $\geq arr[i]$ in our structure (lower_bound), let it be at position $x$, now clearly $last_x >= arr[i]$ and $last_{x-1} \lt arr[i]$, this means $arr[i]$ can also be an end of an increasing sequence of length $x$ and updating the value `{last, x}` with $arr[i]$ gives better chances of getting increasing sequence of lengths $\gt x$. Hence we update `{last, len}` with `{arr[i], x}`.
 
 For storing such a structure we will simply use an array where index will be $lengths$ and value at index will be the $last$.
 
@@ -252,3 +252,85 @@ ll rec(int indx, int diff) {
 	return dp[indx][diff] = ans;
 }
 ```
+
+### Kadane's Algorithm
+
+**Problem:** given an array and we need to find the maximum sum subarray.
+
+**Solution:** We can use a dp state `dp[i]` which returns the maximum sum of a subarray ending at index $i$. The transition is simple, either we increase the array ending at previous index or we start a new array at index $i$ itself i.e `dp[i] = max(dp[i-1] + arr[i], arr[i])`. Notice when we are index we only need the dp value of previous index and the remaining array is kind or useless at this point, hence we only a prev variable instead of maintaining the entire array.
+
+```c++
+int maxSumSubarray(vector<int>& arr, int n) {
+	int ans = -inf;
+	int prev = arr[0];
+	ans = max(ans, prev);
+	for(int i = 1; i < n; i++) {
+		int curr = max(prev + arr[i], arr[i]);
+		ans = max(curr, ans);
+		prev = curr;
+	}
+	return ans;
+}
+```
+
+### Maximum Sum In Grid
+
+**Problem:** Given an $n \times m$ grid of integers and we need to find the maximum sum sub-grid. $n, m \leq 10^5$ and $n * m \leq 10^5$.
+
+**Solution:** The idea is that we can have a solution which is $O(n \times m \times min(n, m))$ since $n \times m \leq 10^5$ which means $min(n, m) \leq sqrt(10^5)$. Lets say $m <= n$ then we loop over all pairs of columns and fixing them, then we just have to find the maximum sum continuous rows, which can be solved using kadane's algorithm.
+
+```c++
+vector<vector<int>> pref;
+void fillpref(ll n, ll m) {
+	for(ll i = 1; i <= n; i++) {
+		for(ll j = 1; j <= m; j++) {
+			pref[i][j] = pref[i][j-1] + pref[i-1][j] - pref[i-1][j-1] + grid[i][j];
+		}
+	}
+}
+
+int getSum(pair<int,int> topleft, pair<int,int> bottomright) {
+	int res = pref[bottomright.first][bottomright.second];
+	res -= pref[topleft.first - 1][bottomright.second];
+	res -= pref[bottomright.first][topleft.second-1];
+	res += pref[topleft.first-1][topleft.second-1];
+	return res;
+}
+
+void solve(vector<vector<int>>& grid, int n, int m) {
+	pref = vector<vector<int>>(n+1, vector<int>(m+1));
+	fillpref(n, m);
+	int ans = -INF;
+
+	if(n >= m) {
+		for(int l = 1; l <= m; l++) {
+			for(int r = l; r <= m; r++) {
+				ll curr = getSum({1, l}, {1, r});
+				ans = max(curr, ans);
+				for(int i = 2; i <= n; i++) {
+					ll currRow = getSum({i, l}, {i, r});
+					curr = max(curr + currRow, currRow);
+					ans = max(curr, ans);
+				}
+			}
+		}
+	} else {
+		for(int l = 1; l <= n; l++) {
+			for(int r = l; r <= n; r++) {
+				ll curr = getSum({l, 1}, {r, 1});
+				ans = max(curr, ans);
+				for(int i = 2; i <= m; i++) {
+					ll currCol = getSum({l, i}, {r, i});
+					curr = max(curr + currCol, currCol);
+					ans = max(curr, ans);
+				}
+			}
+		}
+	}
+
+	cout << ans << nline;
+}
+```
+
+>[!Note]
+>In the above problem, when we fix the ends for columns, we sort of reduce the problem to now be solved for single dimension, this reduction of dimensions which still capturing the original data is called **Dimensionality Reduction**.

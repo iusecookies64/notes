@@ -1,5 +1,5 @@
 ---
-title: Welcome to My Notes
+title: My Notes
 ---
 
 This is made using Quartz.
