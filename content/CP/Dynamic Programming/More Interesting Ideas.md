@@ -333,4 +333,237 @@ void solve(vector<vector<int>>& grid, int n, int m) {
 ```
 
 >[!Note]
->In the above problem, when we fix the ends for columns, we sort of reduce the problem to now be solved for single dimension, this reduction of dimensions which still capturing the original data is called **Dimensionality Reduction**.
+>In the above problem, when we fix the ends for columns, we sort of reduce the problem to now be solved for single dimension, this reduction of dimensions which still capturing the original data is called **Dimensionality Reduction**. Another problem where this approach can be used is find the maximum area rectangle in a grid with $0$ and $1$ with similar constraints.
+
+### Uncommon Subsequences
+
+**Problem:** Given two strings $S$ and $T$, find length of the shortest subsequence in $S$ which is not a subsequence in $T$. If no such subsequence is possible, return $−1$. $|S|, |T| \leq 1000$.
+
+**Solution:** We will use a dp state `rec(int i, int j)` which returns the answer for prefix $S[0, \dots, i]$ and $T[0, \dots, j]$. Now there are two choices for the $ith$ character in $S$, either it is part of a subsequence that is not present in $T$ or it is not. In case it is not then answer is same as `rec(i-1, j)`. In case it is part of then we find the latest position of character $S[i]$ in $T$ which is $\leq j$. If not such position exist then simply the answer is $1$. But if it exist then and lets say it is at $k$, then the answer is `rec(i-1, k-1)+1`, this is because if the subsequence in $S$ is not present in prefix $T[0, \dots, k-1]$, then it will surely not be present in $T[0, \dots, j]$ because there is not character to match $S[i]$.
+
+```c++
+int rec(int i, int j) {
+	if(i < 0) return -1; // not possible string
+	if(j < 0) return 1; // any string of length >= 1 works
+
+	if(visited[i][j]) return dp[i][j];
+	visited[i][j] = 1;
+
+	int ans = rec(i-1, j); // s[i] not in answer
+	int pos = prev[s[i] - 'a'][j]; // pre calculated values of latest positions in t
+	if(pos == -1) {
+		ans = 1;
+	} else {
+		int ans2 = rec(i-1, pos-1);
+		if(ans2 != -1) ans2++;
+		if(ans == -1 || ans2 < ans) ans = ans2;
+	}
+
+	return dp[i][j] = ans;
+}
+```
+
+### Removing Marbles
+
+**Problem:** You are given $N$ marbles in different colours. You have to remove marbles till there are no marbles left. Each time you can choose continuous marbles with the same colour, remove them and get $k*k$ points (where $k$ is the length of the continuous marbles removed). Find the maximum points you can get.
+
+**Solution:** One thing that is obvious is that we have to use LR Dp, but the state formulation is not trivial. Lets say that we use state `rec(int l, int r)` to be the maximum score for the range $[l, r]$. here keeping track of how many marbles are we deleting is difficult because many marbles might join after ranges between them is deleted. Hence here we use a dp state `rec(l, r, x)` which returns the maximum score in range $[l, r]$ such that there are $x$ marbles of colour same as $colour[l]$ that are to be deleted with $l$. Now for transition we have two choices, either to delete all marbles latched on to $l$ and get a score of $(1+x)^2 + rec(l+1, r, 0)$, other choice that we find another marble of same colour in the range $[l,r]$ and latch all the marbles to it, lets say that we have another marble of same colour as $colour[l]$ as index $k$, then we would need to delete marbles in range $[l+1, k-1]$ and our final answer for this range will be `rec(l+1,k-1) + rec(k, r, x+1)`, obviously we take the maximum of these.
+
+```c++
+int rec(int l, int r, int x) {
+	if(l > r) return 0;
+	if(dp[l][r][x] != -1) return dp[l][r][x];
+
+	int ans = (x+1) * (x+1) + rec(l+1, r, 0);
+
+	for(int k = l+1, k <= r; k++) {
+		if(colour[k] == colour[l]) {
+			ans = max(ans, rec(l+1, k-1, 0) + rec(k, r, x+1));
+		}
+	}
+
+	return dp[l][r][x] = ans;
+}
+```
+
+### Mountain Array
+
+**Problem:** Given an array $arr$ of $n$ integers, we need to find the minimum number of elements that we need to delete from the array such that the remaining elements make a mountain. Note a mountain array means that exist an index $i$ such that $0 < i < arr.size()-1$ and $arr[0] < arr[1] < \dots < arr[i-1] < arr[i] > arr[i+1] > \dots > arr[n-1]$.
+
+**Solution:** The solution is finding lis for every index in to its left and to its right and then length of mountain centered at this index will be $leftLis[i] + rightLis[i] - 1$. The answer will be $n - maxMountainLen$.
+
+```c++
+int solve(vector<int>& arr, int n) {
+	vector<int> left(n), right(n), lis;
+	// calculating left lis
+	for(int i = 0; i < n; i++) {
+		int indx = lower_bound(lis.begin(), lis.end(), arr[i]) - lis.begin();
+		if(indx == lis.size()) lis.push_back(arr[i]);
+		else lis[indx] = arr[i];
+		left[i] = indx+1;
+	}
+	// calculating right lis
+	lis.clear();
+	for(int i = n-1; i >= 0; i--) {
+		int indx = lower_bound(lis.begin(), lis.end(), arr[i]) - lis.begin();
+		if(indx == lis.size()) lis.push_back(arr[i]);
+		else lis[indx] = arr[i];
+		right[i] = indx+1;
+	}
+
+	int ans = 0;
+	for(int i = 1; i < n-1; i++) {
+		ans = max(ans, left[i] + right[i] - 1);
+	}
+
+	if(ans >= 3) return n - ans;
+	else return -1;
+}
+```
+
+### Merge Elements
+
+**Problem:** You are given $N$ elements, in an array $A$. You are also given $3$ constants $X$, $Y$, and $Z$. You can take any $2$ consecutive elements $a$ and $b$ and merge them. On merging you get a single element with value $(aX+bY+Z) \% 50$ and this process costs you $a*b$. After merging you will place this element in place of those $2$ elements.  Find the Minimum cost to merge all the elements into a single element.
+
+**Solution:** We will use a dp state `rec(i, j, x)` which is the minimum cost to merge the elements in range $[i, j]$ such that final value of the range is $x$. But in recursion we will only use the state `rec(i, j)` and calculate all possible $x$ in this call only. We will loop over all $k \in [i, j)$ and then will all possible combination of values of left and right ranges.
+
+```c++
+void rec(int i, int j) {
+	if(i == j) {
+		dp[i][j][arr[i]] = 0;
+		// for all others the dp array is initialized with inf
+		return;
+	}
+	
+	if(visited[i][j]) return;
+	visited[i][j] = 1;
+	for(int k = i; k < j; k++) {
+		// calling rec for left and right parts
+		rec(i, k);
+		rec(k+1, j);
+		for(int a = 0; a < 50; a++) {
+			for(int b = 0; b < 50; b++) {
+				int currVal = (a*x + b*y + z) % 50;
+				int cost = dp[i][k][a] + dp[k+1][j][b] + a * b;
+				dp[i][j][currVal] = min(dp[i][j][currVal], cost);
+			}
+		}
+	}
+}
+```
+
+### Sum Partition
+
+**Problem:** Find the number of unordered ways, $N$ can be partitioned into $K$ positive integers i.e sum of all $K$ is equal to $N$. Print the answer modulo $10^9 + 7$.
+
+**Solution:** The first idea is that we for every solution there are multiple permutations of it that exist and for all of these we must count $1$, for example if $N = 9$ and $K = 3$, then one of the possible solution is $\{1, 5, 3\}$, but $\{1, 3, 5\}$ is also a solution, so to fix this problem of duplicated we will find the sorted solution since sorted solutions are unique. For this we use dp state `rec(int n, int k)` which is the number of ways to get sum $n$ such that last chosen integer is $\leq k$. The transition is we can either choose $k$ and go to state `rec(n-k, k)` (since we can choose $k$ again). other wise we will go to state `rec(n, k-1)`.
+
+The second idea that will help use to make sure that we only choose $k$ integers is that every choice of solution with $k$ integers can be mapped to a solution with any number of integers but the maximum value $<= k$, for example consider solution $\{1, 3, 5\}$ for $N = 9$ and $K = 3$, if we write each of the value as bunch of $1$'s we will get something shown in the figure below.
+
+![[Pasted image 20240818181315.png | center]]
+
+Hence choosing $k$ integers is same as generating a solution in which each value is $\leq k$  which is simple to solve with our state. Also we have to solve for `rec(n-k,k)` since we need to keep $k$ $1's$ separately since it might happen that in our solution none of the values is equal to $k$ in which case when distributing the answer into $k$ values we will get some of the values as $0$, hence we keep $k$ $1's$ separately to give to every item later.
+
+```c++
+int rec(int n, int k) {
+	if(n == 0) return 1;
+	if(n < 0 || k == 0) return 0;
+
+	if(dp[n][k] != -1) return dp[n][k];
+
+	int ans = (rec(n-k, k) + rec(n, k-1)) % mod;
+
+	return dp[n][k] = ans;
+}
+```
+
+### Rock Paper Scissors
+
+**Problem**: Given a string $S$ of length $n$ that represents the choice of moves that Bob will make when playing rock, paper, scissors against you. Given you already know what $S$ is, generate a string of your moves such that it contains at most $k$ places where the previous move is not same as current move and the number of wins is maximum possible. If multiple solutions exist return the one which is lexicographically the smallest. Given input string contains character `R or P or S` representing the Bob's move. For output we need to print the maximum number of wins possible and lexicographically smallest string that gets us this answer.
+
+**Solution:** We will use a dp state $rec(i, j, x)$ which gives the maximum number of wins in the suffix $[i, \dots, n-1]$ such that $j$ changes have been made and we have move $x$ at $ith$ position ($0 \leq x \leq 2$). For transition we can go to `rec(i+1, j, x) or rec(i+1, j+1, (x+1)%3) or rec(i+1, j+1, (x+2)%3)` to these we need to add $1$ in case win in this round. When generating the solution we choose the one which gives the maximum wins and in case of draw we take a choice with smallest move.
+
+```c++
+int dp[1010][1010][3];
+int n, k;
+string s;
+string pattern = "RPS";
+
+int result(int bobMove, int yourMove) {
+	return yourMove == ((bobMove+1)%3);
+}
+
+int rec(int i, int changes, int curr) {
+	if(i >= n) return 0;
+	if(changes > k) return -inf;
+	if(dp[i][changes][curr] != -1) return dp[i][changes][curr];
+	int ans = 0;
+	int bobMove = pattern.find(s[i]);
+	int currResult = result(vivekMove, curr);
+	for(int nextMove = 0; nextMove < 3; nextMove++) {
+		if(nextMove == curr) ans = max(ans, rec(i+1, changes, nextMove));
+		else ans = max(ans, rec(i+1, changes+1, nextMove));
+	}
+	ans += currResult;
+	return dp[i][changes][curr] = ans;
+}
+
+string getMoves(int i, int changes, int curr) {
+	if(i >= n) return "";
+	int ans = rec(i, changes, curr);
+	int vivekMove = pattern.find(s[i]);
+	int currResult = result(vivekMove, curr);
+	int ans1 = rec(i+1, changes, curr);
+	int ans2 = rec(i+1, changes+1, (curr+1)%3);
+	int ans3 = rec(i+1, changes+1, (curr+2)%3);
+	string moves = "";
+	if(curr == 0) {
+		if(ans2+currResult == ans) {
+			moves = getMoves(i+1, changes+1, (curr+1)%3);
+		} else if(ans1+currResult == ans) {
+			moves = getMoves(i+1, changes, curr);
+		} else {
+			moves = getMoves(i+1, changes+1, (curr+2)%3);
+		}
+	} else if(curr == 1) {
+		if(ans1 + currResult == ans) {
+			moves = getMoves(i+1, changes, curr);
+		} else if(ans3+currResult == ans) {
+			moves = getMoves(i+1, changes+1, (curr+2) % 3);
+		} else {
+			moves = getMoves(i+1, changes+1, (curr+1) % 3);
+		}
+	} else {
+		if(ans3+currResult == ans) {
+			moves = getMoves(i+1, changes+1, (curr+2)%3);
+		} else if(ans2 + currResult == ans) {
+			moves = getMoves(i+1, changes+1, (curr+1)%3);
+		} else {
+			moves = getMoves(i+1, changes, curr);
+		}
+	}
+	
+	return pattern[curr] + moves;
+}
+
+  
+
+void solve(int Case) {
+	cin >> n >> k;
+	forn(i, 0, n) forn(j, 0, k+1) forn(x, 0, 3) dp[i][j][x] = -1;
+	cin >> s;
+	int ans = 0;
+	ans = max(ans, rec(0, 0, 0));
+	ans = max(ans, rec(0, 0, 1));
+	ans = max(ans, rec(0, 0, 2));
+	string moves = "";
+	if(ans == rec(0, 0, 1)) {
+		moves = getMoves(0, 0, 1);
+	} else if(ans == rec(0, 0, 0)) {
+		moves = getMoves(0, 0, 0);
+	} else {
+		moves = getMoves(0, 0, 2);
+	}
+	cout << ans << nline << moves << nline;
+}
+```

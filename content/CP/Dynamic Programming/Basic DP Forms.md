@@ -1,5 +1,3 @@
-# Dynamic Programming
-
 > DP is nothing but caching, or a better word for this approach is **Memoization** which is the core idea of dp, that is to memoize results of a state after it is calculated once so that if we need it later we can use it instead of re-calculating it.
 
 ## Knapsack Style Problems ( Form 1 )
