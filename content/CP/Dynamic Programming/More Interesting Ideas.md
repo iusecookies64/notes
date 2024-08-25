@@ -335,6 +335,47 @@ void solve(vector<vector<int>>& grid, int n, int m) {
 >[!Note]
 >In the above problem, when we fix the ends for columns, we sort of reduce the problem to now be solved for single dimension, this reduction of dimensions which still capturing the original data is called **Dimensionality Reduction**. Another problem where this approach can be used is find the maximum area rectangle in a grid with $0$ and $1$ with similar constraints.
 
+### Kadane Twist
+
+**Problem:** In the standard **Kadane** problem, you are given an array of integers, and you have to find one or more consecutive elements in this array where their sum is the maximum possible sum or in sort the **Maximum Subarray Sum**.
+
+But in this problem, you are given $n$ small arrays, and a big array is constructed by concatenating the small arrays, the big array is given as array of indices of the small array which the order in which the arrays are concatenated. Note that a small can be used any number of times (including $0$). Then you should apply the standard problem mentioned above on the resulting big array.
+
+For example let's suppose that the small arrays are $[[1,6,−2], [3,3], [−5,1]]$. And the indexes in the big array are $[2,3,1,3]$. So the actual values in the big array after formatting it as the concatenation of the small arrays will be $[3,3,−5,1,1,6,−2,−5,1]$. In this example, the maximum sum is $9$.
+
+**Solution:** In this array we first need to calculate $4$ values $p_i, s_i, m_i, t_i$  for each of the small array where $p_i$ is the maximum prefix sum, $s_i$ is the maximum suffix sum, $m_i$ is the maximum subarray sum and $t_i$ is the total sum. Now we will use a $dp$ array $dp[i]$ which gives the maximum sum subarray ending at the end of $ith$ array in the big array. Using value of $dp[i-1]$ we can calculate the maximum subarray sum ending inside of $ith$ array as $max(dp[i-1] + p_i, m_i)$, and the value of $dp[i] = max(dp[i-1] + t_i, s_i)$.
+
+```c++
+int kadaneTwist(vector<vector<int>> smallArray, vector<int> bigArray, int n, int m) {
+	int inf = 1e9;
+	vector<int> pref(n), suff(n), maxSub(n), total(n);
+	for(int i = 0; i < n; i++) {
+		int currSum = 0, maxSum = -inf, prefMax = -inf, suffMax = -inf, currTotal = 0;
+		for(int v : smallArray[i]) {
+			currTotal += v;
+			prefMax = max(prefMax, currTotal);
+			currSum = max(currSum + v, v); // kadane algo
+			maxSum = max(currSum, maxSum);
+		}
+		currTotal = 0; // resetting for suffix max
+		for(int j = smallArray[i].size()-1; j >= 0; j--) {
+			currTotal += smallArray[i][j];
+			suffMax = max(suffMax, currTotal);
+		}
+		pref[i] = prefMax, suff[i] = suffMax, maxSub[i] = maxSum, total[i] = currTotal;
+	}
+
+	vector<int> dp(m);
+	dp[0] = suff[0];
+	int ans = maxSub[0];
+	for(int i = 1; i < m; i++) {
+		ans = max(dp[i-1] + pref[i], maxSum[i]);
+		dp[i] = max(dp[i-1] + total[i], suff[i]);
+	}
+	return ans;
+}
+```
+
 ### Uncommon Subsequences
 
 **Problem:** Given two strings $S$ and $T$, find length of the shortest subsequence in $S$ which is not a subsequence in $T$. If no such subsequence is possible, return $−1$. $|S|, |T| \leq 1000$.
@@ -567,3 +608,128 @@ void solve(int Case) {
 	cout << ans << nline << moves << nline;
 }
 ```
+
+### Number Of Subsequences
+
+**Problem:** Given an integer array $A$ of size $N$. We need to find the number of subsequences of size $K$ such there are no duplicates in the subsequence. Print the answer modulo $10^9+7$.The constraints are $1 \leq K \leq N \leq 10^5$  and $1 \leq A[i] \leq 1000$.
+
+**Solution:** We will first count frequency of every element in the array and make a frequency array. Now in this frequency array $freq$ we define pd state $dp[i][j]$ is equal to the number of subsequences of length $j$ that can be made using the first $i$ elements of the freq array. Now either we don't choose $i$ in our subsequence then we get $dp[i-1][j]$ number of ways otherwise we get $dp[i-1][j-1]$ ways. Note that since the number of unique values in the array are $\leq 1000$ we only dp array of size $dp[1000][1000]$ since even if $k \gt 1000$ it won't be useful because we can't make subsequences of size more than number of unique elements in the array.
+
+```c++
+int numberOfSubsequences(vector<int>& arr, int n, int k) {
+	map<int, int> mp;
+	for(int i = 0; i < n; i++) mp[arr[i]]++; // making freq map
+	vector<int> count;
+	for(auto v : mp) count.push_back(v.second);
+	int m = count.size();
+	vector<vector<int>> dp(m, vector<int>(min(k+1, m+1)));
+	// base cases
+	dp[0][0] = 1;
+	dp[0][1] = count[0];
+	for(int i = 1; i < m; i++) {
+		for(int j = 0; j <= min(k, m); j++) {
+			if(j == 0) dp[i][j] = 1;
+			else dp[i][j] = dp[i-1][j] + dp[i-1][j-1];
+			dp[i][j] %= mod;
+		}
+	}
+	return dp[m-1][min(k, m)];
+}
+```
+
+### Counting Stars
+
+**Problem:** You can see $N$ stars in the sky. You know the coordinates and the brightness of the stars. The maximum brightness of any star can be $C$. If at moment $M$, a star has brightness $S$, then at moment $M+1$, the star will have brightness $S+1$, if $S+1 \leq C$, otherwise $0$. You look at the sky $Q$ times, you want to know the total brightness of the stars lying in the viewed rectangle, with the lower-left corner $(X_{1i}, Y_{1i})$ and upper right corner $(X_{2i}, Y_{2i})$ at moment $M_i$. Constraints $1 \leq N, Q \leq 10^5$ and $0 \leq S \leq C \leq 10$ and $1 <= M <= 10^9$ and $1 \leq X, Y \leq 100$
+
+**Solution:** The idea is simple for every starting value of $S$ we will create a different matrix where we will convert it into $2d$ prefix sum matrix, then to answer a query we will go over all possible values of $S$ and then count the the number of stars that had brightness $S$ in the given rectangle at moment $0$, then at moment $M$ the brightness of these stars will be $(S + M) \% (C+1)$, hence total brightness these contribute to final sum will be $((S + M) \% (C+1)) \times count$.
+
+```c++
+int solve() {
+	int n, q, c;
+	cin >> n >> q >> c;
+	vector<vector<vector<int>>> dp(101, vector<vector<int>>(101, vector<int>(c+1)));
+	// taking input stars
+	for(int i = 0; i < n; i++) {
+		int x, y, s; cin >> x >> y >> s;
+		dp[x][y][s]++;
+	}
+	// making 2d prefix sum
+	for(int s = 0; s <= c; s++) {
+		for(int i = 1; i <= 100; i++) {
+			for(int j = 1; j <= 100; j++) {
+				dp[i][j][s] += dp[i-1][j][s] + dp[i][j-1][s] - dp[i-1][j-1][s];
+			}
+		}
+	}
+
+	// processing the queries
+	while(q--) {
+		int x1, y1, x2, y2, m;
+		cin >> x1 >> y1 >> x2 >> y2 >> m;
+		int ans = 0;
+		for(int s = 0; s <= c; s++) {
+			int finalBrightness = (s + m) % (c+1);
+			int count = s[x2][y2][s] - s[x1-1][y2][s] - s[x2][y1-1][s] + s[x1-1][y1-1][s];
+			ans += finalBrightness * count;
+		}
+		cout << ans << ' ';
+	}
+	cout << '\n';
+}
+```
+
+### The Witcher
+
+**Problem:** _Gerald of Rivia_ also known as _The Witcher_, on his journey to find _Ciri_, faced a dangerous labyrinth. He's in a tunnel that contains $N$ different rooms. Each room contains $A_i$​ monsters inside it. He starts from room $1$. Every time he stays near a room $X$, he may go in and clear it from monsters, or just leave the room locked and move to the room $X+1$. However, if he clears a room with $K$ monsters and the next room he clears consists of $L$ monsters, then the greatest common divisor of $K$ and $L$ must be greater than $1$, otherwise, he will die ( awful curse! ). Formally, let us say that the order of rooms he visited is $i_1, i_2, \dots i_t$​. Then $gcd(A_j, A_{j+1}) > 1$ for all $1 \leq j \lt t$. Help him cross all the rooms by clearing the maximum number of rooms. Constraints are $1 \leq N \leq 10^5$ and $1 \leq A_i \leq 10^7$.
+
+**Solution:** First we build the $spf$ array to factorize $A_i$ quickly, then we define a dp state $dp[p]$ which gives the maximum length of subsequence ending at a number that has $p$ as prime factor. Clearly initially $dp[p] = 0, \forall  p \in [1, 10^7]$ and we start looping all $A_i$, first we factorize $A_i$, now for every factor $p$ we can extend the subsequence $dp[p]$ by $1$. We find the maximum value among all $dp[p_i] + 1$, this will be the maximum length of subsequence ending at index $i$ let it be called $currAns$. Now for each factor of $A_i$ we update $dp[p_i] = currAns$. The time complexity of this approach is $O(nlogn)$.
+
+```c++
+int N = 10001000;
+int spf[N];
+int sieve(){
+	for(int i = 1; i < N; i++) {
+		spf[i] = i;
+	}
+
+	for(int i = 2; i < N; i++) {
+		if(spf[i] != i) continue;
+		if((ll)i*i < N) {
+			for(int j = i * i; j < N; j += i) {
+				if(spf[j] == j) spf[j] = i;
+			}
+		}
+	}
+}
+
+int solve(int testCaseNumber) {
+	if(testCaseNumber == 1) {
+		sieve();
+	}
+
+	int n; cin >> n;
+	int arr[n];
+	for(int i = 0; i < n; i++) cin >> arr[i];
+	int dp[N] = {}; // initializing with 0
+	int ans = 0;
+	for(int i = 0; i < n; i++) {
+		set<int> factors;
+		int temp = arr[i];
+		while(temp > 1) {
+			factors.insert(spf[temp]);
+			temp /= spf[temp];
+		}
+		int currMax = 0;
+		for(int factor : factors) {
+			currMax = max(currMax, dp[factor] + 1);
+		}
+		ans = max(ans, currMax);
+		for(int factor : factors) {
+			dp[factor] = currMax;
+		}
+	}
+	cout << ans << '\n';
+}
+```
+
+``

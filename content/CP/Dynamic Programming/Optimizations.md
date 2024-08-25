@@ -189,6 +189,61 @@ int solve(vector<int>& arr, int n, int S) {
 }
 ```
 
+### Palindromic Paths
+
+**Problems:** Given a grid of size $n \times m$ with lowercase alphabets, you need to find the number of paths from $(0, 0)$ to $(n-1, m-1)$ such that they are palindromic. You are allowed to move from $(x, y)$ to $(x+1, y)$ and $(x, y)$ to $(x, y+1)$. Print the answer modulo $10^9 + 7$. Constraints are $1 \leq n, m \leq 500$.
+
+**Solution:** Just like cherry pickup problem here also we have to use a $2$ path state i.e $dp[x][y][a][b]$ which will give the number of palindromic paths from $(x, y)$ to $(a, b)$. For transition clearly if $grid[a][b] \neq grid[x][y]$ then number of ways are $0$. Otherwise the number of ways are equal to $dp[x+1][y][a-1][b] + dp[x+1][y][a][b-] + dp[x][y+1][a-1][b] + dp[x][y+1][a][b-1]$. The final sub problem will be $dp[0][0][n-1][m-1]$.
+
+But with the given constraints we need to can't make a $O(n^4)$ array, even the optimization that we learned with cherry pickup problem we get $O(n^3)$ space complexity which is still not possible even the time complexity is feasible, but not the space complexity.
+
+Hence we create a dp state combining both cherry pickup and iterative space optimization techniques, we define dp state $dp[x1][x2][d]$ which returns the number of palindromic paths between cells $(x1, d - x1)$ and $(x2, (n-1) + (m-1) - d - x2)$ i.e the cell $(x1,y1)$ is at distance $d$ from $(0, 0)$ and cell $(x2, y2)$ is also at distance $d$ from cell $(n-1, m-1)$. The benefit from this is that each state only depends on states at distance $d+1$ which helps to implement iterative state optimization. 
+
+```c++
+int dp[505][505][2];
+int n, m;
+char grid[505][505];
+
+int getPrecalculatedValue(int x1, int y1, int x2, int y2) {
+	// checking if the state is valid
+	if(x1 < 0 || y1 < 0 || x1 >= n || y1 >= m) return 0;
+	if(x2 < 0 || y2 < 0 || x2 >= n || y2 >= m) return 0;
+	return dp[x1][x2][(x1+y1)&1];
+}
+
+int calcValue(int x1, int y1, int x2, int y2) {
+	// base cases
+	if(x1 > x2 || y1 > y2) return 0;
+	if(x1 < 0 || y1 < 0 || x1 >= n || y1 >= m) return 0;
+	if(x2 < 0 || y2 < 0 || x2 >= n || y2 >= m) return 0;
+
+	// if the cells are same or next to each other
+	if((x1 == x2 && abs(y1-y2) == 1) || (y1 == y2 && abs(x1-x2) == 1)) return 1;
+	// all possible states that we can go from here
+	int ans = getPrecalculatedValue(x1+1,y1,x2-1,y2);
+	ans += getPrecalculatedValue(x1+1,y1,x2,y2-1);
+	ans += getPrecalculatedValue(x1,y1+1,x2-1,y2);
+	ans += getPrecalculatedValue(x1,y1+1,x2,y2-1);
+
+	ans %= mod;
+
+	return ans;
+}
+
+int numberOfPalindromicPaths() {
+	int d = (n + m) / 2; // optmization because for d > (n+m)/2 there are not valid states
+	while(d--) {
+		for(int x1 = 0, y1 = d; x1 < n && y1 >= 0; x++, y1--) {
+			if(y1 >= m) continue;
+			for(int x2 = n-1, y2 = (m-1-d); x2 >= 0 && y2 < m; x2--, y2++) {
+				if(y2 < 0) continue;
+				dp[x1][x2][d&1] = calcValue(x1, y1, x2, y2);
+			}
+		}
+	}
+	return dp[0][n-1][0];
+}
+```
 ### Data Structure Based Optimization
 
 Sometimes we need to use some data structure to optimize the transition time in order to make the solution get AC. For example look at the example below.
@@ -229,6 +284,43 @@ int solve(vector<int>& A, vector<int>& B, int n) {
 	}
 
 	return dp[n-1];
+}
+```
+
+### Binary Search Optimization (Problem Job Scheduling)
+
+**Problem:** There are $n$ Jobs you can do. For each Job, you know its starting and ending days and the amount of money you would get as reward. You can only do one Job during a day. What is the maximum amount of money you can earn? As input you will given an array $A$ in which each element is description of $ith$ job which is an array of size $3$ and contains the following values $A[i] = [a_i, b_i, p_i]$, where $a_i, b_i, p_i$ are the starting and ending day and amount of money that we get from this job. The constraints are $n \leq 2* 10^5$ and $1 \leq a_i, b_i, p_i \leq 10^9$.
+
+**Solution:** First of all we will sort the jobs in ascending order of starting day. Now we will use dp state $dp[i]$ which gives the maximum sum of money that we can earn starting from $ith$ job. Now for transition we got $2$ choices, one is that we either do current job, in that case we need to find the first index of job $j$ after $ith$ job finishes i.e $a_j > b_i$ which can be done using binary search since the jobs are sorted by start day, in this choice we get sum as $p_i + dp[j]$. The other choice is that we don't do $ith$ job, in that our sum is simply $dp[i+1]$.
+
+```c++
+// binary search to find the upper bound
+int upper_bound(vector<vector<int>>& jobs, int n, int x) {
+	int l = 0, r = n-1, ans = n;
+	while(l <= r) {
+		int mid = (l + r) / 2;
+		int startDay = jobs[mid][0];
+		if(startDay > x) {
+			ans = mid;
+			r = mid-1;
+		} else {
+			l = mid + 1;
+		}
+	}
+	return ans;
+}
+
+int maxSum(vector<vector<int>>& jobs, int n) {
+	sort(jobs.begin(), jobs.end());
+	vector<int> dp(n);
+	dp[n-1] = jobs[n-1][2]; // base case
+	for(int i = n-2; i >= 0; i--) {
+		dp[i] = dp[i+1]; // case of not taking i
+		int currEnd = jobs[i][1];
+		int j = upper_bound(jobs, n, currEnd);
+		dp[i] = max(dp[i], (j < n ? dp[j] : 0) + jobs[i][2]);
+	}
+	return dp[0];
 }
 ```
 
