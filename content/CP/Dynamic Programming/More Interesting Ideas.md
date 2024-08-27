@@ -732,4 +732,75 @@ int solve(int testCaseNumber) {
 }
 ```
 
-``
+### Turtle And Inversions
+
+**Link:** [Turtle And Inversions (Easy Version)](https://codeforces.com/contest/2003/problem/E1)
+
+**Problem:** Turtle gives you $m$ disjoint intervals $[l_1, r_1], [l_2, r_2], \dots, [l_m, r_m]$ of the range $[1, n]$ where each interval is of length $\geq 2$. He thinks that a permutation $p$  of length $n$ is interesting if there exists an integer $k_i$ for every interval $(l_i \leq k_i \lt r_i)$, and if he lets $a_i = max(p_j), j \in [l_i, k_i]$ and $b_i=min(p_j), j \in [k_i+1, r_i]$ for every integer $i$ from $1$ to $m$, the following condition holds:
+
+$${\underset{i=1}{\overset{m}{max}}} (a_i)<{\underset{i=1}{\overset{m}{min}}} (b_i)$$
+
+Turtle wants you to calculate the maximum number of inversions of all interesting permutations of length $n$, or tell him if there is no interesting permutation. Constraints are $n \leq 5000$.
+
+**Solution (Easy Version):** The idea is that for every interval we have to divide it in two halves such that elements in first are smaller elements in second half. Also set of prefix partition among all intervals is smaller than set of suffix partitions among all intervals. We can divide the set $(1, n)$ into two sets known as small and large, all prefix of intervals must have elements from small set and all suffix will have elements from large set. For elements that are not part of any interval we can simply put any element (small or large) on those positions. Now positions where we place small elements we place them in decreasing order in order to maximize number of inversions and same goes for places where we put large elements. We convert all elements that are not in any interval as intervals of length $1$ i.e $[j, j]$ for simple processing.
+
+We define $dp[i][j]$ to be maximum number of inversions in the first $i$ intervals such that $j$ elements from small set are taken. Now if current interval is of length $1$ we can place either large or small element here. Otherwise we can place anywhere between $[1, currLen-1]$ number of small elements at this place and calculate the number of inversions accordingly.
+
+**Time Complexity:** $O(n^2)$
+
+```c++
+void solve(int Case)
+{
+    ll n, m; cin >> n >> m;
+    vpll arr(m);
+    vl visited(n+1);
+    for(auto& x : arr) {
+        cin >> x.F >> x.S;
+        for(ll j = x.F; j <= x.S; j++) {
+            visited[j] = 1;
+        }
+    }
+    for(ll i = 1; i <= n; i++) {
+        if(!visited[i]) {
+            arr.pb(mp(i, i));
+        }
+    }
+    sort(all(arr));
+    vl prev(n+1, -inf);
+    prev[0] = 0;
+    vl curr;
+    for(ll i = 0; i < arr.size(); i++) {
+        ll l = arr[i].first, r = arr[i].second;
+        ll totalLen = r;
+        ll currLen = r - l + 1; // interval length
+        ll prevLen = totalLen - currLen; // number of elements before this interval
+        curr.assign(n+1, -inf);
+        for(ll j = 0; j <= totalLen; j++) {
+            if(currLen == 1) {
+                ll totalLarge = totalLen - j;
+                curr[j] = prev[j] + (totalLarge - 1); // if we place large element
+                if(j > 0) {
+                    curr[j] = max(curr[j], prev[j-1] + prevLen); // if we place small element
+                }
+            } else {
+                for(ll k = 1; k < min(currLen, j+1); k++) {
+                    ll currSm = k; // no. of small elements in curr interval
+                    ll prevSm = j - k; // no. of small elements before curr interval
+                    ll currLarge = currLen - k; // no. of large elements in curr interval
+                    ll prevLarge = prevLen - prevSm; // no. of large elements before curr interval
+                    // no. of inversions in curr interval
+                    ll partInversions = (currSm * (currSm - 1)) / 2 + (currLarge * (currLarge - 1)) / 2; 
+                    ll currAns = prev[prevSm];
+                    currAns += partInversions;
+                    currAns += currSm * prevLen; // curr small elements make inversions with every previous element
+                    currAns += currLarge * prevLarge; // curr large elements make inversions with previous large elements
+                    curr[j] = max(curr[j], currAns);
+                }
+            }
+        }
+        prev = curr;
+    }
+    ll ans = *max_element(all(curr));
+    cout << ans << nline;
+}
+```
