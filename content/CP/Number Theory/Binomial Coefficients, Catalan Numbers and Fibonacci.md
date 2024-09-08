@@ -71,12 +71,12 @@ long long getNCR(long long n, long long r)
 ### Properties of Binomial Coefficients
 #### Summation Relation
 This can be proved by putting $x = 1$ in the binomial expansion of $(1+x)^n$.
-$$\sum^{r=n}_{r=0} \binom nr = \binom n0 + \binom n1 + \dots + \binom nn = 2^n$$
+$$\newline\sum^{r=n}_{r=0} \binom nr = \binom n0 + \binom n1 + \dots + \binom nn = 2^n\newline$$
 Another relation that comes from derivative of $(1+x)^n$ and putting $x = 1$ is,
-$$\sum^{r=n}_{r=0} r.\binom nr = 0.\binom n0 + 1.\binom n1 + 2.\binom n2 + \dots + n.\binom nn = n.2^{n-1}$$
+$$\newline\sum^{r=n}_{r=0} r.\binom nr = 0.\binom n0 + 1.\binom n1 + 2.\binom n2 + \dots + n.\binom nn = n.2^{n-1}\newline$$
 #### Hockey Stick Formula
 This formula describes the relation in the value of items in pascals triangle and diagonals. The formula is,
-$$\sum^{m=n}_{m=k} \binom mk = \binom kk + \binom {k+1}k + \binom {k+2}k + \dots + \binom nk = \binom {n+1}{k+1}$$
+$$\newline\sum^{m=n}_{m=k} \binom mk = \binom kk + \binom {k+1}k + \binom {k+2}k + \dots + \binom nk = \binom {n+1}{k+1}\newline$$
 **Algebraic Proof** of this can be done using induction where we know that the result is true for $n = k$ i.e $\binom kk = \binom {k+1}{k+1}$, now we assume that the result is true for some $n \gt k$ and easily prove that it is true for $n+1$ as well.
 
 **Combinatorial Proof** the right hand side is simply number of ways to select $k+1$ items from $n+1$ items. We calculate the value using $\binom {n+1}{k+1}$ or we can first try to fix the right most item and then choose remaining. The choice for right selected items starts from item $k+1$, because if we choose $i < k+1$ as the right most items then there won't be enough items to its left available to be selected. Now if we choose the right most item as $k+1$ then number of ways to choose remaining $k$ items is $\binom kk$, similarly if we choose item $k+2$ as the right most item then number of ways to select $k$ items would be $\binom {k+1}k$ and so on.
@@ -87,11 +87,11 @@ $$\sum^{m=n}_{m=k} \binom mk = \binom kk + \binom {k+1}k + \binom {k+2}k + \dots
 
 #### Vandermonde's Identity
 It gives a formula to calculate the number of ways to select $k$ items out of $n + m$ items i.e $\binom {n+m}k$ and it goes by,
-$$\binom {n+m}k = \sum_{i=0}^{i=k} \binom ni \binom m{k-i}$$
+$$\newline\binom {n+m}k = \sum_{i=0}^{i=k} \binom ni \binom m{k-i}\newline$$
 i.e the summation of choosing $i$ items from group with $n$ items and remaining $k-i$ items from group with $m$ items.
 
 In this if we put $m = n$ and $k = n$ we get,
-$$\sum_{i=0}^{n} \binom ni^2 = \binom {2n}{n}$$
+$$\newline\sum_{i=0}^{n} \binom ni^2 = \binom {2n}{n}\newline$$
 #### Solutions Of Unit Coefficient Linear Equation
 Lets say we need to find the number of solutions to the equation $x_1 + x_2 + \dots + x_k = R$ where $R$ and $x_i \geq 0$ is a positive integer, then the number of solutions are equal to $\binom {R + k - 1}{k-1}$. The proof for this is simple, we take $R$ balls and $k-1$ dividers, then we arrange the dividers and balls, the dividers create $k$ partitions and the count of balls in $ith$ partition we assign to $x_i$ and adding all of the $x_i$ gives a total equal to number of balls which is $R$ i.e this gives us a solution. Hence number of solutions is simply number of ways to arrange $R$ identical balls and $k-1$ dividers.
 
@@ -103,13 +103,13 @@ The problem can be restated as number of ways to divide $R$ identical items into
 
 #### Sum of Diagonals In Pascal's Triangle
 In a pascals triangle, the sum of elements on a diagonal has a relation with Fibonacci numbers, more formally
-$$\sum _{i=0}^{n/2} \binom {n-i}{i} = Fib(n+1)$$
+$$\newline\sum _{i=0}^{n/2} \binom {n-i}{i} = Fib(n+1)\newline$$
 Visually this looks something like this,
 
 ![[Pasted image 20240908174826.png | center]]
 #### Lucas Theorem
 This theorem helps us in finding the value of $\binom nr$ mod $p$  and is given by,
-$$\binom nr mod \hspace{1mm} p = \binom {\lfloor \frac np \rfloor} {\lfloor \frac rp \rfloor} \binom {n \hspace{1mm} mod \hspace{1mm} p}{r\hspace{1mm} mod \hspace{1mm} p}\hspace{1mm} mod \hspace{1mm} p$$
+$$\newline\binom nr mod \hspace{1mm} p = \binom {\lfloor \frac np \rfloor} {\lfloor \frac rp \rfloor} \binom {n \hspace{1mm} mod \hspace{1mm} p}{r\hspace{1mm} mod \hspace{1mm} p}\hspace{1mm} mod \hspace{1mm} p\newline$$
 Using this formula we can calculate the value in $log(P)$ time. What this formula says is that we represent $n$ and $r$ in base $p$ number system i.e lets say $(n)_p = n_1 n_2 n_3$ and $(r)_p = r_1r_2r_3$ then we are calculating $\prod \binom {n_i}{r_i}$. Here if the length of $n$ and $r$ is not same in base $p$ then we simply add leading $0$'s to make the length same.
 
 **Problem:** Given a number $n \leq 10^{12}$ and we need to count the number of even and odd numbers in the set $\{\binom n0, \binom n1, \dots, \binom nn\}$. And we need to solve this for $T$ test cases where $T \leq 10^5$.
@@ -120,7 +120,7 @@ Using this formula we can calculate the value in $log(P)$ time. What this formul
 ### Definition And Formula
 
 These are the numbers that form the sequence $1, 1, 2, 5, 14, 42, \dots$, the general formula for $nth$ Catalan Number is given by
-$$C_n = \frac 1{n+1} \binom {2n}n$$
+$$\newline C_n = \frac 1{n+1} \binom {2n}n\newline$$
 We can also calculate $nth$ Catalan Number using the recurrence relation.
-$$C_{n+1} = \sum_{i=0}^n C_iC_{n-i}, \forall \hspace{1mm} n >= 0 \hspace{1mm} and \hspace{1mm} C_0 = 1$$
+$$\newline C_{n+1} = \sum_{i=0}^n C_iC_{n-i}, \forall \hspace{1mm} n >= 0 \hspace{1mm} and \hspace{1mm} C_0 = 1\newline$$
 There are many problems in which the solution finally falls down to calculation of Catalan Number, few of them are discussed below.
