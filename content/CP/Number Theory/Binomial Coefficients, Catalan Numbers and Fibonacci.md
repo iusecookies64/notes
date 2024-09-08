@@ -141,4 +141,123 @@ We can also calculate $nth$ Catalan Number using the recurrence relation.
 
 $$\newline C_{n+1} = \sum_{i=0}^n C_iC_{n-i}, \forall \hspace{1mm} n >= 0 \hspace{1mm} and \hspace{1mm} C_0 = 1\newline$$
 
-There are many problems in which the solution finally falls down to calculation of Catalan Number, few of them are discussed below.
+### Problems Using Catalan Numbers
+
+#### Number Of Paths Not Crossing Diagonal
+We need to find the number of paths from point $(0,0)$ to $(n, n)$ such that the path always stays below the diagonal (never crosses it). For more understanding consider the following diagram.
+
+![[Pasted image 20240908215601.png | center]]
+
+Now to count every invalid path we can do a need little trick which is to rotate the path about the diagonal above the main diagonal *at points* where the invalid path intersects the diagonal, and each time these invalid diagonal end up at the point $(n-1, n+1)$. For example consider the invalid path in the above diagram, and if we rotate the path about the above diagonal we see that this path also ends up at the point $(n-1, n+1)$.
+
+![[Pasted image 20240908221512.png | center]]
+
+Hence to the number of ways would be total number of ways subtracted from invalid number of ways.
+
+$$\binom {2n}{n} - \binom {2n}{n-1} = \frac 1{n+1} \binom {2n}{n}$$
+>[!Note]
+>Another way to look at this problem is that we need to count the number of ways to arrange right and up moves such at any point the number of right moves done are greater than or equal to number of up moves. This analogy helps us to relate it with the problem of counting the number of balanced parenthesis strings.
+#### Number of Balanced Parenthesis Strings
+Consider the problem of counting the number of balanced parenthesis strings with $n$ pairs of brackets. To solve these types of problems it is always good to try to calculate the count for $n$ with smaller values of $n$. Here we just try to place the first pair and solve the problem for remaining $n-1$ pairs recursively. We always with placing a $($ character, at some point there will be the corresponding character $)$. Now we can write the original string $S$ from the perspective of the first pair it can be written as $(A)B$. Now the number of pairs $A$ can contain is anywhere between $[0, n-1]$, if $A$ contains $i$ pairs then $B$ will contain $n-1-i$ pairs. Total number of ways will be count of all of the ways i.e 
+
+$$C_n = \sum_{i=0}^{n-1}C_iC_{n-1-i}$$
+
+which is basically the formula for $nth$ Catalan number.
+
+#### Number of Ways To Triangulate Convex Polygon
+The problem of counting the number of ways to triangulate a convex polygon let $f(n)$ give the number of ways for $n$ sided polygon, clearly $f(2) = f(3) = 1$. For $n \gt 3$ we consider a the following process, we will choose a side as base, in the final answer this side will be base of some triangle, for reference look at the diagram below.
+
+![[Pasted image 20240908231843.png | center]]
+
+Hence if the polygon has $n$ sides, then after choosing a triangle like above we divide the polygon in two polygons. The number of sides of these polygons range from $[2, n-1]$ if one polygon has $i$ sides then other side will have $n + 1 - i$ sides where $i \in [2, n-1]$. Hence we have 
+
+$$f(n) = f(2)f(n-1) + f(3)f(n-2) + \dots + f(n-1)f(2)$$
+
+Now we see that $f(2) = 1 = C_0$ and $f(3) = 1 = C_1$ and using the above formula we have $f(4) = f(2)f(3) + f(3)f(2) = 2 = C_2$. Similarly we can go on and see that $f(n) = C_{n-2}$ which means that $C_n$ gives the number of ways to triangulate a polygon $n+2$ sides.
+
+#### Number of Binary Trees
+We need to count the number of rooted binary trees that can be made with $n$ nodes. We have one node at root level and we need to divide the remaining $n-1$ nodes in the left and right sides and solve the problem recursively. If we put $i$ nodes in the left side then in the right side we will have $n - 1 - i$ nodes, hence value for $n$ nodes is $f(n) = \sum_{i=0}^{n-1} f(i)f(n-1-i)$ which is basically the value of $nth$ Catalan Number.
+
+#### Number of Non-Intersecting Handshakes
+Consider that $2n$ persons are sitting at a circular table and we need to count the number of simultaneous handshakes possible such that no arms cross each other. For example consider the example of $6$ people shown below.
+
+![[Pasted image 20240908235638.png | center]]
+
+There are $5$ valid handshakes for $6$ persons which is equal to $C_3$. To solve this problem lets say there are $n$ pairs and we simply choose a pair of person, which divides the table in two halves such that on either side there are anywhere from $0$ to $n-1$ pairs. If there are $i$ pairs on one side then there will $n - 1 - i$ pairs on the other side which is again same as Catalan number.
+
+## Fibonacci Numbers
+
+### Definition And Formula
+
+Fibonacci Number are the number of the sequence $0, 1, 1, 2, 3, 5, 8, 13, \dots$ which follow the recursion formula $F_n = F_{n-1} + F_{n-2}$ for $n \geq 2$ and $F_0 = 0$ and $F_1 = 1$. The value of $nth$ Fibonacci number can be approximated using the *Binet's Formula* as shown below
+
+$$F_n = \frac 1{\sqrt 5}\left(\frac {1 + {\sqrt 5}}2\right)^n - \frac 1{\sqrt 5}\left(\frac {1 - {\sqrt 5}}2\right)^n$$
+
+For larger values of $n$ the subtrahend side diminished to $\approx 0$ and we are only left with minuend i.e $\frac 1{\sqrt 5}\left(\frac {1 + {\sqrt 5}}2\right)^n$ which is also known as the *Golden Ration*.
+
+#### Calculation of Fibonacci Numbers (Iterative Method)
+The most simple way to calculate Fibonacci Numbers is to iterate and use dynamic programming.
+
+```c++
+int fib[100100];
+void preCalculateFib()
+{
+	fib[0] = 0;
+	fib[1] = 1;
+	for(int i = 2; i < 100100; i++)
+	{
+		fib[i] = fib[i-1] + fib[i-2];
+	}
+}
+```
+
+This method takes $O(n)$ time to calculate Fibonacci numbers till $n$.
+
+#### Calculating Fibonacci Number (Matrix Multiplication method)
+An interesting fact about Fibonacci Numbers is that they can be represented as power of a $2\times2$ matrix as show below.
+
+$$\begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}^n = \begin{bmatrix} F_{n+1} & F_n \\ F_n & F_{n-1} \end{bmatrix}$$
+
+Combining this with binary exponentiation we can calculate the value of $F_n$ in $log(n)$ time.
+
+```c++
+struct TwoByTwoMatrix{
+	int c11, c12, c21, c22;
+	TwoByTwoMatrix(int a, int b, int c, int d)
+	{
+		c11 = a, c12 = b, c21 = c, c22 = d;
+	}
+	TwoByTwoMatrix()
+	{
+		c11 = 1, c12 = 0, c21 = 0, c22 = 1; // identity matrix
+	}
+	TwoByTwoMatrix operator*(TwoByTwoMatrix const &mat)
+	{
+		int a = c11*mat.c11 + c12*mat.c21;
+		int b = c11.mat.c12 + c12*mat.c22;
+		int c = c21*mat.c11 + c22*mat.c21;
+		int d = c21.mat.c12 + c22*mat.c22;
+		TwoByTwoMatrix res(a, b, c, d);
+		return res;
+	}
+};
+
+TwoByTwoMatrix binPow(TwoByTwoMatrix a, int b)
+{
+	if(b == 0) return TwoByTwoMatrix(); // returning identity matrix
+	TwoByTwoMatrix res = binPow(a, b/2);
+	res = res * res;
+	if(b % 2) res = res * a;
+	return res;
+}
+
+int getFibonacci(int n)
+{
+	if(n == 0) return 0;
+	if(n == 1) return 1;
+	TwoByTwoMatrix a(1, 1, 1, 0);
+	TwoByTwoMatrix res = binPow(a, n);
+	return res.c12;
+}
+```
+
