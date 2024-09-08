@@ -86,7 +86,7 @@ void print_solution(int indx, int w)
 
 3. What if we are allowed to take at max $k$ items. In this case we can simply add another parameter to the recursion `rec(int indx, int w, int k)` and in base case we can check `if(k == 0) return 0` and in transition whenever we choose an element we decrease $k$ by one.
 
-4. What if sum of weights of chosen items is divisible by $M$. In this case when we reach end i.e $indx = n$ then we can check the total weight of selected items by $W - w$ and if this is divisible my $M$ then we return $0$ as usual, and if it is not divisible, then we return $-\infin$ because this is an invalid solution and returning $-\infin$  automatically discards this solution as result is at least $0$.
+4. What if sum of weights of chosen items is divisible by $M$. In this case when we reach end i.e $indx = n$ then we can check the total weight of selected items by $W - w$ and if this is divisible my $M$ then we return $0$ as usual, and if it is not divisible, then we return $-\infty$ because this is an invalid solution and returning $-\infty$  automatically discards this solution as result is at least $0$.
 
 5. What if adjacent items cannot be taken. In this case when we select an item then instead of going to `rec(indx+1, w - weight[indx])` we will go to `rec(indx+2, w - weight[indx])`.
 

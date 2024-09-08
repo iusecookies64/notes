@@ -678,6 +678,40 @@ int solve() {
 }
 ```
 
+### Number Of Mountain Arrays
+
+**Problem:** Given array $A$ of $N$ distinct integers and another integer $K$, you need to find the number of permutations of array elements that make up a valid mountain array and absolute difference between adjacent elements is $\leq K$. A mountain is an array in which there $j$ such that $0 \lt j \lt n-1$ and $arr[0] \lt arr[1] \lt \dots arr[j-1] \lt arr[j] \gt arr[j+1] \gt \dots \gt arr[n-1]$. Constraints are $3 \leq N \leq 1000$ and $1 \leq A[i], K \leq 10^9$. Print the answer modulo $10^9+7$.
+
+**Solution:** Here we first sort the array and then a state like $rec(indx, l, r)$ returning the number of ways to divide the suffix in two subsets such that last element in first set at index $l$ and last element in second set is $r$. We use one based indexing, hence start with $l = r = 0$ indicating there is not elements in any set. Now we can add $arr[indx]$ to set left if $arr[indx] - arr[l] <= k$ or $l = 0$ and get $rec(indx+1, indx, r)$ number of ways, similar cases can be made for $r$. The base case is when $indx = N$, this element needs to be compatible with ends of both the subsets made so far and return $1$ or $0$ accordingly.
+*Optimization*: The solution discussed above looks like $O(N^3)$ time complexity, but it is in fact $O(N^2)$, this can understood from the fact that $indx$ is always equal to $max(l, r) + 1$, which gives a way to reduce the space and time complexity to $O(N^2)$.
+
+```c++
+int mod = 1o9 + 7;
+int arr[1010];
+int dp[1010][1010];
+int n, k
+
+int rec(int l, int r)
+{
+	int indx = max(l, r) + 1;
+	if(indx == n)
+	{
+		if(l == 0 || r == 0) return 0; // one side is empty
+		if(arr[indx] - arr[l] > k || arr[indx] - arr[r] > k) return 0;
+		return 1;
+	}
+
+	if(dp[l][r] != -1) return dp[l][r];
+
+	int ans = 0;
+	if(arr[indx] - arr[l] <= k || l == 0) ans += rec(indx, r);
+	if(arr[indx] - arr[r] <= k || r == 0) ans +=  rec(l, indx);
+
+	ans %= mod;
+
+	return dp[l][r] = ans;
+}
+```
 ### The Witcher
 
 **Problem:** _Gerald of Rivia_ also known as _The Witcher_, on his journey to find _Ciri_, faced a dangerous labyrinth. He's in a tunnel that contains $N$ different rooms. Each room contains $A_i$​ monsters inside it. He starts from room $1$. Every time he stays near a room $X$, he may go in and clear it from monsters, or just leave the room locked and move to the room $X+1$. However, if he clears a room with $K$ monsters and the next room he clears consists of $L$ monsters, then the greatest common divisor of $K$ and $L$ must be greater than $1$, otherwise, he will die ( awful curse! ). Formally, let us say that the order of rooms he visited is $i_1, i_2, \dots i_t$​. Then $gcd(A_j, A_{j+1}) > 1$ for all $1 \leq j \lt t$. Help him cross all the rooms by clearing the maximum number of rooms. Constraints are $1 \leq N \leq 10^5$ and $1 \leq A_i \leq 10^7$.

@@ -1,4 +1,3 @@
-# Trees
 
 Lets start with some basic definition of trees. The most common definitions are given below,
 
@@ -8,7 +7,7 @@ Lets start with some basic definition of trees. The most common definitions are 
 
 **Calculating Fundamental Values in Trees**
 
-Some of the fundamental values calculate for every node in a **rooted tree** are, parent, number of children, subtree size, depth of each node.
+Some of the fundamental values calculate for every node in a **rooted tree** are, parent, number of children, sub-tree size, depth of each node.
 
 ```c++
 vector<vector<int>> tree;
@@ -32,8 +31,6 @@ void dfs(int node, int p, int d)
     }
 }
 ```
-
----
 
 ## Diameter of Tree
 
@@ -84,8 +81,6 @@ void solve()
     }
 }
 ```
-
----
 
 ## Center Of Tree
 
@@ -162,19 +157,17 @@ void solve(int Case)
 }
 ```
 
----
-
 ## Number of Diameters
 
 Here we have to first find center of the tree as shown above, then we have 2 cases
 
 1. If there is only one center then the diameter is even. So we will go to every child of center and then find number of vertices at distance $(\frac d2) - 1$​ where $d$ is diameter. In dfs we can pass center as parent so that child dfs doesn't reach other child nodes.
 
-   <img src="./image-20240530214005178.png" height="350px" />
+   ![[image-20240530214005178.png | center]]
 
-2. The second case is when the diameter is odd, there there are $2$ centres lets call them $c1$ and $c2$. Then the number of diameters will be number of vertices at distance $\lfloor \frac d2 \rfloor$ from $c1$ multiplied with nodes at distance $\lfloor \frac d2 \rfloor$ from $c2$. For center $c1$ we can pass parent as $c2$ so that dfs doesn't go into $c2's$​ subtree and vice versa.
+2. The second case is when the diameter is odd, there there are $2$ centers lets call them $c1$ and $c2$. Then the number of diameters will be number of vertices at distance $\lfloor \frac d2 \rfloor$ from $c1$ multiplied with nodes at distance $\lfloor \frac d2 \rfloor$ from $c2$. For center $c1$ we can pass parent as $c2$ so that dfs doesn't go into $c2's$​ sub tree and vice versa.
 
-   <img src="./image-20240530220231243.png" height="400px"/>
+![[image-20240530220231243.png | center]]
 
 Below is the implementation of this solution.
 
@@ -231,8 +224,6 @@ void solve()
     }
 }
 ```
-
----
 
 ## Centroid Of Tree
 

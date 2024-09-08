@@ -324,3 +324,51 @@ int maxSum(vector<vector<int>>& jobs, int n) {
 }
 ```
 
+### Observation Based Optimization
+
+**Problem:** You are given an array `nums`​​​ and an integer `k`​​​​​. The XOR of a segment `[left, right]` where `left <= right` is the `XOR` of all the elements with indices between `left` and `right`, inclusive: `nums[left] XOR nums[left+1] XOR ... XOR nums[right]`. Return _the minimum number of elements to change in the array_ such that the `XOR` of all segments of size `k`​​​​​​ is equal to zero. Constraints are $1 \leq k \leq nums.length() \leq 2000$ and $0 \leq nums[i] \lt 2^{10}$.
+
+**Solution:** The idea is that all elements with same value of $index \% k$ must have the same value. Hence we will make a frequency count of numbers in each group. Then we just need to find values for first $k$ positions and calculate the cost accordingly. For this we will use the state $dp[i][j]$ which is the minimum number of changes needed to make xor of first $i$ elements equal to $j$. To calculate $dp[i][j]$ there are two options either we choose one of the element from the group to make the value of $j$, the cost of changing each element in group to $x$ will be $dp[i-1][j \hspace{1mm} XOR \hspace{1mm} x] + groupSize_i - freq_x$. The other choice we have is to choose any value for $ith$ position having to change every element in the group, in this case we have liberty that xor of elements till $i-1$ can be anything so we choose minimum of all $dp[i-1][x]$, in this case we get cost as $prevMin + groupSize$ for every $j$. We choose minimum from these choices.
+
+**Note:** To calculate the size of group $i$ we use formula $ceil((n - i) / k)$, the group are from $[0, k-1]$.
+
+```c++
+void solve(int n, int k, vector<int>& arr)
+{
+	int m = (1<<10);
+	vector<map<int, int>> freq(k);
+	for(int i = 0; i < k; i++)
+	{
+		for(int j = i; j < n; j+=k)
+		{
+			freq[i][arr[j]]++;
+		}
+	}
+	int inf = n;
+	vector<vector<int>> dp(k, vector<int>(m, inf));
+	int prevMin = 0;
+	for(int i = 0; i < k; i++)
+	{
+		int groupSize = ceil((n - i) * 1.0 / k);
+		int currMin = inf; // initialize curr min as inf
+		for(int j = 0; j < m; j++)
+		{
+			// choosing element from the group
+			for(auto &v : freq[i])
+			{
+				int val = v.first, count = v.second;
+				if(i > 0) dp[i][j] = dp[i-1][j^val] + groupSize - count;
+				else if(j == val) dp[i][j] = groupSize - count;
+				else dp[i][j] = groupSize; // need to change all elements
+			}
+			// choosing any element
+			dp[i][j] = min(dp[i][j], prevMin + groupSize);
+			currMin = min(currMin, dp[i][j]);
+		}
+		prevMin = currMin;
+	}
+
+	cout << dp[n-1][0] << '\n';
+}
+```
+

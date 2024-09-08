@@ -4,7 +4,7 @@
 
 The first form is where we have two sets and we need to match elements from one set two another set. For example consider the problem where we are given $n$ ranks and m students we need to assign the ranks to students, giving $ith$ rank to $jth$ student gives happiness score $happy[i][j]$, we need to assign ranks such that total happiness is maximized. Note that it might be that $n \lt m$, then all students can't be assigned unique ranks, so the students that don't get any rank save happiness score $0$. Here $1  \leq n \leq 15$ and $1 \leq m \leq 50$.
 
-**Dp With Bitmasking Approach:** the idea here is to store mask of one set and iterate over other set, since $n$ is small we will keep mask of ranks that we have chosen and iterate over students. We will use the dp state $dp[chosen][indx]$ which returns maximum happiness for students from $[i, m]$ such that $chosen$ gives the bitmask of all the ranks that are already chosen. For transition we loop over all not taken ranks and if we choose a rank $i$ then we get total happiness as $rec(chosen|(1<<i), indx+1) + happiness[indx][i])$ The time complexity if $O(m \times 2^n)$, but actually it is less that that because a lot of the states are never visited.  
+**Dp With Bitmasking Approach:** the idea here is to store mask of one set and iterate over other set, since $n$ is small we will keep mask of ranks that we have chosen and iterate over students. We will use the dp state $dp[chosen][indx]$ which returns maximum happiness for students from $[i, m]$ such that $chosen$ gives the bitmask of all the ranks that are already chosen. For transition we loop over all not taken ranks and if we choose a rank $i$ then we get total happiness as $rec(chosen|(1<<i), indx+1) + happiness[indx][i])$ The time complexity if $O(m \times 2^n)$, but actually it is less that that because a lot of the states are never visited. 
 
 ```c++
 int n, m;
@@ -166,7 +166,7 @@ Consider a problem where there is an $n \times n$ grid and we need to tile this 
 
 ![[Pasted image 20240828000351.png | center | 700]]
 
-**Dp State:** Here a bitmask where $0$ represents empty cell and $1$ represents filled cell can be used, we will store bitmask of cells starting from cell above to the cell to left of current cell this will require $n$ bits (as shown in the figure above, only part of square grid is shown and not the whole grid). Now since cell above is empty then we must put the tile vertically as that is the only way to fill that cell. If above cell is filled then we have two choice if cell to left is not filled then we can place tile horizontally or else we cannot place any tile (tile end) in this cell and continue. Moving to next state is simply left shifting the mask and adding configuration of current cell. Final subproblem will be when row == n and mask == (1<<n)-1 i.e we move out of grid and last row is completely filled.
+**Dp State:** Here a bitmask where $0$ represents empty cell and $1$ represents filled cell can be used, we will store bitmask of cells starting from cell above to the cell to left of current cell this will require $n$ bits (as shown in the figure above, only part of square grid is shown and not the whole grid). Now since cell above is empty then we must put the tile vertically as that is the only way to fill that cell. If above cell is filled then we have two choice if cell to left is not filled then we can place tile horizontally or else we cannot place any tile (tile end) in this cell and continue. Moving to next state is simply left shifting the mask and adding configuration of current cell. Final sub problem will be when row is $n$ and $mask$ is $(1<<n)-1$ i.e we move out of grid and last row is completely filled.
 
 ```c++
 vector<vector<int>> dp;
@@ -196,98 +196,99 @@ int rec(int cellNumber, int mask) {
 
 ## Form 6: (Submask Decomposition)
 
-Some problems requires to form most groups among of elements of a set. For example consider a problem where we have n students and we want to form teams. If student i and j are in the same team then their happiness increases by happiness[i][j]. We need to form teams such that maximum happiness is achieved. Here dp(mask) represents maximum happiness possible by making teams of the childrens available in mask. We will loop over all submask of mask and put all of those students in one team and then call for dp(mask^submask) which is mask of remaining students. Now happiness of putting all students represented by mask in one team can be pre-calculated, happiness[mask] = happiness of first student (lets j) with all other present students + happiness[mask^(1<<j)].
+Some problems requires to form most groups among of elements of a set. For example consider a problem where we have $n$ students and we want to form teams. If student $i$ and $j$ are in the same team then their happiness increases by $happiness[i][j]$. We need to form teams such that maximum happiness is achieved.
 
-  
+Here $dp(mask)$ represents maximum happiness possible by making teams of the children available in mask. We will loop over all $submask$ of $mask$ and put all of those students in one team and then call for `dp(mask^submask)` which is mask of remaining students. Now happiness of putting all students represented by mask in one team can be pre-calculated. For calculating happiness of $mask$, we find happiness of first student (say $j$) with all other present students then we find happiness of remaining mask i.e $maskHappiness[mask] = \sum happiness[i][j] + maskHappiness[mask - (1<<j)]$. If we iterate over masks from $0$ to $2^n$ then the value of $mask-(1<<j)$ will be already calculated.
 
-vector<int> preCalculateHappiness(vector<vector<int>>& happiness, int n)
+To iterate over all submasks efficiently there is a common algorithm, where we start with $submask = mask$ and run loop till $submask > 0$ and after each iteration we need to update $submask = ((submask-1)\& mask)$. To understand this first we consider our $mask = 15 = (1111)_2$ and lets we simply subtract $1$ from $mask$ in every iteration $mask$ we get are given below,
+$$(1111)_2 \rightarrow (1110)_2 \rightarrow (1101)_2 \rightarrow (1100)_2 \rightarrow (1011)_2 \rightarrow (1010)_2 \rightarrow (1001)_2 \rightarrow (1000)_2 \rightarrow (111)_2 \rightarrow (110)_2 \rightarrow (101)_2 \rightarrow (100)_2 \rightarrow (11)_2 \rightarrow (10)_2 \rightarrow 1$$
+We can see that this actually generated all the $submasks$ of $mask$. But this was only due to the fact that $mask$ had all bits set initially (without gaps). Now if $mask = 26 = (11010)_2$ then simply doing $mask-1$ every time introduces new set bits that were not part of original set. But if along with subtracting with $1$ we also do bitwise AND with $mask$ then all extra bits will automatically be removed. Doing so we get values of submask in each iteration as shown below,
+$$(11010)_2 \rightarrow(11000)_2 \rightarrow(10010)_2 \rightarrow(10000)_2 \rightarrow(1010)_2 \rightarrow(1000)_2 \rightarrow(10)_2$$
+This is similar to generating $submasks$ of $mask = 7 = (111)_2$ with extra zeroes in some places that always remain as $0$.
 
-{
-
-int sz = 1<<n;
-
-vector<int> res(sz);
-
-for(int mask = 1; mask < sz; mask++)
-
-{
-
-int firstBit = -1;
-
-int curr = 0;
-
-for(int i = 0; i < n; i++)
-
-{
-
-if(mask&(1<<i))
-
-{
-
-if(firstBit == -1)
-
-{
-
-firstBit = i;
-
+```c++
+vector<vector<int>> happiness;
+vector<int> dp, maskHappiness;
+int n;
+void preCalculateGroupHappiness() {
+	int maskEnd = (1<<n);
+	maskHappiness.assign(maskEnd, 0);
+	for(int mask = 0; mask < maskEnd; mask++) {
+		int i = __builtin_ffs(mask) - 1; // first set bit in mask, we can also use __builtin_ctz(mask)
+		int currHappiness = maskHappiness[mask^(1<<i)];
+		for(int j = i + 1; j < n; j++) {
+			if(mask&(1<<j)) currHappiness += happiness[i][j];
+		}
+		maskHappiness[mask] = currHappiness;
+	}
 }
 
-else
+int rec(int mask) {
+	if(mask == 0) {
+		return 0; // all students are in some group
+	}
+	if(dp[mask] != -1) return dp[mask];
+	int ans = 0;
+	for(int submask = mask; submask > 0; submask = ((submask-1)&mask)) {
+		ans = max(ans, rec(mask^submask) + maskHappiness[submask]);
+	}
+	return dp[mask] = ans;
+}
+```
 
+## Some More Practice Problems
+
+**Problem:** A sequence $b$ of size $n$ is considered good if for every element $i$ and $j$ of the sequence ($i \neq j$) we have $gcd(b_i, b_j) = 1$. Given a sequence $a$ of same size as $b$, find a sequence $b$ gives minimum value for expression $\sum |a_i - b_i|$. Constraints are $1 \leq n \leq 100$ and $1 \leq a_i \leq 30$.
+
+**Solution:**
+
+```c++
+void solve()
 {
-
-curr += happiness[firstBit][i];
-
+	int maxb = 60;
+	int inf = 1e9;
+	cin >> n;
+	vector<int> a;
+	forn(i, 0, n) cin >> a[i];
+	vector<int> pf(maxb+1);
+	int primeIndex = 0;
+	for(int i = 2; i <= maxb; i++)
+	{
+		if(pf[i]) continue;
+		for(int j = i; j <= maxb; j += i)
+			pf[j] |= (1<<primeIndex);
+		primeIndex++;
+	}
+	int maskEnd = (1 << primeIndex);
+	vector<vector<int>> dp(n+1, vector<int>(maskEnd));
+	vector<vector<int> choice(n+1, vector<int>(maskEnd))
+	for(int i = n-1; i >= 0; i--)
+	{
+		for(int j = 0; j < maskEnd; j++)
+		{
+			dp[i][j] = dp[i+1][j] + abs(a[i] - 1);
+			choice[i][j] = 1;
+			for(int b = 2; b < 2 * a[i]; b++)
+			{
+				if((pf[b] & j)) continue; // if b and j have common prime factors
+				int curr = dp[i+1][j|pf[b]] + abs(a[i] - b);
+				if(dp[i][j] > curr)
+				{
+					dp[i][j] = curr;
+					choice[i][j] = b;
+				}
+			}
+		}
+	}
+	vector<int> res;
+	int j = 0;
+	for(int i = 0; i < n; i++)
+	{
+		res.push_back(choice[i][j]);
+		j |= pf[choice[i][j]];
+	}
+	for(auto val : res) cout << val << ' ';
+	cout << '\n';
 }
+```
 
-}
-
-}
-
-res[mask] = curr + res[mask^(1<<firstBit)];
-
-}
-
-return res;
-
-}
-
-  
-
-int maxHappinessTeam(vector<int>& happiness, vector<int>& dp, int mask, int n)
-
-{
-
-if(mask == 0)
-
-{
-
-// not student remaining
-
-return 0;
-
-}
-
-  
-
-if(dp[mask] != -1) return dp[mask];
-
-  
-
-int res = 0;
-
-for(int submask = mask; submask > 0; submask = (submask-1)&mask)
-
-{
-
-// if we put submask in one team
-
-res = max(res, happiness[submask] + maximumHappiness(happiness, dp, mask^submask, n));
-
-}
-
-  
-
-return dp[mask] = res;
-
-}

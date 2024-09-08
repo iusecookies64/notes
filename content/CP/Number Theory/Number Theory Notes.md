@@ -1,5 +1,3 @@
-# Number Theory
-
 ## Sieve of Eratosthenes
 
 This method helps find all prime number in range $[1, n]$ for all $n <= 10^7$. Below is a basic implementation of this algorithm.
@@ -37,7 +35,7 @@ Now for large values of n, we can approximate this summation with integration as
 
 ​								 $$\sum_{k = 2}^{\frac n {\ln n}} \frac 1 {k \ln k} \approx \int_2^{\frac n {\ln n}} \frac 1 {k \ln k} dk.$$ 
 
-The antiderivative for the integrand is $\ln \ln k$ . Using a substitution and removing terms of lower order, we'll get the result:
+The anti derivative for the integrand is $\ln \ln k$ . Using a substitution and removing terms of lower order, we'll get the result:
 
 ​					$$\int_2^{\frac n {\ln n}} \frac 1 {k \ln k} dk = \ln \ln \frac n {\ln n} - \ln \ln 2 = \ln(\ln n - \ln \ln n) - \ln \ln 2 \approx \ln \ln n.$$
 
@@ -49,8 +47,6 @@ if((long long)i * i <= n)
     // we loop over multiples of i from i * i here
 }
 ```
-
----
 
 ## Segmented Sieve
 
@@ -106,8 +102,6 @@ vector<long long> segmentedSieve(long long a, long long b)
     return primeInSegment;
 }
 ```
-
----
 
 ## Fast Factorization
 
@@ -166,8 +160,6 @@ Lets discuss an interesting problem that uses fast factorization.
 
 Hence for every number in array we will store it in norm form and count of numbers with which it will make a cube will be count of inverse norm of that number.
 
----
-
 ## Euler Totient Function
 
 This function represented as $\phi(n)$ is the number of **coprimes of** $n$ in range $[1, n-1]$ and is defined by 
@@ -223,8 +215,6 @@ vector<int> eulerTotient(int n)
 2. $\phi(p^k) = p^k - p^{k-1}$, where $p$ is a prime number.
 3. $\phi(ab) = \phi(a) * \phi(b)$, if $gcd(a, b) = 1$.
 
----
-
 ## Factorization Based Counting Problems
 
 Consider a number $n$ and it has prime factorization $n = P_1^{a_1} * P_2^{a_2} * P_3^{a_3} ..$ and consider $d_1, d_2,d_3,..$ to be divisors of n, then we have sum $S_k$ defined as 
@@ -242,8 +232,6 @@ Some of the most common factorization based counting problems are,
 3. Product of divisors $n = n^{\frac {S_0}2}$ i.e $n$ power number of divisors by 2.
 
    **Note:** that if number of divisors is not even that means all values $(a_1+1),(a_2+1),(a_3+1)$ are odd numbers which means $a_1,a_2,a_3$ are all even numbers and hence n is a square number in that case we product of divisors as $(\sqrt n)^{S_0}$​.
-
----
 
 ## Fermat's Little Theorem
 
@@ -270,9 +258,7 @@ void solve()
 }
 ```
 
-**Euler's Theorem:** this is a general case of fermat's little theorem which states for any two integers $a$ and $m$ such that they are coprimes we have $a^x \% m = a^{x\%\phi(m)} \%m$. Where $\phi$ is **Euler totient function** and $\phi(m)$ is called **totative of m**.
-
----
+**Euler's Theorem:** this is a general case of Fermat's little theorem which states for any two integers $a$ and $m$ such that they are coprimes we have $a^x \% m = a^{x\%\phi(m)} \%m$. Where $\phi$ is **Euler totient function** and $\phi(m)$ is called **totative of m**.
 
 ## Power Of X In N!
 
@@ -284,11 +270,9 @@ Maximum power of $P$ in $N! = \lfloor \frac N{P} \rfloor + \lfloor \frac N{P^2} 
 
 Let the prime factorization of $X$ be $P_1^{a_1} P_2^{a_2} P_3^{a_3}...$ and let $f(N, P)$ be the power of prime $P$ in $N!$, then power of $X$ in $N!$ is given by $min(\lfloor \frac {f(N,P)}{a_i} \rfloor)$​.
 
----
-
 ## Binary Exponentiation And Russian Peasant Multiplication
 
-**Binary Exponentian:** this algorithm finds the power $a^b$ in $log_2(b)$ time complexity, the idea behind this is that $a^b = a^{\frac b2}*a^{\frac b2}$.
+**Binary Exponentiation:** this algorithm finds the power $a^b$ in $log_2(b)$ time complexity, the idea behind this is that $a^b = a^{\frac b2}*a^{\frac b2}$.
 
 ```c++
 int binpow(int a, int b)
@@ -336,8 +320,6 @@ long long multiply_mod(long long a, long long b, long long m)
     return res;
 }
 ```
-
----
 
 ## Miscellaneous Ideas
 
