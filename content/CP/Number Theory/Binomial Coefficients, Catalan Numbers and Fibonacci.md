@@ -221,7 +221,7 @@ $$\begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}^n = \begin{bmatrix} F_{n+1} & F_n
 Combining this with binary exponentiation we can calculate the value of $F_n$ in $log(n)$ time.
 
 ```c++
-struct TwoByTwoMatrix{
+struct TwoByTwoMatrix {
 	int c11, c12, c21, c22;
 	TwoByTwoMatrix(int a, int b, int c, int d)
 	{
@@ -260,4 +260,19 @@ int getFibonacci(int n)
 	return res.c12;
 }
 ```
+
+#### Some Properties of Fibonacci Numbers
+
+1. **Sum of Fibonacci Numbers** i.e $F_0 + F_1 + \dots + F_n = \sum_{i=0}^n F_i = F_{n+2} - 1$. To prove this we can simply add and subtract $F_1$ as shown below.
+	$$F_1 - F_1 + (F_0 + F_1 + \dots + F_n) \newline = ((F_0 + F_1) + F_1 + \dots + F_n) - F_1 \newline = ((F_2 + F_1) + \dots + F_n) - F_1 = \dots = (F_{n+1} + F_n) - F_1 = F_{n+2} - F_1 = F_{n+2} - 1$$
+	Using The Similar Idea we can generalize the sum of $k$ consecutive Fibonacci Numbers.
+
+2. **Sum of Squares of Fibonacci Numbers** i.e $F_0^2 + F_1^2 + F_2^2 + \dots + F_n^2 = F_n . F_{n+1}$ and we can prove this using induction, the expression is trivially true for $n = 1$. Let it be true for some $n \gt 1$ then we can say that for $n+1$ we have $F_0^2 + F_1^2 + \dots + F_n^2 + F_{n+1}^2 = F_n . F_{n+1} + F_{n+1}^2 = F_{n+1}(F_n + F_{n+1}) = F_{n+1}.F_{n+2}$. Hence proved.
+
+3. **Convolution Property:** $F_n = F_m.F_{n-m+1} + F_{m-1}.F_{n-m}$ to prove this we can substitute $F_m = F_{m-1} + F_{m-2}$ in the equation which gives us $F_n = (F_{m-1} + F_{m-2}).F_{n-m+1} + F_{m-1}.F_{n-m} = F_{m-2}.F_{n-m+1} + F_{m-1}.F_{n-m+2}$, now we substitute $F_{m-1} = F_{m-2} + F_{m-3}$ and so on, at the end we will be left with $F_n = F_1.F_n + F_0.F_{n-1} = F_n$.
+
+4. **Division Property:** This property states that $nth$ Fibonacci number divides any $k.nth$ Fibonacci Number i.e those numbers whose positions are multiples of $n$, for example $F_3 = 2$ divides $F_6 = 8$. This also means if $F_n$ divides $F_m$ then $n$ divides $m$.
+
+5.  **GCD Property:** This property states that $gcd(F_n, F_m) = F_{gcd(n, m)}$, this helps in finding the gcd of large Fibonacci Numbers i.e we first find $gcd(n, m)$ and then find that Fibonacci Number.
+
 
