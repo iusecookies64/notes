@@ -103,7 +103,7 @@ In this if we put $m = n$ and $k = n$ we get,
 $$\newline\sum_{i=0}^{n} \binom ni^2 = \binom {2n}{n}\newline$$
 
 #### Solutions Of Unit Coefficient Linear Equation
-Lets say we need to find the number of solutions to the equation $x_1 + x_2 + \dots + x_k = R$ where $R$ and $x_i \geq 0$ is a positive integer, then the number of solutions are equal to $\binom {R + k - 1}{k-1}$. The proof for this is simple, we take $R$ balls and $k-1$ dividers, then we arrange the dividers and balls, the dividers create $k$ partitions and the count of balls in $ith$ partition we assign to $x_i$ and adding all of the $x_i$ gives a total equal to number of balls which is $R$ i.e this gives us a solution. Hence number of solutions is simply number of ways to arrange $R$ identical balls and $k-1$ dividers.
+Lets say we need to find the number of solutions to the equation $x_1 + x_2 + \dots + x_k = R$ where $R$ and $x_i \geq 0$ is a non-negative integer, then the number of solutions are equal to $\binom {R + k - 1}{k-1}$. The proof for this is simple, we take $R$ balls and $k-1$ dividers, then we arrange the dividers and balls, the dividers create $k$ partitions and the count of balls in $ith$ partition we assign to $x_i$ and adding all of the $x_i$ gives a total equal to number of balls which is $R$ i.e this gives us a solution. Hence number of solutions is simply number of ways to arrange $R$ identical balls and $k-1$ dividers.
 
 ![[Pasted image 20240908173508.png | center]]
 
