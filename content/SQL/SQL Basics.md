@@ -126,7 +126,7 @@ WHERE student_id = 34;
 ┌─────────────┬────────────────┬────────────────┬───────────────┐
 │ Student_id  │ Student_Name   │ Contact_Number │ Department    │
 ├─────────────┼────────────────┼────────────────┼───────────────┤
-│ 34          │ Abel George    │ 910023432      │ 'CSE'         │
+│ 34          │ Abel George    │ 910023432      │ CSE           │
 ├─────────────┼────────────────┼────────────────┼───────────────┤
 │ 23          │ Derail Gupta   │ 999999999      │ NULL          │
 └─────────────┴────────────────┴────────────────┴───────────────┘
@@ -151,8 +151,413 @@ WHERE student_id = 08;
 ┌─────────────┬────────────────┬────────────────┬───────────────┐
 │ Student_id  │ Student_Name   │ Contact Number │ Department    │
 ├─────────────┼────────────────┼────────────────┼───────────────┤
-│ 34          │ Abel George    │ 910023432      │ 'CSE'         │
+│ 34          │ Abel George    │ 910023432      │ CSE           │
 ├─────────────┼────────────────┼────────────────┼───────────────┤
 │ 23          │ Derail Gupta   │ 999999999      │ NULL          │
 └─────────────┴────────────────┴────────────────┴───────────────┘
+```
+
+### Constraints
+
+**Constraints** provide details about the usage of a column and are applied after specifying the column's data type.  
+They enable the database to reject any inserted data that violates a particular constraint.  
+The following statement is used to impose constraints on the "student" table.
+
+Below is the query to create a table student with a set of constraints.
+
+```sql
+ CREATE TABLE  student (
+	 student_id INT PRIMARY KEY,
+	 student_Name TEXT UNIQUE,
+	 Department TEXT NOT NULL
+ ); 
+```
+
+- **PRIMARY KEY** can be utilized to uniquely identify a row in a table.  When attempting to insert a row with the same value as an existing row in the table, a constraint violation will occur, preventing the insertion of the new row.
+- **UNIQUE** columns contain distinct values for each row, similar to **"PRIMARY KEY"** columns, but unlike primary key columns, a table can have multiple unique columns.
+- **NOT NULL** columns must have a value assigned to them.  When attempting to insert a row without providing a value for a **"NOT NULL"** column, a constraint violation will occur, preventing the insertion of the new row.
+
+>[!Note]
+>**Difference Between UNIQUE and PRIMARY KEY**
+>
+>**UNIQUE** constrains simple makes sure that every value in a column is unique, this column can have **NULL** value, but only one such value is allowed. A table can have multiple columns that have unique constraint. Values in a unique column can be updated as long as the new updated value is unique. A unique key can be referenced by **FOREIGN KEY** of another table.
+>
+>**PRIMARY KEY** constraint on the other hand is used to uniquely identify records in the table, it cannot be null and is usually a key that is rarely changed. Primary key can be just a column or a combination of columns, but there can only be one primary key in a table unlike UNIQUE keys. A Primary key of one table can be referenced by **FOREIGN KEY** of another table.
+>
+>**Indexing Difference**
+>
+>The entire table is indexed according to the primary key, which means that primary key physically decides where the data is stored. This is also known as clustered indexing. For each unique key another index is created where only the pointer to the stored is stored. This is known as non-clustered indexing.
+
+## Introduction to Queries
+
+In this module, let us learn the different commands to **QUERY** a single table database. Queries are used to **talk** to the database and carry out specific actions. Throughout this module, let us use the **Flights** table to understand how passengers have booked their flight tickets.
+
+Let us check the data currently stored in the **Flights** table.
+
+```sql
+┌──────────────┬────────────────┬────────┬──────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │  Origin  │ Destination │
+├──────────────┼────────────────┼────────┼──────────┼─────────────┤
+│ 10001        │ Jackson        │ Male   │ Mumbai   │ New York    │
+│ 10002        │ Riya           │ Female │ Mumbai   │ Delhi       │
+│ 10003        │ Roy            │ Male   │ London   │ Delhi       │
+│ 10004        │ Anthony        │ Male   │ Mumbai   │ Cairo       │
+│ 10005        │ Salim          │ Male   │ Ohio     │ New York    │
+│ 10006        │ Dia            │ Female │ New York │ Cairo       │
+│ 10007        │ Jackson        │ Male   │ New York │ London      │
+│ 10008        │ Dia            │ Female │ Beijing  │ Mumbai      │
+│ 10009        │ Riya           │ Female │ Damascus │ Mumbai      │
+│ 10010        │ Betty          │ Female │ Beijing  │ Cairo       │
+└──────────────┴────────────────┴────────┴──────────┴─────────────┘
+```
+
+### SELECT Query
+
+As you saw in the problem earlier, the **Flights** table had the following information in columns
+
+- Passenger_id with datatype INT
+- Passenger_name with datatype VARCHAR
+- Gender with datatype VARCHAR
+- Origin with datatype VARCHAR
+- Destination with datatype VARCHAR
+
+To view data entries in specific columns of a table, the following syntax is used
+
+```sql
+	select column_1, column_2
+	from Flights;
+```
+
+To view **ALL** rows of a table, the following syntax is used
+
+```sql
+    select *
+    from Flights;
+```
+
+For example consider the following query.
+
+```sql
+select Passenger_name, Gender from flights;
+
+-- the result would be
+┌────────────────┬────────┐
+│ Passenger_name │ Gender │
+├────────────────┼────────┤
+│ Jackson        │ Male   │
+│ Riya           │ Female │
+│ Roy            │ Male   │
+│ Anthony        │ Male   │
+│ Salim          │ Male   │
+│ Dia            │ Female │
+│ Jackson        │ Male   │
+│ Dia            │ Female │
+│ Riya           │ Female │
+│ Betty          │ Female │
+└────────────────┴────────┘
+```
+
+### DISTINCT
+
+In the **Flights** table, what all 'Origins' exist? The following query should give us the result.
+
+```sql
+     Select Origin 
+     from Flights;
+```
+
+However, if we want to find the **unique** origin locations, we will use the **DISTINCT** syntax in the following format.
+
+```sql
+     Select Distinct Origin 
+     from Flights;
+```
+
+The output for the above query will be.
+
+```sql
+┌──────────┐
+│  Origin  │
+├──────────┤
+│ Mumbai   │
+│ London   │
+│ Ohio     │
+│ New York │
+│ Beijing  │
+│ Damascus │
+└──────────┘
+```
+
+But if we have **DISTINCT** with multiple columns, well then unique tuples will be returned. For example consider the below example.
+
+```sql
+select Origin, Gender from Flights;
+select distinct Origin, Gender from Flights;
+
+-- result of first query
+┌──────────┬────────┐
+│  Origin  │ Gender │
+├──────────┼────────┤
+│ Mumbai   │ Male   │
+│ Mumbai   │ Female │
+│ London   │ Male   │
+│ Mumbai   │ Male   │
+│ Ohio     │ Male   │
+│ New York │ Female │
+│ New York │ Male   │
+│ Beijing  │ Female │
+│ Damascus │ Female │
+│ Beijing  │ Female │
+└──────────┴────────┘
+
+-- result of second query
+┌──────────┬────────┐
+│  Origin  │ Gender │
+├──────────┼────────┤
+│ Mumbai   │ Male   │
+│ Mumbai   │ Female │
+│ London   │ Male   │
+│ Ohio     │ Male   │
+│ New York │ Female │
+│ New York │ Male   │
+│ Beijing  │ Female │
+│ Damascus │ Female │
+└──────────┴────────┘
+```
+
+From the above we can see that in the first result there were duplicate tuples, in the first one there are 2 tuples `('Mumbai', 'Male')` and 2 tuples with `('Beijing', 'Female')`.
+
+### WHERE
+
+The **WHERE** clause helps us obtain information which meets specific conditions.
+
+In the previous problem, we saw the 'Origins' of flights.  
+Let us try and identify flights that originate out of 'Mumbai' using the following syntax.
+
+```sql
+Select *
+from Flights
+WHERE Origin = 'Mumbai';
+
+-- output for above query is
+┌──────────────┬────────────────┬────────┬────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │ Origin │ Destination │
+├──────────────┼────────────────┼────────┼────────┼─────────────┤
+│ 10001        │ Jackson        │ Male   │ Mumbai │ New York    │
+│ 10002        │ Riya           │ Female │ Mumbai │ Delhi       │
+│ 10004        │ Anthony        │ Male   │ Mumbai │ Cairo       │
+└──────────────┴────────────────┴────────┴────────┴─────────────┘
+```
+
+### BETWEEN
+
+The **BETWEEN** clause is used along with **WHERE** to filter the table based on 2 values.
+
+- The values can be text
+
+```sql
+select * from Flights
+where passenger_name BETWEEN 'A' AND 'D';
+```
+
+- The values can be integers
+
+```sql
+select * from Flights
+where passenger_id BETWEEN 10001 AND 10007;
+```
+
+This is similar to doing `passenger_id >= 10001 AND passenger_id <= 10007`. For strings this is a lexicographic comparison. For example look at the queries below.
+
+```sql
+-- query 1
+select * from Flights
+where passenger_name BETWEEN 'Az' AND 'DD';
+
+-- query 2
+select * from Flights
+where passenger_name BETWEEN 'AZ' AND 'DD';
+
+-- result for query 1
+┌──────────────┬────────────────┬────────┬─────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │ Origin  │ Destination │
+├──────────────┼────────────────┼────────┼─────────┼─────────────┤
+│ 10010        │ Betty          │ Female │ Beijing │ Cairo       │
+└──────────────┴────────────────┴────────┴─────────┴─────────────┘
+
+-- result for query 2
+┌──────────────┬────────────────┬────────┬─────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │ Origin  │ Destination │
+├──────────────┼────────────────┼────────┼─────────┼─────────────┤
+│ 10004        │ Anthony        │ Male   │ Mumbai  │ Cairo       │
+│ 10010        │ Betty          │ Female │ Beijing │ Cairo       │
+└──────────────┴────────────────┴────────┴─────────┴─────────────┘
+```
+
+The reason is so because `Anthony > AZ` but `Anthony < Az`.
+
+### AND
+
+The **AND** clause is used along with **WHERE** to filter the table based on 2 separate conditions.
+
+Check the following example - **AND** combines the two conditions.
+
+```sql
+select * from Flights
+where origin = 'Mumbai'
+and passenger_id BETWEEN 10001 AND 10007;
+```
+
+Any query containing **AND** will return a result **ONLY** if all conditions are **TRUE**.
+
+### OR
+
+The **OR** clause is used along with **WHERE** to filter the table which meets any one of the given multiple conditions.
+
+Check the following syntax - **OR** combines the two conditions.
+
+```sql
+select * from Flights
+where origin = 'Mumbai'
+or origin = 'New York';
+```
+
+Any query containing **OR** will return a result if **ANY** of the conditions is **TRUE**.
+
+### Like
+
+The **LIKE** operator is used along with **WHERE** to filter the similar values. Remember that '=' was used for exact match.
+
+- `%` is used with **LIKE** as a replacement for multiple letters.  The query below will give us the table.
+
+```sql
+select * from Flights
+where origin like '%York%';
+
+┌──────────────┬────────────────┬────────┬──────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │  Origin  │ Destination │
+├──────────────┼────────────────┼────────┼──────────┼─────────────┤
+│ 10006        │ Dia            │ Female │ New York │ Cairo       │
+│ 10007        │ Jackson        │ Male   │ New York │ London      │
+└──────────────┴────────────────┴────────┴──────────┴─────────────┘
+```
+
+- `_` is used with **LIKE** as a replacement for single letters / characters.  The query below will give us the table.
+
+```sql
+select * from Flights
+where passenger_id like '1000_';
+
+┌──────────────┬────────────────┬────────┬──────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │  Origin  │ Destination │
+├──────────────┼────────────────┼────────┼──────────┼─────────────┤
+│ 10001        │ Jackson        │ Male   │ Mumbai   │ New York    │
+│ 10002        │ Riya           │ Female │ Mumbai   │ Delhi       │
+│ 10003        │ Roy            │ Male   │ London   │ Delhi       │
+│ 10004        │ Anthony        │ Male   │ Mumbai   │ Cairo       │
+│ 10005        │ Salim          │ Male   │ Ohio     │ New York    │
+│ 10006        │ Dia            │ Female │ New York │ Cairo       │
+│ 10007        │ Jackson        │ Male   │ New York │ London      │
+│ 10008        │ Dia            │ Female │ Beijing  │ Mumbai      │
+│ 10009        │ Riya           │ Female │ Damascus │ Mumbai      │
+└──────────────┴────────────────┴────────┴──────────┴─────────────┘
+```
+
+We can also combine multiple **LIKE** conditions.
+
+```sql
+-- query for destination ends with o and origin starts with M
+select * from flights where Destination like '%o' and Origin like 'M%';
+-- result
+┌──────────────┬────────────────┬────────┬────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │ Origin │ Destination │
+├──────────────┼────────────────┼────────┼────────┼─────────────┤
+│ 10004        │ Anthony        │ Male   │ Mumbai │ Cairo       │
+└──────────────┴────────────────┴────────┴────────┴─────────────┘
+```
+
+### Order by
+
+**ORDER BY** is used to sort the results of the query in an ascending or descending order.
+
+- By default, the following syntax returns the result sorted in an ascending order
+- The **ORDER BY** clause should be written after the SELECT, FROM, WHERE, GROUP BY, and HAVING clauses, but before the LIMIT clause (if one is used).
+
+```sql
+select * from Flights
+ORDER BY passenger_name;
+
+Output
+┌──────────────┬────────────────┬────────┬──────────┬─────────────┐
+│ Passenger_id │ Passenger_name │ Gender │  Origin  │ Destination │
+├──────────────┼────────────────┼────────┼──────────┼─────────────┤
+│ 10004        │ Anthony        │ Male   │ Mumbai   │ Cairo       │
+│ 10010        │ Betty          │ Female │ Beijing  │ Cairo       │
+│ 10006        │ Dia            │ Female │ New York │ Cairo       │
+│ 10008        │ Dia            │ Female │ Beijing  │ Mumbai      │
+│ 10001        │ Jackson        │ Male   │ Mumbai   │ New York    │
+│ 10007        │ Jackson        │ Male   │ New York │ London      │
+│ 10002        │ Riya           │ Female │ Mumbai   │ Delhi       │
+│ 10009        │ Riya           │ Female │ Damascus │ Mumbai      │
+│ 10003        │ Roy            │ Male   │ London   │ Delhi       │
+│ 10005        │ Salim          │ Male   │ Ohio     │ New York    │
+└──────────────┴────────────────┴────────┴──────────┴─────────────┘
+```
+
+- To sort the results in a descending order, use the following syntax
+
+```sql
+select * from Flights
+ORDER BY passenger_name DESC;
+```
+
+### LIMIT
+
+**LIMIT** is used to view a representative / sample portion of the table.  
+Databases can be very large - LIMIT helps us restrict the maximum number of rows displayed in the output.  
+Review the sample syntax below
+
+```sql
+select * from Flights
+ORDER BY passenger_name
+LIMIT 3;
+```
+
+**LIMIT** should always be placed at the end of the query.
+
+### NULL Values
+
+Some rows / columns in databases can be empty - these values are treated as **NULL**.  
+**IS NULL** and **IS NOT NULL** are used to filter for such entries.  
+Review the sample syntax below
+
+```sql
+select * from Flights
+where origin IS NULL;
+```
+
+### Rename columns using As
+
+Before we begin aggregate functions, a useful concept to know is renaming of columns during output.
+
+In SQL, the keyword 'AS' allows you to rename a column or table using an alias.  
+Sample syntax:
+
+```sql
+select 
+employee_id as 'Serial',
+employee_name as 'Name',
+department as 'Dept'
+from employee;
+
+-- output for above query
+┌────────┬────────────────┬────────────┐
+│ Serial │      Name      │    Dept    │
+├────────┼────────────────┼────────────┤
+│ 1      │ Kayla Thompson │ Sales      │
+│ 2      │ Ethan Chen     │ Operations │
+│ 3      │ Julia Lee      │ Hr         │
+│ 4      │ Marcus Garcia  │ Product    │
+│ 5      │ Samantha Park  │ Operations │
+└────────┴────────────────┴────────────┘
 ```
