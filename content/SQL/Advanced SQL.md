@@ -1,0 +1,238 @@
+## Combining Tables in SQL
+
+Till now we have dealt with data in a single table. Now let's try to merge information from various tables and understand them as a whole.
+In SQL, we use the concept of **JOIN** to combine tables.  
+Below is the query to join two tables 'employee' and 'department' in an organisation database.
+
+```sql
+SELECT * 
+FROM employee 
+JOIN department 
+ON employee.employee_id = department.employee_id;
+```
+
+What this does is creates a new table with columns from both the tables. Then for every record in first table it goes over every record in second table and if the `ON` condition is true then it will put both the records in the new table. Although this is not what happens (more efficient algorithms are used), but this is a very good mental model to think and the details of actual implementation is hidden from us.
+
+If there are multiple tables, then also a good mental model to understand how join will be done is that it will first combine first two tables and create an intermediate result which will be used to join with 3rd table to give final result. But in reality this is not what happens, below we go in a little more specifics of how it might happen.
+
+<details>
+<summary>Multiple Table Joins</summary>
+When SQL processes multiple table joins, the database management system (DBMS) uses a query execution plan to determine the most efficient way to perform the joins. The process doesn't necessarily follow a strict left-to-right order as described in the statement. Instead, the DBMS may optimize the joins in various ways to improve performance. This optimization can involve reordering the joins, using indexes, and choosing different join algorithms (e.g., nested loop join, hash join, merge join).
+
+In general, the DBMS might join the first two tables and then join the result with the third table, but it can also:
+
+- Reorder the joins if a different order is more efficient.
+- Combine multiple tables at once using more advanced algorithms.
+- Use parallel processing to join tables concurrently.
+
+The join order and method are determined by the query optimizer, which analyzes the query and chooses the best execution plan based on factors like table sizes, indexes, and available system resources.
+</details>
+
+Consider two tables student and course as shown below.
+
+```sql
+┌───────┬───────────────┬──────────────────┬───────────┐
+│ St_id │    St_Name    │    Department    │ Course_id │
+├───────┼───────────────┼──────────────────┼───────────┤
+│ 1001  │ John Smith    │ Computer Science │ CS101     │
+│ 1002  │ Emily Brown   │ History          │ HIS102    │
+│ 1003  │ David Lee     │ Mathematics      │ MAT202    │
+│ 1004  │ Sarah Johnson │ English          │ ENG201    │
+│ 1005  │ Michael Chen  │ Biology          │ BIO103    │
+└───────┴───────────────┴──────────────────┴───────────┘
+┌───────────┬──────────────────┬─────────┬─────────┐
+│ Course_id │ Course_Name      │ Credits │ Prof_id │
+├───────────┼──────────────────┼─────────┼─────────┤
+│ CS101     │ Computer Science │ 3       │ 2001    │
+│ HIS102    │ World History II │ 3       │ 2004    │
+│ MAT202    │ Linear Algebra   │ 2       │ 2002    │
+│ ENG201    │ Advanced Writing │ 4       │ 2003    │
+│ BIO103    │ Biology          │ 4       │ 2005    │
+└───────────┴──────────────────┴─────────┴─────────┘
+```
+
+Let's say we want to join the both the tables on `Course_id`, below is the query for this.
+
+```sql
+select 
+s.St_Name, s.Department, s.Course_id, c.Course_Name
+from student s 
+join course c 
+on s.Course_id = c.Course_id;
+
+-- output
+┌───────────────┬──────────────────┬───────────┬──────────────────────────────────┐
+│    St_Name    │    Department    │ Course_id │           Course_Name            │
+├───────────────┼──────────────────┼───────────┼──────────────────────────────────┤
+│ John Smith    │ Computer Science │ CS101     │ Introduction to Computer Science │
+│ Emily Brown   │ History          │ HIS102    │ World History II                 │
+│ David Lee     │ Mathematics      │ MAT202    │ Linear Algebra                   │
+│ Sarah Johnson │ English          │ ENG201    │ Advanced Writing                 │
+│ Michael Chen  │ Biology          │ BIO103    │ Principles of Biology            │
+└───────────────┴──────────────────┴───────────┴──────────────────────────────────┘
+```
+
+>[!Note]
+>In the above query we have given alias to tables so that we can easily the alias which makes easy to reference the table, especially when the tables names are huge.
+
+### Inner Joins
+
+In the previous query we joined the table 'student' and 'course'.  
+
+There could be cases where none of the students has opted for a particular course.
+
+- In such cases, when the tables are joined, the rows which does not match are excluded by default.
+- The row which has the name of the course which **IS NOT** opted by any of the student **WILL BE EXCLUDED** when both the tables are joined.
+
+When the tables are joined in this manner its called **Inner Joins**. This is the default behaviour of the joins.
+
+### Left Joins
+
+We've learned that by default SQL removes the rows which doesn't match while joining tables.
+
+However, if we wish to join two tables whose rows doesn't match, we can do that using **LEFT JOIN**.  
+When two tables are joined using 'LEFT JOIN', and if the rows don't match,
+
+- All the rows in the first table(left) will be kept as such and
+- Whenever a row doesn't a corresponding row in the second table (right), those columns will be kept blank.
+
+Below is the query to join the table 'customer' and 'order' using LEFT JOIN
+
+```sql
+ SELECT *
+ FROM customer
+ LEFT JOIN order
+ ON customer.cust_id = order.cust_id;
+```
+
+### Primary Key vs Foreign Key
+
+Primary Key in a table is used to uniquely identify a row in a table. It also has a certain criteria
+
+- The value should not be NULL
+- Each value should be unique
+- A table should not have more than one Primary key
+
+You might have already observed that primary keys are used to join tables.  
+Joining the table is only possible if there is a matching column in the tables which are to be joined.  
+Which means that a table's primary key can be found in a different table.
+
+A primary key of a table when present in a different table is referred to as a **Foreign Key**.  
+In the tables student and course we have common column `Course_id` which is primary key for the course table, while is a foreign key for the student table.
+
+Below is a query to create a student table with `Course_id` foreign key.
+
+```sql
+CREATE TABLE student (
+	id INT PRIMARY KEY,
+	St_Name TEXT,
+	Department TEXT,
+	Course_id TEXT,
+	FOREIGN KEY (Course_id) REFERENCES course(Course_id)
+);
+```
+
+If you create a column in a database table that is intended to be a foreign key but do not explicitly define it as such, the database will treat it as a regular column. Here are the implications of this approach:
+
+##### 1. **No Referential Integrity:**
+
+- The database will not enforce referential integrity. This means that there will be no automatic checks to ensure that the values in the foreign key column exist in the referenced primary key column of another table. You could insert a value that does not exist in the parent table, leading to potential data inconsistency.
+
+##### 2. **No Automatic Index Creation:**
+
+- When you define a foreign key, many databases automatically create an index on the foreign key column to optimize join operations and lookups. Without explicitly defining the foreign key, this index will not be created automatically, which can impact query performance.
+
+##### 3. **No Cascade Operations:**
+
+- Foreign key constraints often come with options for cascade operations (`ON DELETE CASCADE`, `ON UPDATE CASCADE`). Without defining the foreign key, these automatic cascade operations will not be available, so you would need to handle such logic manually in your application code.
+
+##### 4. **Potential for Orphaned Records:**
+
+- Without foreign key constraints, there is a higher risk of creating orphaned records. For example, if a row in the parent table is deleted, rows in the child table that reference it will remain, leading to data inconsistency.
+
+### Cross join
+
+In the past few problems we've learned how to join the tables which were inter related.  
+Now, lets try to join tables which are not at all related.  
+
+We use the concept of **CROSS JOIN** to join such tables. In this each row from left table is simply mapped to every row in the other table and result is returned.
+
+Let's say we want to know for every student what all course they can take, then we can cross join student and course table as shown below.
+
+```sql
+ SELECT s.St_Name, c.Course_Name 
+ FROM student s 
+ CROSS JOIN course c;
+```
+
+### Union
+
+Till now, we have joined tables by columns. Now let’s join the data by rows.  
+We use the concept of **UNION** to do that.  
+UNION helps us to place a table right on top of another table.  
+There are set of criteria to be followed while appending the tables:
+
+- The number of columns of the tables should be same.
+- The data type of the table should be of the same order of that of the first table.
+
+Consider Following two tables namely Arts and Science.
+
+```sql
+-- TO PRINT THE TABLES
+SELECT * FROM Arts;
+SELECT * FROM Science;
+-- GET THE UNION TABLE
+SELECT * FROM Arts UNION SELECT * FROM Science;
+┌─────┬───────────┐
+│ id  │   name    │
+├─────┼───────────┤
+│ 111 │ Economics │
+│ 112 │ History   │
+│ 113 │ Sociology │
+└─────┴───────────┘
+┌────────┬───────────┐
+│ Sub_id │ Sub_Name  │
+├────────┼───────────┤
+│ 108    │ Physic    │
+│ 109    │ Chemistry │
+│ 110    │ Biology   │
+└────────┴───────────┘
+-- UNION TABLE
+┌─────┬───────────┐
+│ id  │   name    │
+├─────┼───────────┤
+│ 108 │ Physic    │
+│ 109 │ Chemistry │
+│ 110 │ Biology   │
+│ 111 │ Economics │
+│ 112 │ History   │
+│ 113 │ Sociology │
+└─────┴───────────┘
+```
+
+The columns labels are determined by the result of the first query, for the rest of the queries the returned table must have same number of columns and compatible data types.
+
+### WITH
+
+**WITH** is used to create temporary tables when we need to define a named subquery that can be referenced later in the SQL statement.
+
+- The same task could have been done by a **WHERE** clause inside a JOIN statement - however, using a **WITH** allows us to reduce the complexity of the query
+
+Let us consider the data base of an organisation, where we have a table 'employee' and a table 'department'.  
+Lets find out the department of the top 3 highly paid employees.  
+Note that the department details are not mentioned in the table 'employee'.
+
+Below is query to find out the department of the top 3 highly paid employees
+
+```sql
+ WITH top_employee AS(     -- This table has only 2 columns - 'name' and 'emp_id'
+ SELECT name,emp_id
+ FROM employee
+ ORDER BY salary DESC
+ LIMIT 3                   -- This table has only 3 rows - highest paid employees
+ )
+ SELECT top_employee.name,department.dept_name
+ FROM top_employee
+ JOIN department
+ ON top_employee.emp_id=department.emp_id;
+```
