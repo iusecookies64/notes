@@ -561,3 +561,139 @@ from employee;
 │ 5      │ Samantha Park  │ Operations │
 └────────┴────────────────┴────────────┘
 ```
+
+
+## Aggregate Functions
+
+Aggregate functions are functions which take a table and output a single row. The most common aggregate functions are `COUNT`, `MAX` , `MIN`, `SUM` and `AVG`.
+### COUNT()
+
+Using the COUNT() function is the most efficient method for determining the number of rows in a table.  This function accepts the name of a column as a parameter and calculates the total count of non-empty values in that column i.e. rows where value is not null. However if you want to calculate total number of rows regardless of the values inside them then we use COUNT and pass it `*` i.e. `COUNT(*)`.
+
+Below is the query to count the rows of the table 'customer', and second query is to count number of rows where `customer_name` is not null.
+
+```sql
+SELECT COUNT(*) FROM customer;
+SELECT COUNT(customer_name)FROM customer;
+```
+
+### MAX() and MIN()
+
+The MAX() and MIN() functions retrieve the maximum and minimum values from a column, correspondingly.
+
+Below is the query to find the highest and lowest age of the customers from the table customer
+
+```sql
+SELECT MAX(Age)
+FROM customer;
+```
+
+```sql
+SELECT MIN(Age)
+FROM customer;
+```
+
+This query basically returns the row with maximum/minimum value, If there are multiple rows with max/min value then it returns the first row with max/min value. This can be verified by adding other columns in the query.
+
+```sql
+select first_name, MAX(age) as 'max_age' from customer;
+
+-- output is 
+┌──────────────┬────────────────┐
+│ first_name   │ max_age        │
+├──────────────┼────────────────┤
+│ John         │ 31             │
+└──────────────┴────────────────┘
+```
+
+We can get the max/min for multiple columns or the same column in single query. For example to get `min_age` and `max_age` in one query we can do .
+
+```sql
+SELECT MIN(age) AS 'min_age', MAX(age) AS 'max_age' from customer;
+-- output
+┌──────────────┬────────────────┐
+│ min_age      │ max_age        │
+├──────────────┼────────────────┤
+│ 22           │ 31             │
+└──────────────┴────────────────┘
+```
+### ROUND()
+
+Let us introduce the **ROUND()** function as it is routinely used with aggregate functions.  
+Sql uses the ROUND() functions to display numeric values rounded to a specified precision.  
+The precision parameter indicates the number of decimal places to which the number should be rounded.
+
+The ROUND() function requires two parameters enclosed in parentheses: a column name and an integer value.
+Below is the query to display `Total_Purchase` rounded to 1 decimal place from the table customer.
+
+```sql
+SELECT ROUND(Total_Purchase, 1)
+FROM CUSTOMER; 
+```
+
+We can also merge different aggregate functions, for example if we want to get the maximum `order_value` rounded to 2 decimal places then we can do as shown below.
+
+```sql
+SELECT ROUND(MAX(order_value)) FROM CUSTOMER;
+```
+
+### SUM()
+
+The SUM() function in SQL facilitates the process of calculating the total sum of values within a specific column.  
+It takes the column name as argument and outputs the resulting sum.
+
+Below is the query to find the sum of the Sale from the table customer.
+
+```sql
+SELECT SUM(Sale)
+FROM customer;
+```
+
+### AVG()
+
+The AVG() function is used to calculate the **Average** of values within a specific column.  
+It takes the column name as argument and outputs the resulting average.
+
+Below is the query to find the Average Age from the table customer.
+
+```sql
+SELECT AVG(Age)
+FROM customer;
+```
+
+### Group By
+
+The GROUP BY statement in SQL is used to combine rows with identical values into summary rows. This can be thought of as first we are grouping rows based on column provided and then we are applying the aggregate on each of the groups and returning and answer group wise.
+
+- This statement is frequently paired with aggregate functions such as COUNT(), MAX(), MIN(), SUM(), and AVG() to group the output based on one or more columns.
+    - We saw in the previous problems that clauses like COUNT, MIN, MAX, SUM, AVG are aggregate functions which take a table and output a single row.
+    - GROUP BY will be used to find the average Payout of each Department.
+- For example, we've used the AVG() function to find the average payout of the entire table employee.  
+    - Now, what if we want to know the Average payout of each department?  
+    - In such cases we use Group BY statement.
+
+Below is the query to find the average Age of the students across Divisions in the table student.
+
+```sql
+SELECT Divisions,AVG(Age)
+FROM student
+GROUP BY Divisions;
+```
+
+### Having
+
+In the previous problem we saw how to use GROUP BY statement.  
+SQL also gives you an option to filter out which groups should be added and which are to be removed.  
+For this purpose we use **Having** statement.  
+Let us try to find to out the average Age across Division which has more than 50 students.
+
+Below is the query to find out the average Age across Division which has more than 50 students from the table student.
+
+```sql
+SELECT Division,
+AVG(Age)
+FROM student
+GROUP BY Division
+HAVING COUNT(*) > 50;
+```
+
