@@ -236,3 +236,186 @@ Below is query to find out the department of the top 3 highly paid employees
  JOIN department
  ON top_employee.emp_id=department.emp_id;
 ```
+
+### Data Transformation
+
+In this module we'll learn the concept of data transformation using 'Subqueries'. Subqueries (also known as nested queries or inner queries) are used to transform data in a table by creating a new table that is based on the results of a subquery.  
+This new table can be used as a source for further analysis or used to create a new table. This is referred to as data transformation or table transformation.
+
+Here are some examples of table transformation using subqueries:
+
+- Filtering based on subquery: A subquery can be used to filter rows from a table based on a condition.
+- Creating a new table using subquery: A subquery can be used to create a new table based on the results of a query.
+- Updating a table using subquery: A subquery can be used to update a table by setting the values of one or more columns based on a condition.
+
+We'll use restaurant database to learn about subqueries.
+
+### Non-Correlated Subqueries
+
+A subquery is a query nested inside another query.
+
+A **non-correlated** subquery is a subquery that can be executed independently of the outer query.
+
+- The subquery does not depend on the outer query for its results.
+- Non-correlated subqueries are typically used to retrieve a single value or a set of values that are used in the WHERE clause or the HAVING clause of the outer query.
+
+Let us take an example for a **non-correlated** subquery
+
+- Suppose you have customer information in the table 'customers' and their restaurant order information in the table 'orders'
+- Below is the query to get the customer information of those who have placed an order with order value >1000.
+
+Query:
+
+```sql
+SELECT * 
+FROM customers
+WHERE customer_id IN ( 
+     SELECT customer_id 
+     FROM orders
+     WHERE order_value >1000);
+```
+
+Below is a query to find the customers whose order value is more than average order value.
+
+```sql
+SELECT *
+FROM customers
+WHERE customer_id IN (
+	SELECT customer_id
+	FROM orders
+	WHERE order_value > (
+		SELECT AVG(order_value)
+		FROM orders
+	)
+);
+```
+
+The above query works fine, but in some databases it might happen that the query optimizer re-calculates the inner subquery for every row in the outer subquery. This will really affect the query performance. To guarantee that the query to calculate the average only once we can change the query using `WITH` clause.
+
+```sql
+WITH AVGOrderValue AS (
+	SELECT AVG(order_value) as avg_order FROM orders
+)
+
+SELECT * 
+FROM customers
+WHERE customer_id IN (
+	SELECT customer_id
+	FROM orders, AVGOrderValue
+	WHERE order_value > AVGOrderValue.avg_order
+)
+```
+
+>[!Note]
+>Notice in the above query, in order to compare order value from `AVGOrderValue.avg_order` we need to set the context first, otherwise referencing the column value without proper context can be problematic (especially when there are more than 1 value in that column). To set the context we join the tables, the above syntax i.e. `FROM orders, AVGOrderValue` creates a `CROSS JOIN`  of the tables.
+
+
+### When Subqueries are Executed More Than Once 
+
+To understand which subqueries run repeatedly for each row and which are executed only once, it's essential to look at the context in which the subquery is used. Here are some key points and strategies to help determine the behavior:
+
+### Subqueries Executed Only Once
+
+1. **Scalar Subqueries in the `SELECT` Clause**:
+   Scalar subqueries that return a single value and are used in the `SELECT` clause or as a constant value in the `WHERE` clause are typically executed once. For example:
+   
+   ```sql
+SELECT customer_id,
+	(SELECT AVG(order_value) FROM orders) AS avg_order_value
+FROM customers;
+   ```
+   Here, the subquery `(SELECT AVG(order_value) FROM orders)` is executed once because it is a scalar subquery used to calculate a constant value.
+
+2. **Subqueries in the `WITH` Clause (CTE)**:
+   Common Table Expressions (CTEs) defined using the `WITH` clause are executed once. For example:
+```sql
+WITH AvgOrderValue AS (
+   SELECT AVG(order_value) AS avg_value
+   FROM orders
+)
+SELECT *
+FROM customers
+WHERE customer_id IN (
+   SELECT customer_id
+   FROM orders
+   WHERE order_value > (SELECT avg_value FROM AvgOrderValue)
+);
+```
+
+Here, the `AvgOrderValue` CTE is computed once, and the result is reused in the main query.
+
+### Subqueries Executed Repeatedly
+
+1. **Correlated Subqueries**:
+   A correlated subquery depends on values from the outer query. It is evaluated once for each row processed by the outer query. For example:
+   
+   ```sql
+SELECT c.customer_id, c.name
+FROM customers c
+WHERE c.customer_id IN (
+   SELECT o.customer_id
+   FROM orders o
+   WHERE o.order_value > (SELECT AVG(order_value) FROM orders WHERE orders.customer_id = c.customer_id)
+);
+   ```
+
+In this example, the subquery `(SELECT AVG(order_value) FROM orders WHERE orders.customer_id = c.customer_id)` is correlated with the outer query because it depends on `c.customer_id`. This subquery is executed once for each row in the `customers` table.
+
+2. **Subqueries in the `WHERE` Clause with Non-Scalar Results**:
+   When a subquery in the `WHERE` clause returns a non-scalar result and is not optimized by the query planner, it may be executed repeatedly. For example:
+   
+```sql
+SELECT *
+FROM customers
+WHERE customer_id IN (
+   SELECT customer_id
+   FROM orders
+   WHERE order_value > 1000
+);
+```
+
+In this case, the subquery is typically executed once, but depending on the query optimizer and the complexity of the conditions, there could be scenarios where it's reevaluated more frequently, especially if the database engine is not optimizing it effectively.
+
+### How to Confirm the Execution Plan
+
+To confirm how often a subquery is executed, you can use the `EXPLAIN` or `EXPLAIN ANALYZE` statement provided by most SQL databases. This statement shows the execution plan for the query, detailing how the database engine will execute it. Here's an example using PostgreSQL:
+
+```sql
+EXPLAIN ANALYZE
+SELECT *
+FROM customers
+WHERE customer_id IN (
+    SELECT customer_id
+    FROM orders
+    WHERE order_value > 1000
+);
+```
+
+The output will show you if the subquery is executed once or multiple times. Analyzing the execution plan can provide insights into the performance and optimization of your query.
+
+### Correlated Subqueries
+
+**Correlated Subqueries** as the name suggests, its inner and outer queries are related.  
+The subquery is dependent on the outer query.
+
+Let us understand this via an example
+
+- Suppose we have a table consisting the following information - 'Employee_id', 'Department' and 'Salary' - employees can belong to various departments - Marketing / Sales / HR / Ops
+- Suppose we want to find the employee id of those employees whose salary is less than the average salary of the employees **ONLY** in his department.
+- This is how the query will work
+    - For each employee_id in the outer query, the subquery will run.
+    - The subquery will check the department of the employee and then compute the average salary of his department
+    - The outer query will then take this average salary - and compare if the employee's salary is less than this average
+    - If yes - then the outer query will include this employee in the output. This process will run for each row in the table
+
+Query:
+
+```sql
+SELECT employee_id
+FROM employee AS e
+WHERE salary < 
+	(SELECT AVG(salary)
+	FROM employee
+	WHERE department= e.department);
+```
+
