@@ -419,3 +419,178 @@ WHERE salary <
 	WHERE department= e.department);
 ```
 
+### Union All
+
+In the module on **Multiple Tables** we have learned that the **UNION** operations are done to stack a table or a column over the other.  
+But UNION operation doesn't entertain duplicates. i.e. while combining two tables using UNION, the duplicate entries will be removed and the final output will have unique data.  
+The above concern can be solved using the concept of **UNION ALL**.  
+When two tables/columns are combined using **UNION ALL**, all the data will be combined and added to the resulting table, including the duplicates.
+
+Below is the format for the same:
+
+```sql
+ SELECT * FROM table_1
+ UNION ALL
+ SELECT * FROM table_2;
+```
+
+Note: table_1 and table_2 should necessarily have the same count of columns
+
+### Intersect
+
+The **INTERSECT** operator combines two SELECT statements, but only returns the rows that are common to both SELECT statements.
+
+Below is the format for the same:
+
+```sql
+ SELECT * FROM table_1
+ INTERSECT
+ SELECT * FROM table_2;
+```
+
+### Except
+
+Previously we learned the concept of **INTERSECT**, now lets see how **EXCEPT** works.  
+EXCEPT is directly opposite to that of INTERSECT.  
+EXCEPT retrieves unique records from the first SELECT statement that are not present in the output of the second SELECT statement.
+
+Below is the format for the same:
+
+```sql
+     SELECT * FROM table_1
+     EXCEPT
+     SELECT * FROM table_2;
+```
+
+### Conditional Aggregates Introduction
+
+We have learned the concept of **Aggregate function** in [Learn SQL](https://www.codechef.com/learn/sql), that it gives a single output value based on the calculation on multiple input values.  
+Now, lets learn the concept of **Conditional Aggregate function**. In this concept we add a set of condition to the existing Aggregate functions.  
+Below mentioned are some of the commonly used Aggregate functions:
+
+- COUNT() - counts the number of rows that meet the given conditions
+- MAX() & MIN() - return the largest & smallest value that meet the query conditions
+- SUM() & AVG() - return the sum and average of the values in the column
+- GROUP BY - used to combine rows with identical values into summary rows. It is typically used with aggregate functions such as COUNT, SUM, etc
+
+### Case - When
+
+**CASE WHEN** are used to add conditional logic to the sql queries.  
+Let's try it out with an example. Imagine we want to get a count of employees of an organisation categorised based on their pay as follows:
+
+- Less than Rs.20000 : Level 1
+- Rs.20001- Rs.40000 : Level 2
+- More than Rs.40000 : Level 3
+
+The query for the same is as mentioned below:
+
+```sql
+      SELECT
+      CASE
+        WHEN pay < 20000 THEN 'Level 1'
+        WHEN pay BETWEEN 20001 AND 40000 THEN 'Level 2'
+        WHEN pay >= 40000 THEN 'Level 3'
+        ELSE 'NA'             -- If the above 3 conditions are not met, the row entry will be NA
+      END AS Pay_category,    -- Renaming the column as Pay_category
+      COUNT(*) as emp_count
+      FROM employee
+      GROUP BY 1;
+```
+
+If the ELSE condition is satisfied then a new category 'NA' will be added. However, it is not necessary to add the ELSE statement. In the absence of ELSE, if none of the cases satisfies then it will return a NULL value. `Pay_category` is the alias for the CASE statement.
+
+>[!Note]
+>In the above query we are using `GROUP BY 1`, which simply means group by first column in the select query, it is same as writing `GROUP BY Pay_category`.
+
+### Count using Case
+
+Previously we have used **COUNT** to fetch the total number of rows in a table or a specific column.  
+Using the Case statement, we can add certain conditions and those cells which satisfy condition will only be counted.
+
+Below is a query to count the number of employees who have a salary more than 200,000 in each departments:
+
+```sql
+   SELECT department, 
+   COUNT(CASE WHEN salary> 200000 THEN 1 ELSE NULL END) as High_Salary 
+   FROM employee
+   GROUP BY department;
+```
+
+In the above query, all the cells in the column 'salary' is checked if it is more than 200000.
+
+- If its satisfies it will return 1
+- Else return NULL.
+- The count is applied to the 1's and NULL's are ignored.
+
+>[!Note]
+>We can also use the below query to get the department wise high salary count, but there is a small caveat.
+>```sql
+>SELECT department, COUNT(*) as High_Salary 
+>FROM employee 
+>WHERE  salary > 200000
+> GROUP BY department;
+> ```
+> The caveat is that it will simply ignore the departments in which there is no employee with high salary. This is because of the `WHERE` clause which simply ignores those rows that doesn't satisfy the condition.
+
+### Sum using Case
+
+We've learned the concept of **SUM**, that its used to find the sum of the cells of a particular column.  
+Adding **CASE** to the sum, helps us to filter out the cells which are to be considered while calculating the sum of a column
+
+Below is a query to find the sum of salaries of the employee across department who has an experience more than 3 years , from table 'employee':
+
+```sql
+       SELECT Department,
+       SUM(CASE WHEN Exp >3 THEN Salary ELSE 0 END) as Sum_High_Salary 
+       FROM employee
+       GROUP BY 1;
+```
+
+In the above query,
+
+- The CASE statement is used to check if the Exp column value is greater than 3
+- If the condition is true, the Salary of the employee is added to the sum; otherwise, 0 is added.
+- The SUM function then calculates the sum of all the salaries that meet the condition.
+- The resulting sum is given an alias of `Sum_High_Salary`.
+
+### Combining Aggregates
+
+In the previous problem we've used 'CASE' to add a condition to find the sum.  
+Aggregates can also be used to find the ratios or percentage using a combination.
+
+Below is a query to find what percentage of the organization's total payout is paid as a salary to the employees who has an experience more than 3 years , from table 'employee':
+
+```sql
+SELECT Department,
+(100*(SUM(CASE WHEN Exp >3 THEN Salary ELSE 0 END))/(SUM(Salary))) as High_Salary_percentage 
+FROM employee
+GROUP BY 1;
+```
+
+- In the above query, the CASE statement is used to check if the Exp column value is greater than 3.
+- If the condition is true, the Salary of the employee is added to the sum; otherwise, 0 is added.
+- The first SUM function then calculates the sum of all the salaries that meet the condition.
+- And, second SUM calculates the total salary across all employees.
+- Once both the SUM's are calculated we divide them and multiply by 100 to get the percentage.
+- The resulting percentage is given an alias of `High_Salary_percentage`.
+
+>[!Note]
+>In the above query notice the parenthesis, SQL engine first evaluates the values inside of parenthesis before doing any other operation, hence in the above query 
+>
+>```sql
+>(SUM(CASE WHEN Exp > 3 THEN Salary ELSE 0 END))
+>```
+>, the conditional sum is calculated first. Same for other sum, if these parenthesis are not use then SQL engine might misinterpret the expression giving wrong result. For example if in the expression above if we use 
+>
+>```sql
+>(SUM(CASE WHEN Exp >3 THEN Salary ELSE 0 END) / SUM(Salary))
+>```
+>then we get wrong result.
+
+
+
+
+
+
+
+

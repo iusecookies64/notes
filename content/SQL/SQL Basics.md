@@ -574,7 +574,7 @@ Below is the query to count the rows of the table 'customer', and second query i
 
 ```sql
 SELECT COUNT(*) FROM customer;
-SELECT COUNT(customer_name)FROM customer;
+SELECT COUNT(customer_name) FROM customer;
 ```
 
 ### MAX() and MIN()
