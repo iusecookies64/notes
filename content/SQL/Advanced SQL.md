@@ -237,6 +237,7 @@ Below is query to find out the department of the top 3 highly paid employees
  ON top_employee.emp_id=department.emp_id;
 ```
 
+Using the with clause is also known as CTE (Common Table Expression).
 ### Data Transformation
 
 In this module we'll learn the concept of data transformation using 'Subqueries'. Subqueries (also known as nested queries or inner queries) are used to transform data in a table by creating a new table that is based on the results of a subquery.  
@@ -319,12 +320,13 @@ To understand which subqueries run repeatedly for each row and which are execute
 1. **Scalar Subqueries in the `SELECT` Clause**:
    Scalar subqueries that return a single value and are used in the `SELECT` clause or as a constant value in the `WHERE` clause are typically executed once. For example:
    
-   ```sql
+```sql
 SELECT customer_id,
 	(SELECT AVG(order_value) FROM orders) AS avg_order_value
 FROM customers;
-   ```
-   Here, the subquery `(SELECT AVG(order_value) FROM orders)` is executed once because it is a scalar subquery used to calculate a constant value.
+```
+
+Here, the subquery `(SELECT AVG(order_value) FROM orders)` is executed once because it is a scalar subquery used to calculate a constant value.
 
 2. **Subqueries in the `WITH` Clause (CTE)**:
    Common Table Expressions (CTEs) defined using the `WITH` clause are executed once. For example:
@@ -419,10 +421,23 @@ WHERE salary <
 	WHERE department= e.department);
 ```
 
+For the above query, the inner query will have to run every time for every row, a better way to achieve the same is to use CTE and usually in most cases using CTE's is better than subqueries.
+
+```sql
+WITH avg_salaries_table AS (
+	SELECT department, AVG(salary) AS avg_salary
+	FROM employee
+	GROUP BY department
+)
+
+SELECT e.employee_id
+FROM employee e
+JOIN avg_salaries_table ast
+ON e.department = ast.department AND e.salary < ast.avg_salary;
+```
 ### Union All
 
-In the module on **Multiple Tables** we have learned that the **UNION** operations are done to stack a table or a column over the other.  
-But UNION operation doesn't entertain duplicates. i.e. while combining two tables using UNION, the duplicate entries will be removed and the final output will have unique data.  
+In the module on **Multiple Tables** we have learned that the **UNION** operations are done to stack a table or a column over the other.  But UNION operation doesn't entertain duplicates. i.e. while combining two tables using UNION, the duplicate entries will be removed and the final output will have unique data.  
 The above concern can be solved using the concept of **UNION ALL**.  
 When two tables/columns are combined using **UNION ALL**, all the data will be combined and added to the resulting table, including the duplicates.
 
@@ -464,7 +479,7 @@ Below is the format for the same:
 
 ### Conditional Aggregates Introduction
 
-We have learned the concept of **Aggregate function** in [Learn SQL](https://www.codechef.com/learn/sql), that it gives a single output value based on the calculation on multiple input values.  
+We have learned the concept of **Aggregate function** in SQL Basics, that it gives a single output value based on the calculation on multiple input values.  
 Now, lets learn the concept of **Conditional Aggregate function**. In this concept we add a set of condition to the existing Aggregate functions.  
 Below mentioned are some of the commonly used Aggregate functions:
 
@@ -485,16 +500,16 @@ Let's try it out with an example. Imagine we want to get a count of employees of
 The query for the same is as mentioned below:
 
 ```sql
-      SELECT
-      CASE
-        WHEN pay < 20000 THEN 'Level 1'
-        WHEN pay BETWEEN 20001 AND 40000 THEN 'Level 2'
-        WHEN pay >= 40000 THEN 'Level 3'
-        ELSE 'NA'             -- If the above 3 conditions are not met, the row entry will be NA
-      END AS Pay_category,    -- Renaming the column as Pay_category
-      COUNT(*) as emp_count
-      FROM employee
-      GROUP BY 1;
+SELECT
+CASE
+	WHEN pay < 20000 THEN 'Level 1'
+	WHEN pay BETWEEN 20001 AND 40000 THEN 'Level 2'
+	WHEN pay >= 40000 THEN 'Level 3'
+	ELSE 'NA'             -- If the no condition is met, the row entry will be NA
+END AS Pay_category,    -- Renaming the column as Pay_category
+COUNT(*) as emp_count
+FROM employee
+GROUP BY 1;
 ```
 
 If the ELSE condition is satisfied then a new category 'NA' will be added. However, it is not necessary to add the ELSE statement. In the absence of ELSE, if none of the cases satisfies then it will return a NULL value. `Pay_category` is the alias for the CASE statement.
@@ -510,10 +525,10 @@ Using the Case statement, we can add certain conditions and those cells which sa
 Below is a query to count the number of employees who have a salary more than 200,000 in each departments:
 
 ```sql
-   SELECT department, 
-   COUNT(CASE WHEN salary> 200000 THEN 1 ELSE NULL END) as High_Salary 
-   FROM employee
-   GROUP BY department;
+SELECT department, 
+COUNT(CASE WHEN salary> 200000 THEN 1 ELSE NULL END) as High_Salary 
+FROM employee
+GROUP BY department;
 ```
 
 In the above query, all the cells in the column 'salary' is checked if it is more than 200000.
