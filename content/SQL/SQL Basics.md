@@ -697,3 +697,64 @@ GROUP BY Division
 HAVING COUNT(*) > 50;
 ```
 
+### Difference Between `WHERE` AND `HAVING`
+
+The `WHERE` and `HAVING` clauses in SQL are both used to filter records, but they are applied at different stages of the query processing and serve different purposes.
+
+#### WHERE Clause
+
+- **Purpose**: The `WHERE` clause is used to filter rows before any groupings are made.
+- **Stage**: It is applied to rows before they are grouped.
+- **Usage**: It is typically used to filter rows based on specific conditions.
+- **Example**:
+
+  ```sql
+  SELECT *
+  FROM employees
+  WHERE department = 'Sales';
+  ```
+
+  This query selects all employees who belong to the Sales department.
+
+### HAVING Clause
+
+- **Purpose**: The `HAVING` clause is used to filter groups after the `GROUP BY` clause has been applied.
+- **Stage**: It is applied to groups after they have been created.
+- **Usage**: It is typically used to filter groups based on aggregate functions (e.g., `COUNT()`, `SUM()`, `AVG()`).
+- **Example**:
+
+  ```sql
+  SELECT department, COUNT(*)
+  FROM employees
+  GROUP BY department
+  HAVING COUNT(*) > 10;
+  ```
+  
+  This query selects departments that have more than 10 employees.
+
+### Key Differences
+
+1. **Timing**: 
+   - `WHERE` filters rows before any grouping occurs.
+   - `HAVING` filters groups after the grouping has been done.
+
+2. **Use Case**:
+   - `WHERE` is used for filtering individual rows based on a condition.
+   - `HAVING` is used for filtering groups based on aggregate functions.
+
+3. **Syntax**:
+   - `WHERE` is used without `GROUP BY` and before `GROUP BY` if `GROUP BY` is used.
+   - `HAVING` is used after `GROUP BY`.
+
+### Example Combining Both
+Here’s an example that uses both `WHERE` and `HAVING` clauses:
+```sql
+SELECT department, AVG(salary)
+FROM employees
+WHERE hire_date >= '2020-01-01'
+GROUP BY department
+HAVING AVG(salary) > 60000;
+```
+In this query:
+- The `WHERE` clause filters employees hired on or after January 1, 2020.
+- The `HAVING` clause filters departments where the average salary is greater than $60,000.
