@@ -602,6 +602,9 @@ GROUP BY 1;
 >```
 >then we get wrong result.
 
+>[!Note]
+>When calculating complex expressions by combining aggregates, be careful with divisions as sometimes SQL might automatically truncate the division chopping off the decimal values. If you don't want the division to be integer division it is advised to have a floating point value in the expression. If there is none, then we can add things like `1.0`, and if calculating percentages we can multiply with `100.0` instead of `100`.
+
 
 
 
