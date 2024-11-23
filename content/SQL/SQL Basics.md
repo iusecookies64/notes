@@ -58,7 +58,7 @@ CREATE TABLE student (
 
 The above query will create an empty table 'student' as mentioned below:
 
-### Insert table
+### Insert Into table
 
 Rows are added into a table using the **INSERT INTO** statement.  
 Below is the query to add the details of 'Abel George' to the existing table student.
@@ -91,7 +91,7 @@ Below is the query to add the details of 'Abel George' to the existing table stu
 
 ### Alter table
 
-The **ALTER** statement is used to append a new column to an existing table.  
+The **ALTER** statement is used to change the table metadata i.e. things like appending a new column or modifying an existing column or delete a column or changing constraints of a column and so on.
 Below is the query to add a new column 'Department' and set a default value, to the existing table student.
 
 ```sql
@@ -109,7 +109,7 @@ ADD COLUMN Department TEXT default NULL;
 └─────────────┴────────────────┴────────────────┴───────────────┘
 ```
 
-While altering the table we can either keep the newly added column blank or we could set a **default** value (as mentioned above) to it. Lets run the query by adding a default value to the newly added column.
+While altering the table we can either keep the newly added column blank or we could set a **default** value (as mentioned above) to it. 
 
 ### Update table
 
@@ -186,7 +186,7 @@ Below is the query to create a table student with a set of constraints.
 >
 >**Indexing Difference**
 >
->The entire table is indexed according to the primary key, which means that primary key physically decides where the data is stored. This is also known as clustered indexing. For each unique key another index is created where only the pointer to the stored is stored. This is known as non-clustered indexing.
+>The entire table is indexed according to the primary key, which means that primary key physically decides where the data is stored. This is also known as clustered indexing. For each unique key another index is created where only the pointer to the record is stored. This is known as non-clustered indexing.
 
 ## Introduction to Queries
 
@@ -210,11 +210,11 @@ Let us check the data currently stored in the **Flights** table.
 │ 10010        │ Betty          │ Female │ Beijing  │ Cairo       │
 └──────────────┴────────────────┴────────┴──────────┴─────────────┘
 ```
-
+row
 ### SELECT Query
 
 As you saw in the problem earlier, the **Flights** table had the following information in columns
-
+row
 - Passenger_id with datatype INT
 - Passenger_name with datatype VARCHAR
 - Gender with datatype VARCHAR
@@ -257,6 +257,9 @@ select Passenger_name, Gender from flights;
 └────────────────┴────────┘
 ```
 
+>[!Note]
+>Query in SQL acts upon relations i.e. table and they also return a relation as a result. Later we see that we can use these returned relations to further query (nested queries) which give us powerful way to query and do almost anything that we can think of.
+
 ### DISTINCT
 
 In the **Flights** table, what all 'Origins' exist? The following query should give us the result.
@@ -288,7 +291,7 @@ The output for the above query will be.
 └──────────┘
 ```
 
-But if we have **DISTINCT** with multiple columns, well then unique tuples will be returned. For example consider the below example.
+But what if we have **DISTINCT** with multiple columns, well then unique tuples will be returned. For example consider the below example.
 
 ```sql
 select Origin, Gender from Flights;
@@ -510,6 +513,16 @@ Output
 select * from Flights
 ORDER BY passenger_name DESC;
 ```
+
+>[!Note]
+>If we provide more than one column in ORDER BY clause i.e. look at the query below.
+>
+>```SQL
+>SELECT column1, column2, column3
+>FROM table_name
+>ORDER BY column1 ASC|DESC, column2 ASC|DESC, column3 ASC|DESC;
+>```
+>Then SQL will first sort the rows by `column1`, then if there are ties, then to decide among ties it will sort by `column2`, if there as still ties then it will use `column3` to resort further ties.
 
 ### LIMIT
 

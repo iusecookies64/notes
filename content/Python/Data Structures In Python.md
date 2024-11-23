@@ -4,8 +4,11 @@ In Python strings can be declared inside
 #### String Slicing
 Slicing a string in python can be done as `string[startIndex : endIndex]` and this returns slice of string starting from given index up till (not including) the end index. If we want prefix of the string we can either give do `string[0 : endIndex]` or do `string[: endIndex]` similarly if we want to suffix we can give end index equal to length of string or simply omit it i.e. `string[startIndex:]`.
 #### Steps in String Slicing
-We can give an additional parameter which is the step size, this will give us string starting from start index and take jumps of given step size, the syntax is `string[startIndex:endIndex:stepSize]`. By default step size is `1`.
-**Note:** If we give step size of $-1$ then it will take steps backwards, this is not useful if we are slicing partial string, but if we can use this to reverse the string i.e. `string[::-1]`.
+We can give an additional parameter which is the step size, this will give us string starting from start index and take jumps of given step size, the syntax is `string[startIndex:endIndex:stepSize]`, by default step size is `1`.
+
+>[!Note]
+>If we give a negative step size then then it will take steps backwards, for this to work start index >= end index otherwise we get nothing. Also we can use this to reverse the string i.e. `string[::-1]`.
+
 **Note:** Slicing and indexing in pythons lists is same as strings.
 #### Strings Are Immutable
 Strings are immutable in python that means we cannot change a character in the string, for example we cannot do `strVariable[indx] = 'R'`. To reassign a character at some index in a string we need use string concatenation i.e. `newString = oldStr[:indx-1] + 'R' + oldStr[indx+1:]`.
@@ -64,10 +67,15 @@ new_list = [2, 'hello', 3]
 
 A list literally have any other data type i.e. both primitive and not-primitive data types, that means list can have other lists inside and have dictionaries or any other data types in them.
 #### List Methods
+
 1. `list.append()`: this method adds the argument to the end of the list. This method modifies the original list.
+
 2. `list.pop()`: this method removes the argument element from the list and returns it. If no argument is gives it by default removes the last element. This method is in-place that means it modifies the original list.
+
 3. `list.sort():` this method sorts the list in place.
+
 4. `list.reverse()`: this method reverses the list in place.
+
 **Note:** the sort method only works if the list contains a single type of data i.e. if it contains different type of data this method will throw an error.
 
 ### Dictionaries in Python
