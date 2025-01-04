@@ -87,13 +87,13 @@ To understand Lost Updates, consider the following scenario where two transactio
 
 * **Read Uncommitted:** No isolation, any change from outside is visible to the transaction, whether committed or not. Most of the modern databases don't even support this type and it is very uncommon to use it. All types of read phenomena can occur in this.
 
-* **Read Committed:** Each query in a transaction only sees committed changes from other transactions. This is the most popular level of isolation and most of the databases optimize their engines for this. In this level, dirty reads is not possible, but other phenomena's are still possible.
+* **Read Committed:** Each query in a transaction only sees committed changes from other transactions. This is the most popular level of isolation and most of the databases optimise their engines for this. In this level, dirty reads is not possible, but other phenomena's are still possible.
 
 * **Repeatable Reads:** In this level during a transaction, the db will make sure that if a row is read, then that row will remain unchanged while the transaction is running. In this level of isolation dirty reads and non-repeatable reads and lost updates won't happen, but phantom reads are still possible.
 
 * **Snapshot:** Each query in a transaction only sees changes that have been committed up to the start of the transaction. It is like a snapshot version of the database at that moment. This type of isolation gets rid of every type of read phenomena.
 
-* **Serializable:** Transactions are run as if they serialized one after the other.
+* **Serialisable:** Transactions are run as if they serialised one after the other.
 
 >[!Note]
 >Note that each database implements each of these levels differently.
@@ -102,5 +102,48 @@ To understand Lost Updates, consider the following scenario where two transactio
 
 * **Pessimistic:** This approach uses Row level locks, page locks and table locks to avoid lost updates.
 * **Optimistic:** No locks, just track if things changed and fail the transaction if so.
-* **Repeatable Reads** "locks" the row that you read, but it could be expensive if you read a lot of rows, postgres implements **RR** as snapshot. That is why you don't get phantom reads with postgres in repeatable read.
-* Serializable are usually implemented with optimistic concurrency control, you can implement it pessimistically with **SELECT FOR UPDATE**.
+* **Repeatable Reads** "locks" the row that you read, but it could be expensive if you read a lot of rows, PostgreSQL implements **RR** as snapshot. That is why you don't get phantom reads with PostgreSQL in repeatable read.
+* Serialisable are usually implemented with optimistic concurrency control, you can implement it pessimistically with **SELECT FOR UPDATE**.
+
+### Consistency
+
+There are two types of consistency, 
+* Consistency in Data
+* Consistency in Reads
+
+#### Consistency In Data
+
+This of consistency basically means that whether the data within a cluster is consistent or not, i.e. it is consistent with the data model defined by the user. Below are the factors affecting the consistency in data,
+* **Referential Integrity (Foreign Keys):** If the table has foreign keys, then when a records is deleted, then all records referencing this record must also be deleted, or at least change accordingly. Otherwise, the data will simply be inconsistent, for example look at the two tables below, can you find the inconsistencies?.
+![[Pasted image 20241212100313.png | centre]]
+* **Atomicity:** The transactions must be atomic in nature i.e. either all of the queries execute, or none of them execute, if the queries executed partially and then transaction ended, then the data will simply become corrupt.
+* **Isolation:** Depending on the isolation level, we may get inconsistent data i.e. phantom reads, lost updates etc.
+
+#### Consistency In Reads
+
+If a transaction committed a change, then a new transaction immediately should see the change. This problem only occurs when there are multiple instances of our database, it affects the system as a whole and relational and No SQL databases both suffer from this.
+
+Eventual Consistency is what we get, that is if we update a value x in the database, and then read the same value again then it might happen that we are reading from a different partition from the one in which we updated the value, eventually all partitions get the updated value, hence eventual consistency.
+
+### Durability
+
+Durability means that changes made by committed transactions must be persisted in a durable non-volatile storage.
+
+But doing this is expensive and slow, since we have to do a lot of I/O. Hence databases deploy different techniques to make sure durability is achieved, while not affecting the performance too much.
+
+Some databases like Redis compromise durability for performance.
+
+Durability techniques
+* **WAL (Write Ahead Log):** In this technique the databases persist a compressed version of the changes known as WAL (write-ahead-log segments), this is much more light weight than, writing a lot of data to disk (indexes, data files, columns, rows, etc...). 
+* **Asynchronous Snapshot:** In this technique the databases occasionally takes snapshots of the database and asynchronously writes them to disk.
+* **AOF (Append Only File):** This is similar to WAL i.e. it only persists the changes, so that current state of db can be constructed in case of a crash.
+
+#### Durability - OS Cache
+
+The database is a process running on top of some operating system, so when database issues write to disk, then this process is carried out by the operating system. Sometimes the OS says that it has written the data to disk, but it just kept it in OS cache. Operating Systems do this to batch the writes to disk and flush them at once.
+
+The problem is that if at this point the OS crashed, then when the system restarts, then it might not be able to recover the OS Cache and our data is simply lost, so there is a lost of durability due to OS Cache.
+
+To fix this we use the command Fsync that force writes to always go to disk.
+
+Fsync can be expensive and slows down commits.

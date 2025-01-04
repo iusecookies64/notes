@@ -19,3 +19,4 @@ WHERE EXISTS (
 		AND tt.referenced_table = t.table_name
 );
 ```
+

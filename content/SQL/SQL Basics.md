@@ -693,6 +693,9 @@ FROM student
 GROUP BY Divisions;
 ```
 
+>[!Note]
+>If we put multiple values in `GROUP BY`, then the grouping will be created using unique combination of the columns.
+
 ### Having
 
 In the previous problem we saw how to use GROUP BY statement.  
