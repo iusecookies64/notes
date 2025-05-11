@@ -14,3 +14,18 @@ Bought this course because previous one was not good (all thanks to impulsive bu
 
 **10 May 2025 (11:23 am to 1:45 pm)**
 Making notes of lecture watched yesterday, and then continue from section 2 lecture 9. Went in a little too deep on the topic of wired communication link and hence was only able to complete notes of that lecture.
+
+**10 May 2025 (19:25 to 20:30)**
+Continuing to making notes of section 2, till lecture 8.s
+
+**11 May 2025 (08:30 to 10:00)**
+Finished the section 2 of the course with notes and started with section 3.
+
+**11 May 2025 (11:00 to 12:00)**
+Continuing with the section 3 where i am learning about OSI model.
+
+**11 May 2025 (15:00 to 16:30)**
+Learning more about OSI Model and making notes.
+
+**11 May 2025 (20:30 to 21:30)**
+Starting from TCP vs OSI lecture.
