@@ -33,11 +33,11 @@ IAM is responsible for Authentication and Authorization.
 In traditional on-premise environments, security is often focused on the perimeter (firewalls). In the cloud, the "perimeter" is the identity. Because AWS services are accessible via APIs over the internet, a misconfigured IAM policy is the most common cause of security breaches. If a user's permissions are too broad, a single compromised credential can lead to the loss of an entire cloud environment. Therefore, understanding how to write and attach policies is the most foundational skill for any AWS architect.
 
 ---
-# **END: AWS GLOBAL INFRASTRUCTURE AND IDENTITY ACCESS MANAGEMENT**
+## **END: AWS GLOBAL INFRASTRUCTURE AND IDENTITY ACCESS MANAGEMENT**
 ---
 
 ---
-# **START: UNDERSTANDING AWS GLOBAL INFRASTRUCTURE**
+## **START: UNDERSTANDING AWS GLOBAL INFRASTRUCTURE**
 ---
 
 ### The Hierarchy of the Global Infrastructure
@@ -78,11 +78,11 @@ To better visualize how these components interact, consider a global retail oper
 | **Edge Location** | **Local Delivery Hubs** or "last-mile" centers located in your specific neighborhood to get packages to you faster. | Speed & Performance |
 
 ---
-# **END: UNDERSTANDING AWS GLOBAL INFRASTRUCTURE**
+## **END: UNDERSTANDING AWS GLOBAL INFRASTRUCTURE**
 ---
 
 ---
-# **START: AWS ACCOUNT STRUCTURE AND BILLING BASICS**
+## **START: AWS ACCOUNT STRUCTURE AND BILLING BASICS**
 ---
 
 ### The AWS Account as a Logical Container
@@ -129,11 +129,11 @@ To simplify the relationship between these entities, consider the following comp
 | **Billing** | The Utility Bill | The monthly cost for electricity, water, and space used. |
 
 ---
-# **END: AWS ACCOUNT STRUCTURE AND BILLING BASICS**
+## **END: AWS ACCOUNT STRUCTURE AND BILLING BASICS**
 ---
 
 ---
-# **START: AWS ACCOUNT SETUP AND INITIAL CONFIGURATION**
+## **START: AWS ACCOUNT SETUP AND INITIAL CONFIGURATION**
 ---
 
 ### AWS Account Creation Process
@@ -178,11 +178,11 @@ The **Billing and Cost Management** dashboard allows you to create safeguards ag
 | **Set $0.01 Budget** | Provides an early warning system to prevent accidental billing. |
 
 ---
-# **END: AWS ACCOUNT SETUP AND INITIAL CONFIGURATION**
+## **END: AWS ACCOUNT SETUP AND INITIAL CONFIGURATION**
 ---
 
 ---
-# **START: IAM USERS, GROUPS & LEAST PRIVILEGE**
+## **START: IAM USERS, GROUPS & LEAST PRIVILEGE**
 ---
 
 ### Core Concepts of Identity and Access Management
@@ -222,11 +222,11 @@ The Principle of Least Privilege (PoLP) is the foundational philosophy of cloud 
 | **Least Privilege** | Restricted Keys | A janitor has keys to the closets, but not the server room. |
 
 ---
-# **END: IAM USERS, GROUPS & LEAST PRIVILEGE**
+## **END: IAM USERS, GROUPS & LEAST PRIVILEGE**
 ---
 
 ---
-# **START: IAM ROLES AND TRUST BASICS**
+## **START: IAM ROLES AND TRUST BASICS**
 ---
 
 ### Understanding IAM Roles
@@ -273,11 +273,11 @@ Consider a scenario where an application running on an **EC2 instance** needs to
 | **Best For** | Daily administrative work by humans | Automation, service-to-service communication |
 
 ---
-# **END: IAM ROLES AND TRUST BASICS**
+## **END: IAM ROLES AND TRUST BASICS**
 ---
 
 ---
-# **START: IAM POLICIES AND EVALUATION LOGIC**
+## **START: IAM POLICIES AND EVALUATION LOGIC**
 ---
 
 ### The Definition of an IAM Policy
@@ -331,11 +331,11 @@ Imagine a Developer who needs to view data but must be prevented from deleting i
 * **The Power of Deny:** Use "Deny" to create guardrails that cannot be bypassed by other permissions.
 
 ---
-# **END: IAM POLICIES AND EVALUATION LOGIC**
+## **END: IAM POLICIES AND EVALUATION LOGIC**
 ---
 
 ---
-# **START: CREATE IAM USERS AND GROUPS**
+## **START: CREATE IAM USERS AND GROUPS**
 ---
 
 ### Practical Implementation of IAM
@@ -392,11 +392,11 @@ Upon the first login, if the reset option was enabled, the user will be prompted
 | **Daily Usage** | Discouraged | **Recommended Best Practice** |
 
 ---
-# **END: CREATE IAM USERS AND GROUPS**
+## **END: CREATE IAM USERS AND GROUPS**
 ---
 
 ---
-# **START: MFA SETUP AND PASSWORD POLICIES**
+## **START: MFA SETUP AND PASSWORD POLICIES**
 ---
 
 ### Multi-Factor Authentication (MFA)
@@ -440,10 +440,10 @@ Found under **Account Settings** in the IAM dashboard, the password policy can b
 | **Root User** | Absolute account control. | **Must** have MFA enabled and never used for daily tasks. |
 
 ---
-# **END: MFA SETUP AND PASSWORD POLICIES**
+## **END: MFA SETUP AND PASSWORD POLICIES**
 ---
 ---
-# **START: CREATE AND USE IAM ROLES**
+## **START: CREATE AND USE IAM ROLES**
 ---
 
 ### The Purpose of IAM Roles
@@ -494,11 +494,11 @@ In large-scale enterprise environments, roles are the foundation for cross-accou
 | **Access Method** | Direct Login | Identity "Assumption" |
 
 ---
-# **END: CREATE AND USE IAM ROLES**
+## **END: CREATE AND USE IAM ROLES**
 ---
 
 ---
-# **START: PASSWORDS AND IAM AUDITING**
+## **START: PASSWORDS AND IAM AUDITING**
 ---
 
 ### Introduction to Cloud Auditing
@@ -547,11 +547,11 @@ To maintain a high security posture, organizations follow several auditing stand
 | **Timing** | Happens *before* the action. | Happens *during/after* the action. |
 
 ---
-# **END: PASSWORDS AND IAM AUDITING**
+## **END: PASSWORDS AND IAM AUDITING**
 ---
 
 ---
-# **START: ACCESS KEYS AND SECURITY BEST PRACTICES**
+## **START: ACCESS KEYS AND SECURITY BEST PRACTICES**
 ---
 
 ### Understanding Programmatic Access
@@ -601,11 +601,11 @@ AWS operates under a **Shared Responsibility Model**.
 | **Billing** | Monitor frequently to catch unusual activity early. |
 
 ---
-# **END: ACCESS KEYS AND SECURITY BEST PRACTICES**
+## **END: ACCESS KEYS AND SECURITY BEST PRACTICES**
 ---
 
 ---
-# **START: AWS ORGANIZATIONS**
+## **START: AWS ORGANIZATIONS**
 ---
 
 ### Managing Multi-Account Environments
