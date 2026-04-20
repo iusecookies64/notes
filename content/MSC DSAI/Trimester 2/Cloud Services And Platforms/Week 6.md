@@ -1,4 +1,63 @@
 
+## **Summary**
+
+---
+
+## 1. Virtual Private Cloud (VPC) & Subnets
+The **VPC** is the fundamental networking layer that provides a logically isolated section of the AWS Cloud. 
+
+* **Virtual Private Cloud (VPC):** A software-defined network (SDN) boundary that mimics a traditional physical data center. It provides total sovereignty over IP ranges, subnets, and routing.
+* **Subnet:** A segmented slice of a VPC's IP range. 
+    * **Public Subnet:** Directly accessible from the internet via an **Internet Gateway (IGW)**.
+    * **Private Subnet:** Isolated from the internet; used for backend systems like databases.
+* **Logical Isolation:** Ensuring a user's traffic is separated from other AWS customers despite sharing physical hardware.
+
+---
+
+## 2. IP Addressing & CIDR
+AWS uses **CIDR (Classless Inter-Domain Routing)** to manage IP address allocation efficiently.
+
+* **CIDR Notation:** A format ($10.0.0.0/16$) representing a range of IP addresses. The number after the slash (prefix) determines the network size.
+* **Inverse Relationship:** A **smaller** prefix (e.g., $/16$) provides **more** IPs ($65,536$), while a **larger** prefix (e.g., $/24$) provides **fewer** ($256$).
+* **Immutability:** A VPC's primary CIDR block cannot be changed after creation.
+* **Elastic IP (EIP):** A static, persistent IPv4 address that remains with your account even if an instance is stopped or restarted.
+
+---
+
+## 3. Connectivity & Routing
+Routing determines how data travels between resources and the external world.
+
+* **Route Table:** A set of rules (routes) used to determine where network traffic is directed.
+* **Local Route:** An immutable rule in every route table that allows all resources within the same VPC to communicate by default.
+* **Longest Prefix Match:** The logic where AWS prioritizes the most specific route in a table when multiple rules match a destination.
+* **Internet Gateway (IGW):** A horizontally scaled component that allows two-way (inbound/outbound) communication between a VPC and the internet.
+* **NAT Gateway:** A managed service in a public subnet that allows instances in private subnets to initiate outbound requests (e.g., for updates) while blocking unsolicited inbound traffic.
+
+---
+
+## 4. Network Security (Defense-in-Depth)
+Security is implemented in layers, moving from the network boundary down to the individual resource.
+
+| Feature | Security Group (SG) | Network ACL (NACL) |
+| :--- | :--- | :--- |
+| **Level** | Instance / ENI level | Subnet level |
+| **State** | **Stateful:** Responses are automatically allowed. | **Stateless:** Return traffic must be explicitly allowed. |
+| **Rules** | Supports **Allow** rules only. | Supports **Allow and Deny** (Blacklisting) rules. |
+| **Evaluation** | All rules evaluated before decision. | Evaluated in numerical order (lowest first). |
+
+---
+
+## 5. Advanced Architectures & Inter-Connectivity
+Modern cloud design relies on connecting isolated environments securely.
+
+* **VPC Peering:** A direct, private connection between two VPCs using AWS backbone infrastructure. It is **non-transitive** (If A peers with B and B with C, A cannot talk to C through B).
+* **2-Tier Architecture:** A design pattern separating the **Web Tier** (public) from the **Database Tier** (private) to minimize the attack surface.
+* **Bastion Host (Jump Box):** A hardened instance in a public subnet used by administrators to securely access instances in private subnets.
+* **VPC Flow Logs:** A monitoring feature that captures metadata about IP traffic reaching network interfaces.
+
+---
+
+> **Key Takeaway:** In cloud networking, **routing** defines where traffic *can* go, while **Security Groups and NACLs** define who is *permitted* to go there. Security is "secure by design," meaning all traffic is denied unless an explicit allow rule exists.
 ---
 ## **START: CLOUD NETWORKING FUNDAMENTALS**
 ---
