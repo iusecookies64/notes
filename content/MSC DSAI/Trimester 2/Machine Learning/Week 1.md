@@ -1,7 +1,3 @@
-
-
-
----
 ## **START: FOUNDATIONS OF MACHINE LEARNING**
 ---
 
