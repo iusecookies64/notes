@@ -47,7 +47,8 @@ This is a popular industry-standard framework consisting of:
 Algorithms are applied to different categories of data depending on the use case:
 * **Structured Data:** Data organized in a fixed format, such as tables (rows and columns) or graphs.
 * **Unstructured/Semi-Structured Data:** Data without a predefined model, such as news articles, web pages, or social media posts. This often requires conversion to a structured format before processing.
-* **Advanced Data Types:** * **Time Series:** Data points indexed in time order.
+* **Advanced Data Types:**
+	* **Time Series:** Data points indexed in time order.
     * **Streaming Data:** Real-time data flowing from sources like IoT sensors.
     * **Spatio-temporal Data:** Data containing both location and time information.
 
@@ -76,11 +77,32 @@ Supervised learning is categorized into two primary types based on the nature of
 Classification is used when the target variable consists of **categorical** or **discrete** values. The model predicts which "class" or category a data point belongs to.
 * **Nature:** Finite and fixed number of output values.
 * **Key Question:** "Which class?"
-* **Examples:** * **Binary Classification:** Predicting one of two classes (e.g., Rain vs. No Rain, Fraudulent vs. Genuine, Stay vs. Leave).
+* **Examples:** 
+	* **Binary Classification:** Predicting one of two classes (e.g., Rain vs. No Rain, Fraudulent vs. Genuine, Stay vs. Leave).
     * **Multiclass Classification:** Predicting one of several classes (e.g., identifying if an image is a dog, cat, or bird).
 * **Evaluation Metrics:** Performance is measured using Accuracy, Precision, and Recall.
 
-[Image of Classification vs Regression]
+>[!Classification Evaluation Metrics]
+>**1. Accuracy**
+>* **Definition:** Overall correctness; the ratio of correct predictions to total cases.
+>* **Formula:** (TP + TN) / (TP + TN + FP + FN)
+>* **Best for:** Balanced datasets where classes are evenly distributed.
+>
+>**2. Precision (Quality)**
+>* **Definition:** Reliability of positive predictions.
+>* **Formula:** TP / (TP + FP)
+>* **Goal:** Minimize **False Positives** (e.g., ensuring a "Spam" label is actually spam).
+>
+>**3. Recall (Quantity/Sensitivity)**
+>* **Definition:** Ability to find all actual positive cases.
+>* **Formula:** TP / (TP + FN)
+>* **Goal:** Minimize **False Negatives** (e.g., ensuring no "Cancer" cases are missed).
+>
+>**4. Confusion Matrix Key**
+>* **TP / TN:** Correct predictions (True Positive / True Negative).
+>* **FP:** Type I Error; a false alarm.
+>* **FN:** Type II Error; a missed case.
+
 #### 2. Regression
 Regression is used when the target variable is **continuous** or **numerical**. The model predicts a specific quantity rather than a category.
 * **Nature:** Infinite possible values within a range.
