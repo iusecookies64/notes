@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: quartz.jzhao.xyz
+  baseUrl: iusecookies64.github.io/notes
   ignorePatterns:
     - private
     - templates
@@ -132,6 +132,11 @@ plugins:
     enabled: true
   - source: "@quartz-community/explorer"
     enabled: true
+    options:
+      title: Explorer
+      folderDefaultState: open
+      folderClickBehavior: link
+      useSavedState: true
     layout:
       position: left
       priority: 50
