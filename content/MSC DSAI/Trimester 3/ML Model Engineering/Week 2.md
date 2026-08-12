@@ -592,6 +592,13 @@ Selecting the correct inference pattern—Online, Batch, or Streaming—requires
 
 ---
 
+
+---
+
+## **START: Inference Patterns, Core Metrics, and Real-World Scenarios**
+
+---
+
 ### Core Metrics Alignment Across Inference Patterns
 
 Selecting a serving pattern establishes which performance and operational metrics govern the engineering design of a machine learning system. While the underlying model function remains identical, each pattern prioritizes distinct operational parameters:
