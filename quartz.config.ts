@@ -1,5 +1,6 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { QuartzTheme } from "@quartz-themes/core"
 
 /**
  * Quartz 4.0 Configuration
@@ -54,6 +55,7 @@ const config: QuartzConfig = {
   },
   plugins: {
     transformers: [
+      QuartzTheme({ theme: "material-gruvbox", mode: "both" }) as any,
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
         priority: ["frontmatter", "filesystem"],

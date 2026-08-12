@@ -632,3 +632,43 @@ A deployed machine learning model acts fundamentally as an execution function, $
 ## **END: Inference Patterns, Core Metrics, and Real-World Scenarios**
 
 ---
+
+
+---
+
+## **Test Your Understanding**
+
+---
+
+### **1. Core Paradigms & Architectural Selection**
+
+1. **Trigger & Blocking Mechanisms:** Who or what initiates the model call in Batch, Online, and Streaming inference, and which of these patterns leaves the caller in a synchronous "blocked" state?
+2. **Pattern Decision Framework:** What are the three core questions you must ask regarding the user, time, and data flow to select between Batch, Online, and Streaming?
+3. **Freshness vs. Staleness Trade-Off:** Why do batch predictions suffer from data staleness, and what specific real-time inputs can an online request evaluate that a scheduled batch run cannot?
+4. **Interaction Boundaries:** Both online and streaming can process data in sub-second timelines. What fundamentally distinguishes how predictions are delivered to downstream systems in online versus streaming architectures?
+
+---
+
+### **2. Execution Pipelines & Data Handling**
+
+5. **Batch Pipeline Stages:** What are the four sequential steps in an end-to-end batch execution pipeline, from input ingestion to final prediction output?
+6. **Online vs. Streaming Imputation:** How do missing value imputation techniques differ between Online serving (where you cannot compute global dataset statistics at runtime) and Streaming serving (where data streams continuously over time)?
+7. **Dual Feature Store Architecture:** What distinct roles do the **Offline Store** and **Online Store** play in a Feature Store architecture, and how does this setup eliminate train-serve skew?
+
+---
+
+### **3. Performance Metrics, RPS & System Utilization**
+
+8. **Metric Prioritization Shift:** Why is per-row latency mostly irrelevant in batch inference, whereas P95/P99 tail latency acts as a strict product requirement in online inference?
+9. **RPS & Little's Law:** How do you calculate theoretical maximum RPS using Little’s Law, and why does including failed requests (e.g., HTTP 500s) skew your throughput analysis?
+10. **Throughput vs. Hardware Utilization:** Why is running at 95% CPU/GPU utilization ideal for a batch inference job, but considered hazardous for an online request-response API?
+11. **Streaming Metrics:** Define **Event-to-Action Latency** and **Stream Lag/Backpressure**. What operational failure is occurring when stream lag increases continuously?
+
+---
+
+### **4. Resilience, Engineering & Cost Optimization**
+
+12. **Cascading Failures & Circuit Breakers:** How can a slow upstream dependency (like an online feature store) cause cascading timeouts across an online system, and how does a Circuit Breaker mitigate this?
+13. **Graceful Degradation Strategies:** What is graceful degradation in online serving, and what are two fallback mechanisms a system can invoke if a model service times out?
+14. **Hybrid Serving Architecture:** Explain how a hybrid pattern combines batch precomputation with online inference to score candidate recommendations within tight latency limits.
+15. **Streaming Complexity & Over-Engineering:** What technical overheads (such as windowing, state management, and event replaying) make streaming serving an anti-pattern when business requirements only require periodic updates?
