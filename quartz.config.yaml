@@ -103,7 +103,8 @@ plugins:
   - source: "@quartz-themes/core"
     enabled: true
     options:
-      theme: ukiyo
+      # theme: ukiyo
+      theme: esther-inspired
       mode: both
   - source: "@quartz-community/remove-draft"
     enabled: true

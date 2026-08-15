@@ -346,17 +346,17 @@ Under a contract-first design, the interface between the client and the server i
 
 ### Structural Comparison: REST vs. gRPC
 
-Understanding when to employ gRPC over REST requires evaluating structural and operational differences:
+Understanding when to employ gRPC over REST requires evaluating structural and operational differences:****
 
-| Architectural Metric | REST over HTTP | gRPC with Protocol Buffers |
-| --- | --- | --- |
-| **Data Format** | Text-based (JSON, XML) | Strongly typed binary format |
-| **Transport Protocol** | HTTP/1.1 or HTTP/2 | HTTP/2 (native multiplexing, streaming) |
-| **Interface Definition** | Optional / External (OpenAPI, Swagger) | Mandatory / Contract-first (`.proto` files) |
-| **Type Enforcement** | Dynamic / Runtime validation | Static / Compile-time enforcement |
-| **Serialization Overhead** | Higher (parsing verbose text strings) | Extremely low (compact binary representation) |
-| **Human Readability** | Directly readable in plain text | Requires decoding binary payloads |
-| **Target Audience** | External clients, web browsers, public APIs | Internal microservices, inter-service calls |
+| Architectural Metric       | REST over HTTP                              | gRPC with Protocol Buffers                    |
+| -------------------------- | ------------------------------------------- | --------------------------------------------- |
+| **Data Format**            | Text-based (JSON, XML)                      | Strongly typed binary format                  |
+| **Transport Protocol**     | HTTP/1.1 or HTTP/2                          | HTTP/2 (native multiplexing, streaming)       |
+| **Interface Definition**   | Optional / External (OpenAPI, Swagger)      | Mandatory / Contract-first (`.proto` files)   |
+| **Type Enforcement**       | Dynamic / Runtime validation                | Static / Compile-time enforcement             |
+| **Serialization Overhead** | Higher (parsing verbose text strings)       | Extremely low (compact binary representation) |
+| **Human Readability**      | Directly readable in plain text             | Requires decoding binary payloads             |
+| **Target Audience**        | External clients, web browsers, public APIs | Internal microservices, inter-service calls   |
 
 ### Performance Benefits of gRPC
 
