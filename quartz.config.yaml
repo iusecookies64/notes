@@ -100,6 +100,13 @@ plugins:
     order: 92
   - source: "@quartz-community/quartz-fonts"
     enabled: true
+    options:
+      fontOrigin: googleFonts
+      body: JetBrains Mono
+      header: JetBrains Mono
+      code: JetBrains Mono
+      h1: JetBrains Mono
+      h2: JetBrains Mono
   - source: "@quartz-themes/core"
     enabled: true
     options:
