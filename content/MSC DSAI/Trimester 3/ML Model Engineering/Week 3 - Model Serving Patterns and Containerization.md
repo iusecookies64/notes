@@ -547,8 +547,6 @@ Large model artifacts (ranging from hundreds of megabytes to tens of gigabytes) 
 * **Online Real-Time Serving:** Demands low latency for interactive user queries, favoring a higher count of smaller, horizontally scaled replicas.
 * **Batch Serving:** Prioritizes overall throughput over individual request speed, operating more efficiently on fewer, larger instances designed for parallel execution.
 
-
-
 #### Operational Guardrails
 
 To maintain system stability while managing costs, machine learning auto-scaling configurations incorporate two key parameters:
@@ -591,96 +589,120 @@ The **Docker image** functions as the core deployment unit across modern MLOps w
 
 ---
 
-## Section 1: Conceptual Reasoning, System Design & Trade-Off Analysis
+### Module 3 - Model Serving Patterns and Containerization
 
-### 1. Architectural Pattern Selection & Migration Dynamics
-
-An e-commerce platform currently runs a nightly batch job at 2:00 AM to precompute personalized product recommendations for all registered users, storing them in a database. As the platform grows, marketing requests two changes:
-
-* Show immediate product recommendations based on items added to the cart during the current browsing session.
-* Continuously update user interest segments as clickstream logs flow in to trigger automated push notifications.
-
-Analyze why the existing batch architecture fails to meet these two new requirements. Detail which serving paradigm (**Online** or **Streaming**) must be introduced for each requirement, how the architectural components change, and what new operational risks (e.g., infrastructure complexity, latency constraints, cost implications) are introduced.
+* **Deep Reasoning & Conceptual Understanding:**
+Explain how shifting perspective from a client-side view (issuing requests to a `/predict` endpoint) to a server-side view fundamentally changes how an engineer evaluates system performance, resource isolation, and production infrastructure requirements.
+* **Recall & Terminology:**
+Define the term "model serving" in contrast to a passive model file, and list the three core operational responsibilities of a serving layer when handling incoming requests.
 
 ---
 
-### 2. System Behavior Under Load & Cascading Failures
+### Defining Model Serving: Artifact vs. Service and the Inference Pipeline
 
-Explain what happens to an online prediction microservice when incoming traffic increases by 500% during a flash sale.
-
-* Contrast the concepts of **Throughput (actual RPS)** and **Hardware Utilization (CPU/GPU)** as load approaches 100%.
-* Use queuing theory concepts to explain why tail latency ($P95$/$P99$) degrades exponentially rather than linearly near maximum capacity.
-* Detail how an engineer can use **Circuit Breakers**, **Timeouts**, and **Graceful Degradation** (fallbacks) to prevent a slow downstream feature lookup from causing a cascading failure across the entire application.
-
----
-
-### 3. Missing Data Strategies Across Temporal Paradigms
-
-Suppose a sensor in an industrial manufacturing pipeline temporarily disconnects for 15 minutes, causing missing values in an incoming stream of operational telemetry. Simultaneously, an online user request arrives at a checkout API missing an optional `user_zip_code` attribute.
-
-* Why is calculating global dataset statistics (such as batch-wide mean or median imputation) mathematically impossible in both of these live execution contexts?
-* Contrast how the streaming pipeline can recover the missing sensor value using **windowed rolling aggregates** or **stateful forward-fill**, versus how the online API must handle the missing ZIP code using **pre-computed pipeline artifacts**, **online feature store lookups**, or **request rejection**.
+* **Deep Reasoning & Conceptual Understanding:**
+Why is treating a machine learning model as a passive serialized artifact insufficient for production deployments? Discuss the potential operational failure modes of failing to wrap an artifact within a dedicated model service.
+* **Recall & Terminology:**
+List and describe the six sequential steps of the server-side inference lifecycle pipeline in order, from initial payload ingestion to final response delivery.
 
 ---
 
-### 4. Eliminating Train-Serve Skew with Dual Feature Stores
+### Core Responsibilities of the Serving Layer
 
-An ML engineering team discovers that their fraud detection model performs with 98% accuracy during offline training but drops to 72% accuracy when deployed as an online service. The root cause is identified as **train-serve skew** caused by mismatched feature transformations and stale lookups.
-
-* Explain how a dual-store **Feature Store** (Offline Store + Online Store) eliminates this discrepancy.
-* Detail why calculating complex aggregations (e.g., *number of transactions in the last 90 days*) directly inside an HTTP request handler creates latency bottlenecks, and how the dual-store architecture offloads this computational burden while maintaining sub-10ms response times.
-
----
-
-### 5. Metric Trade-Offs & Business Alignment
-
-Why is maximizing **sustained throughput** and **total job completion time** the primary optimization goal for a batch credit-scoring job, while minimizing **P99 tail latency** and **error rates** is the primary goal for an online payment authorization service? In your response, address how compute costs are optimized differently in each scenario (e.g., off-peak scheduling and spot instances vs. auto-scaling and over-provisioned headroom).
+* **Deep Reasoning & Conceptual Understanding:**
+Loading a model artifact inside an individual HTTP request handler is considered a severe architectural anti-pattern. Analyze why this approach degrades system efficiency, detailing its specific impacts on tail latency ($P_{95}$ and $P_{99}$) and server computational resources.
+* **Recall & Terminology:**
+Identify the five core responsibilities of a production serving layer, and explain how strict input validation and schema enforcement mitigate training-serving skew.
 
 ---
 
-## Section 2: Terminology, Formulas & Technical Recall
+### Model Serving Architectures: Monolithic Deployment
 
-### 6. Pipeline Execution Stages: Batch vs. Online
-
-* Itemize and describe the **four sequential stages** of a standard end-to-end Batch Inference execution pipeline, from raw input data to final storage.
-* Itemize and describe the **six sequential steps** executed during a single synchronous Online Inference request-response cycle, from network payload intake to final response delivery.
-
----
-
-### 7. Streaming Architecture Components & Stream Processing Concepts
-
-* List and define the **five core architectural building blocks** of a end-to-end Streaming Inference pipeline (from event generation to output destination).
-* Define the following four stream processing terms and state why each is critical for maintaining stream health or correctness:
-* **Stateful Operators**
-* **Event Windowing**
-* **Stream Lag / Backpressure**
-* **Checkpoints and Watermarks**
-
-
+* **Deep Reasoning & Conceptual Understanding:**
+Under what circumstances does embedding a machine learning model directly within a monolithic codebase become a major system bottleneck? Evaluate the specific operational triggers that indicate it is time to decouple the model.
+* **Recall & Terminology:**
+Define the monolithic model serving pattern, explain how in-process function execution operates under this pattern, and list four major architectural advantages of using a monolith for early-stage development.
 
 ---
 
-### 8. Mathematical Formulations: Throughput, RPS & Little's Law
+### Model Serving Architectures: Model Microservices
 
-* State the basic formula for calculating **Requests per Second (RPS)** over a fixed time window.
-* Write out **Little’s Law** formula connecting Throughput ($\text{RPS}$), Concurrency ($C$), and Average Latency ($L$).
-* *Calculation Task:* If an online model serving cluster maintains 50 concurrent worker threads and processes requests with an average latency of $125\text{ ms}$ ($0.125\text{ seconds}$), calculate the maximum theoretical throughput ($\text{RPS}$).
-* Explain why including failed requests (e.g., HTTP 500 errors or timeouts) in total RPS calculations creates a misleading representation of system throughput.
-
----
-
-### 9. Latency Percentiles & Statistical Definitions
-
-* Define **P50**, **P95**, and **P99** latency percentiles in plain technical terms.
-* Mathematically and conceptually explain why **average (mean) latency** is an inadequate metric for evaluating user-facing Service Level Objectives (SLOs) in distributed microservice architectures.
+* **Deep Reasoning & Conceptual Understanding:**
+While model microservices offer independent resource scaling and tech-stack freedom, they introduce unique operational overheads. Analyze the technical trade-offs regarding network latency, distributed tracing, and API schema governance when transitioning to a microservice design.
+* **Recall & Terminology:**
+Define the model microservice pattern, list four key architectural benefits it provides over monoliths, and identify the primary use cases where this pattern is recommended.
 
 ---
 
-### 10. Explicit Imputation & Feature Store Technical Specifications
+### Model Serving Architectures: Serverless and Function as a Service
 
-* List **five distinct techniques** used to handle missing features during synchronous **Online Inference**.
-* List **four distinct techniques** used to handle missing features during continuous **Streaming Inference**.
-* Identify the underlying storage technology types typically used for an **Offline Feature Store** versus an **Online Feature Store**, and explain why their underlying database characteristics differ.
+* **Deep Reasoning & Conceptual Understanding:**
+Explain why a Serverless (FaaS) architecture is cost-effective and structurally suitable for spiky, low-volume event-driven workloads, yet poorly suited for large deep learning models that require low, deterministic response latencies.
+* **Recall & Terminology:**
+Define cold-start latency and pay-per-use economics. State the three main resource and packaging constraints enforced by serverless execution platforms.
+
+---
+
+### Architectural Comparison and Integration with Inference Patterns
+
+* **Deep Reasoning & Conceptual Understanding:**
+Explain how serving architectures (where the model lives) and inference patterns (how predictions are invoked) complement each other. Discuss how a single batch inference pipeline might leverage different serving architectures depending on system scale and resource constraints.
+* **Recall & Terminology:**
+Construct a comparative summary detailing the deployment complexity, scaling capability, and optimal use cases for Monolithic, Microservice, and Serverless model serving architectures.
+
+---
+
+### APIs for Machine Learning: REST over HTTP with JSON
+
+* **Deep Reasoning & Conceptual Understanding:**
+Evaluate why REST over HTTP using JSON payloads remains the default choice for machine learning APIs despite text serialization overhead and lack of static compile-time typing across services.
+* **Recall & Terminology:**
+Describe the explicit request-response steps of a standard RESTful `POST /predict` API call, and state three technical limitations of using REST with JSON payloads for high-throughput microservices.
+
+---
+
+### APIs for Machine Learning: gRPC and Protocol Buffers
+
+* **Deep Reasoning & Conceptual Understanding:**
+Analyze the architectural benefits of a hybrid edge-backend pattern, where edge applications use REST over HTTP to communicate with the system boundary, while internal backend microservices utilize gRPC to query model serving instances.
+* **Recall & Terminology:**
+Compare REST over HTTP and gRPC across the following six architectural metrics: Data Format, Transport Protocol, Interface Definition, Type Enforcement, Serialization Overhead, and Target Audience.
+
+---
+
+### Synchronous vs. Asynchronous Model APIs and Inference Pattern Integration
+
+* **Deep Reasoning & Conceptual Understanding:**
+How do asynchronous queue-based APIs protect model serving infrastructure from traffic spikes, long-running inference tasks, and worker thread starvation compared to synchronous HTTP request-response patterns?
+* **Recall & Terminology:**
+Distinguish between synchronous and asynchronous API execution flows. State which primary calling pattern (synchronous vs. asynchronous) maps directly to Online Inference, Batch Inference, and Streaming Inference respectively.
+
+---
+
+### Model Service Deployment and Rollout Strategies
+
+* **Deep Reasoning & Conceptual Understanding:**
+Why is deploying a retrained model version straight to production without a controlled rollout strategy risky, even if the model achieved high accuracy during offline evaluation? Discuss potential failure modes concerning live input distributions and resource regressions.
+* **Recall & Terminology:**
+Describe single-instance model deployment, and detail the three distinct stages of the automated continuous integration and deployment pipeline (Build, Package, Run) for containerized model APIs.
+
+---
+
+### Safe Rollout Patterns: Blue-Green and Canary Deployments
+
+* **Deep Reasoning & Conceptual Understanding:**
+Contrast Canary Releases and A/B Testing in terms of their primary engineering goals, execution mechanisms, and target metrics. Why must a Canary release succeed before an A/B test can be meaningfully evaluated?
+* **Recall & Terminology:**
+Explain the step-by-step operation of a Blue-Green deployment, detailing how traffic routing occurs at the load balancer level and how immediate rollbacks are executed if errors are detected.
+
+---
+
+### Model Autoscaling and End-to-End Deployment Lifecycle
+
+* **Deep Reasoning & Conceptual Understanding:**
+Why does auto-scaling a machine learning model service require domain-specific configurations—such as minimum replica warm pools and composite scaling rules—that are not typically required for standard stateless web services?
+* **Recall & Terminology:**
+List five distinct telemetry signals used to drive auto-scaling policies, and outline the five sequential stages of the complete end-to-end model deployment lifecycle from model training to old version decommissioning.
 
 ---
 
