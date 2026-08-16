@@ -1,3 +1,34 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+/* Modern standards (Firefox) */
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: var(--lightgray) transparent; /* Thumb color and transparent track */
+}
+
+/* Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  width: 6px;  /* Small width for vertical scrollbar */
+  height: 6px; /* Small height for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Makes the track invisible */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lightgray); /* Uses Quartz's native variable or any hex code */
+  border-radius: 10px; /* Forces a pill shape */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray); /* Darkens the pill on hover */
+}
+
+/* Prevent forced horizontal scrollbars on smaller or regular tables */
+table, .table-container, div.table-overflow {
+  overflow-x: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
