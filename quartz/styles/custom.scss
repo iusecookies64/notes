@@ -26,9 +26,26 @@
   background: var(--gray); /* Darkens the pill on hover */
 }
 
-/* Prevent forced horizontal scrollbars on smaller or regular tables */
-table, .table-container, div.table-overflow {
-  overflow-x: visible !important;
+/* Clean table container resetting for Quartz */
+.table-container, div.table-overflow {
+  display: block !important;
   width: 100% !important;
   max-width: 100% !important;
+  margin: 1.5rem 0 !important; /* Normal top/bottom spacing, removes weird side indents */
+  padding: 0 !important;
+  
+  /* Critical: Only show a scrollbar if the content physically exceeds container width */
+  overflow-x: auto !important; 
+  overflow-y: hidden !important;
 }
+
+/* Standardize the actual inner table element layout */
+.table-container table, div.table-overflow table, table {
+  display: table !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important; /* Forces left alignment to eliminate left-side massive empty spaces */
+  box-sizing: border-box !important;
+  table-layout: auto !important; /* Allows cells to size naturally based on content */
+}
+
