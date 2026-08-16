@@ -42,9 +42,11 @@ Framework-specific formats (such as PyTorch `.pt` or TensorFlow `.h5`/`SavedMode
 3. **Shape Metadata**: Input/output tensor dimensions and data type signatures.
 
 ```
-  Training Frameworks                     Standard Formats                   Optimized Runtimes
+  Training Frameworks                  Standard Formats                Optimized Runtimes
 ┌─────────────────────┐            ┌──────────────────────┐           ┌───────────────────┐
-│ PyTorch / TensorFlow│ ─────────► │  ONNX / TF Lite /    │ ────────► │   ONNX Runtime /  │  │    / JAX            │  (Export)  │ OpenVINO IR          │ (Execute) │ TensorRT / XLA    │ └─────────────────────┘            └──────────────────────┘           └───────────────────┘
+│ PyTorch / TensorFlow│ ─────────► │  ONNX / TF Lite /    │ ────────► │   ONNX Runtime /  │
+│    / JAX            │  (Export)  │ OpenVINO IR          │ (Execute) │ TensorRT / XLA    │
+└─────────────────────┘            └──────────────────────┘           └───────────────────┘
 
 ```
 
