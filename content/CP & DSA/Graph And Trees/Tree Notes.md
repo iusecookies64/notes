@@ -229,15 +229,15 @@ void solve()
 
 **Centroid** of a tree is a vertex such that if we hang tree from this vertex then all of the child vertices of this vertex will have subtree size $<= \frac N2$ where $N$ is the number of vertices.
 
-![image-20240531124058342](./image-20240531124058342.png)
+![image-20240531124058342](image-20240531124058342.png)
 
 The center of a tree and centroid are not necessarily the same node, in most they are but we can make cases when they are not the same vertex. For example a tree in which there is a long path and one end of the path has lot of nodes will have centroid near to the crowded end while center will still be center of diameter.
 
-![image-20240531124755353](./image-20240531124755353.png)
+![image-20240531124755353](image-20240531124755353.png)
 
 At max a tree can have two centroids, this only happens when subtree of $2$ nodes if of size $\frac N2$ each as shown below.
 
-![image-20240531134822623](./image-20240531134822623.png)
+![image-20240531134822623](image-20240531134822623.png)
 
 **Finding The Centroid**
 
@@ -247,7 +247,7 @@ If none of the vertex have this property then we can say that current vertex is 
 
 **Note:** for current $vertex$ we only check for $childVertex$ because we are sure that the remaining subtree of its parent is surely of size $<= \frac N2$ this is becaues the reason we are at current node is because its subtree size if more than half, then remaining subtree must be less than half.
 
-![image-20240531130537985](./image-20240531130537985.png)
+![image-20240531130537985](image-20240531130537985.png)
 
 Below is the code implementation of this approach.
 

@@ -156,7 +156,7 @@ Where:
 * $t$ = Number of compounding time periods
 
 
-> *Example:* Investing $\$1{,}000$ ($PV$) at an annual interest rate of $6\%$ ($r = 0.06$) for one year ($t = 1$) yields:
+> *Example:* Investing $1{,}000$ ($PV$) at an annual interest rate of $6\%$ ($r = 0.06$) for one year ($t = 1$) yields:
 >  $$FV = 1000 \times (1 + 0.06)^1 = \$1{,}060$$
 > An investor requires at least $\$1{,}060$ in one year to match the economic utility of $\$1{,}000$ today. 
 

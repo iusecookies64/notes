@@ -153,7 +153,7 @@ void maximumPathLength()
 
 The idea of this algorithm is that a node that has in-degree of $0$ comes first in the topological sort, so we push all nodes with in-degree $0$​ and push them in our toposort and remove them from the graph, then we repeat the process on the remaining graph. Look at the example below which is a dry run of this algorithm.
 
-![image-20240613210449983](./image-20240613210449983.png)
+![image-20240613210449983](image-20240613210449983.png)
 
 Below is the implementation of this algorithm.
 
@@ -237,7 +237,7 @@ Lets Discuss Another Problem that uses similar idea as in Kahn's algorithm.
 
 For Example consider the graphs below
 
-![image-20240613211303080](./image-20240613211303080.png)
+![image-20240613211303080](image-20240613211303080.png)
 
 For the first graph the answer is `{1 3 2}` and for the second the answer is `{2 3 4 1}`.
 

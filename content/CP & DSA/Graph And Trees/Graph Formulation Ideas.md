@@ -111,7 +111,7 @@ Using dummy nodes the idea is that for every group of vertices with same value, 
 
 This is shown below for vertices with value 1.
 
-![image-20240529141514702](./image-20240529141514702.png)
+![image-20240529141514702](image-20240529141514702.png)
 
 We can still go to another node with same value with weight `a` throught dummy node, but this reduces the number of edges from $O(k^2)$ to $O(k)$ for a group.
 
@@ -174,7 +174,7 @@ void solve()
 
 **Problem 5:** Given two binary strings `s` and `t` of length 20 each. In one move we can flip the bit at any index in `s`. We need to find the min number of moves to convert `s` to `t`. We are also given an array of strings which are blocked i.e at any point during our operations we must not obtain a string that is present in the array.
 
-![image-20240529154131326](./image-20240529154131326.png)
+![image-20240529154131326](image-20240529154131326.png)
 
 **Solution:** the idea is simple we can convert strings to number using there binary representation and then we can do bfs, we never process blocked nodes.
 

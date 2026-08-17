@@ -147,4 +147,4 @@ Another idea for solution is that we modify the graph by multiplying weight of e
 
 **Solution:** the idea is that we will make a new super node and connect this node with each city with edge weight $C_i$​. Then mst of this new graph will be the minimum cost. This is explained in the image below.
 
-![image-20240605103115719](./image-20240605103115719.png)
+![image-20240605103115719](image-20240605103115719.png)

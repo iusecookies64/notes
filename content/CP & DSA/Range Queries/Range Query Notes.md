@@ -46,7 +46,7 @@ We will store this tree just like heap structure i.e in the form of an array, an
 
 Now suppose we have 8 elements in our array, then we will have tree as follows
 
-![image-20240527191856288](./image-20240527191856288.png)
+![image-20240527191856288](image-20240527191856288.png)
 
 As we can see that if array size if power of 2 then we have a complete binary tree. 
 
@@ -54,7 +54,7 @@ But lets say that array size if not power of 2 then we have an incomplete binary
 
 For example consider the example of array of size 6, the tree will look like
 
-![image-20240527192036695](./image-20240527192036695.png)
+![image-20240527192036695](image-20240527192036695.png)
 
 If we index the nodes then we will have `[[1,6], [1,3], [4,6], [1,2], [3,3], [4,5], [6,6], [1,1], [2,2], empty, empty, [4,4], [5,5], empty, empty]`. As we can see that nodes with index 9, 10, 13, 14 are empty since they have no parent.
 
@@ -160,11 +160,11 @@ ll rangeQuery(ll node, ll l, ll r, ll qs, ll qe, vector<ll> &tree)
 
 First of all, if there is full overlap or complete disjoint then we immediately return.
 
-![image-20240527195553767](./image-20240527195553767.png)
+![image-20240527195553767](image-20240527195553767.png)
 
 If there is partial overlap, then there are two cases, one is overlap happens at the edges and other overlap not at edges. For overlap at edges we can prove that time complexity is `O(logn)`. Consider edge overlap case where there is more than half overlap. In this case we will call for left and right halfs and one of them will completely overlap with query range and immediately return (as shown in the diagram below).
 
-![image-20240527201107919](./image-20240527201107919.png)
+![image-20240527201107919](image-20240527201107919.png)
 
 Similarly in case of edge overlap where there is less than half length overlap, we will call for left and right half and one of them will fall in no overlap case and return immediately.
 
@@ -172,7 +172,7 @@ Hence in case of edge overlap only one of the calls actually propagate giving co
 
 But what if there is overlap not on edges, well then in that case we call for left and right and both of the call will be edge overlaps and each will have complexity `O(logn)` and hence overall complexity is `O(2 * logn) = O(logn)`.
 
-![image-20240527201600944](./image-20240527201600944.png)
+![image-20240527201600944](image-20240527201600944.png)
 
 **Memory Optimized Implementation**
 

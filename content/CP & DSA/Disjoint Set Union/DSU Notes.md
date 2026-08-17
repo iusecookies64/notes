@@ -42,11 +42,11 @@ If we want to merge two elements `a` and `b` then first we find the representati
 
 1. `rank[ra] > rank[rb]`: in this case we simply make `ra` the parent of `rb` and that's it. Since `rank[rb]` is smaller then `rank[ra]` then height of tree doesn't change. This is shown in below diagram. The case of `rank[rb] > rank[ra]` is similar.
 
-   ![image-20240605144516072 | center](./image-20240605144516072.png)
+   ![image-20240605144516072 | center](image-20240605144516072.png)
 
 2. `rank[ra] == rank[rb]`: In this we can make any one the parent of other and increase its rank by $1$. For example we make `ra` the parent of `rb`, then `rank[ra]` increases by $1$. This is shown in example below.
 
-   ![image-20240605145006299 | center](./image-20240605145006299.png)
+   ![image-20240605145006299 | center](image-20240605145006299.png)
 
 **Time Complexity:** In this way the number of operations where the height increases is actually very small and it have been shown that for `n` elements the height increases at most by $\log(n)$​​​.
 
@@ -104,7 +104,7 @@ If we call `find_set(v)` for some vertex `v`, we actually find the representativ
 
 You can see the operation in the following diagram. On the left there is a tree, and on the right side there is the compressed tree after calling `find_set(7)`, which shortens the paths for the visited nodes 7, 5, 3 and 2.
 
-![image-20240605151536611](./image-20240605151536611.png)
+![image-20240605151536611](image-20240605151536611.png)
 
 The new implementation of `find_set` is as follows:
 

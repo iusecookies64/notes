@@ -4,7 +4,7 @@ A strongly connected component is one in which each node is reachable from every
 
 For example consider graph shown below this is a strongly connected component. 
 
-![image-20240527222747101](./image-20240527222747101.png)
+![image-20240527222747101](image-20240527222747101.png)
 
 A **single node** is also a strongly connected component. 
 
@@ -89,13 +89,13 @@ public:
 
 In an **undirected** graph, **Bridges** are those edges removal of which leads to increase in number of connected components in the graph. For example in the graph given below, the red edges are bridges.
 
-![image-20240614125647634](./image-20240614125647634.png)
+![image-20240614125647634](image-20240614125647634.png)
 
 To find bridges in graph, we use **Tarjan's Algorithm**. The idea of this algorithm is similar to cycle detection algorithm in which we check for back edge. We will maintain two arrays one for **in-time** i.e first time when a node was reached, the other array we maintain is low array which stores the lowest in-time node reachable by this node through its children i.e `low[node] = min(in[node], min(low[adjacentNodes]))`, here adjacentNodes is excluding parent.
 
 For example consider the graph given below, the dfs graph is shown beside this graph. From it we can see that `low[3]` is $1$ because we can reach node with in-time $1$ via node $2$. But for node $4$ the `low[4] = 4` which is $> inTime[3]$ hence we can say that edge between $3$ and $4$ is a bridge.
 
-![image-20240614131233868](./image-20240614131233868.png)
+![image-20240614131233868](image-20240614131233868.png)
 
 Algorithm for Tarjan's algorithm is shown below.
 
