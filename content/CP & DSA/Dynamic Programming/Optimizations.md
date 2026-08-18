@@ -6,7 +6,7 @@
 
 **Solution:** One idea that comes to mind immediately is that we can first calculate the maximum sum path from $(0, 0)$ to $(n-1, m-1)$ and then find a path that gives this answer and then we update the number of chocolates on this cell to be $0$, then re-run the same program, but this approach is actually wrong because of the existence of multiple possible answers for a given answer which makes the possibilities for returning path different for different choice of first path. For example consider the two maximum sum paths given in the grid, below, the maximum possible sum in return path is different based on the choice for first path.
 
-![[Pasted image 20240818225027.png | center]]
+![ center](Pasted%20image%2020240818225027.png)
 
 Hence it is not optimal to take this approach, so the approach we take is first we consider the going and returning path as $2$ paths that both originate from $(0, 0)$ and finally reach $(n-1, m-1)$. We will use a dp state `rec(i, j, a, b)` which is the maximum sum to reach $(i, j)$ via path $1$ and reach $(a, b)$ via path $2$. Now, calling transitions for all possible combinations of $(i, j)$ and $(a, b)$ is very tricky because of cases of overlapping, for example if we are at cell $(i, j)$ and cell $(a, b)$ was on the path, how do we know about it now. To overcome overlapping issue, we start both the paths from $(0, 0)$ at the same time, and we move them to next cells at the same time, this way when ever these reach a common cell, they will reach at the same time and their count we add to our answer only once. Now our state is `rec(i, j, a, b)` which gives maximum sum to reach $(n-1, m-1)$ such that path $1$ starts at cell $(i, j)$ and path $2$ starts at cell $(a, b)$.
 

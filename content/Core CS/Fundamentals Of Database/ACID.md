@@ -57,7 +57,7 @@ A dirty read is a read that was never committed. Consider the following scenario
 * Then for some reason TX2 rolls back.
  This means that TX1 read something that doesn't even exist, this is know as **dirty read**.
 
-![[Pasted image 20241201145442.png]]
+![](Pasted%20image%2020241201145442.png)
 
 ##### Non-Repeatable Reads
 
@@ -65,13 +65,13 @@ Non-Repeatable Reads means that in a transaction we read something, then some ot
 
 The reason it is called Non-Repeatable is because the it decides whether repeated reads for same row will be consistent or not during a transaction.
 
-![[Pasted image 20241201161429.png]]
+![](Pasted%20image%2020241201161429.png)
 
 ##### Phantom Reads
 
 These types of reads generally occur when we do a range query where our result depends on a bunch of rows. Consider the scenario shown below,
 
-![[Pasted image 20241201162335.png]]
+![](Pasted%20image%2020241201162335.png)
 
 The first query in TX1 reads through the entire table SALES, then TX2 inserts new row in the table, and then TX1 again reads through the table, but this time new row is also read. This is different from Non-Repeatable reads we are reading something that was not read before.
 
@@ -81,7 +81,7 @@ Another reason this is different from Non-repeatable reads is because of interna
 
 To understand Lost Updates, consider the following scenario where two transactions start at the same time, and read data from the same row, i.e. both read QNT from first rows as 10. Then TX1 updates the row to value 20, and then TX2 updates the same row to 15 and commits. Which means the update made by TX1 is simply lost.
 
-![[Pasted image 20241201163317.png]]
+![](Pasted%20image%2020241201163317.png)
 
 #### Isolation Levels For Inflight Transactions
 
@@ -115,7 +115,7 @@ There are two types of consistency,
 
 This of consistency basically means that whether the data within a cluster is consistent or not, i.e. it is consistent with the data model defined by the user. Below are the factors affecting the consistency in data,
 * **Referential Integrity (Foreign Keys):** If the table has foreign keys, then when a records is deleted, then all records referencing this record must also be deleted, or at least change accordingly. Otherwise, the data will simply be inconsistent, for example look at the two tables below, can you find the inconsistencies?.
-![[Pasted image 20241212100313.png | centre]]
+![ centre](Pasted%20image%2020241212100313.png)
 * **Atomicity:** The transactions must be atomic in nature i.e. either all of the queries execute, or none of them execute, if the queries executed partially and then transaction ended, then the data will simply become corrupt.
 * **Isolation:** Depending on the isolation level, we may get inconsistent data i.e. phantom reads, lost updates etc.
 

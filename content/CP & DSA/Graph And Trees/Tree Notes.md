@@ -163,11 +163,11 @@ Here we have to first find center of the tree as shown above, then we have 2 cas
 
 1. If there is only one center then the diameter is even. So we will go to every child of center and then find number of vertices at distance $(\frac d2) - 1$​ where $d$ is diameter. In dfs we can pass center as parent so that child dfs doesn't reach other child nodes.
 
-   ![[image-20240530214005178.png | center]]
+   ![ center](image-20240530214005178.png)
 
 2. The second case is when the diameter is odd, there there are $2$ centers lets call them $c1$ and $c2$. Then the number of diameters will be number of vertices at distance $\lfloor \frac d2 \rfloor$ from $c1$ multiplied with nodes at distance $\lfloor \frac d2 \rfloor$ from $c2$. For center $c1$ we can pass parent as $c2$ so that dfs doesn't go into $c2's$​ sub tree and vice versa.
 
-![[image-20240530220231243.png | center]]
+![ center](image-20240530220231243.png)
 
 Below is the implementation of this solution.
 

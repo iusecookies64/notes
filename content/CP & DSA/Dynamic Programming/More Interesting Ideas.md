@@ -105,7 +105,7 @@ Time complexity of above approach is $O(n * m * 2^m)$.
 
 **Solution 2:** This an optimised solution to the above problem. Here we use dp state `rec(int i, int matched)` which returns number of valid starting index $i$ if $matched$ is the maximum length of prefix of banned string that matches the suffix of placed items. Now lets say if current $matched$ is $2$ which means $01$ have been matched, now if we place $0$ at current position then we will move to state `rec(i+1, matched+1)`, but if we place $1$ then we move to `rec(i+1, 0)`. Deciding on maximum length prefix matched based on what character we place is classical string problem that can be solved efficiently using **KMP Algorithm**. But for now lets hard code this, what we want is a directed graph structure where nodes will be the length of prefix matched and for each character that we can place i.e $0$ or $1$, we will have edges to nodes where we reach. For string $0100$ this graph looks something like the figure shown below.
 
-![[Pasted image 20240814153203.png | center]]
+![ center](Pasted%20image%2020240814153203.png)
 
 Although we have hard coded the graph here, but generating a graph like above using code is possible using **KMP**.
 
@@ -135,13 +135,13 @@ int rec(int i, int matched)
 
 Triangulating a polygon simply means dividing it into multiple regions using its diagonals such that each region is a triangle. For example look at the polygon below, and two of the many ways to triangulate it.
 
-![[Pasted image 20240815104241.png | center]]
+![ center](Pasted%20image%2020240815104241.png)
 
 **Problem:** Given coordinates of a N-Gon ($n$ sided polygon) in clockwise order. We need to find the minimum cost of triangulating the polygon if cost of making a diagonal is $sin(length)$.
 
 **Solution:** It seems hard to even think of formulating such a problem using dp. We will use a dp state `rec(int l, int r)` which gives the min cost of triangulating polygon made by vertices in range $(l, r)$. Now for transition we will consider line segment $l$ to $r$ (if $l$ and $r$ are not adjacent we consider cost of diagonal joining $l$ and $r$ to be already included previously) as base of a triangle and loop over all possible third vertices $x$ i.e vertices in range $x \in [l+1, r-1]$, then if we make a triangle $l, x, r$, then cost of triangulating whole polygon is `rec(l, x) + rec(x, r) + sin(len(l, x)) + sin(len(x, r))`. The diagram for this transition is shown below.
 
-![[Pasted image 20240815111907.png | center]]
+![ center](Pasted%20image%2020240815111907.png)
 
 ```c++
 vector<pair<int, int>> p;
@@ -501,7 +501,7 @@ void rec(int i, int j) {
 
 The second idea that will help use to make sure that we only choose $k$ integers is that every choice of solution with $k$ integers can be mapped to a solution with any number of integers but the maximum value $<= k$, for example consider solution $\{1, 3, 5\}$ for $N = 9$ and $K = 3$, if we write each of the value as bunch of $1$'s we will get something shown in the figure below.
 
-![[Pasted image 20240818181315.png | center]]
+![ center](Pasted%20image%2020240818181315.png)
 
 Hence choosing $k$ integers is same as generating a solution in which each value is $\leq k$  which is simple to solve with our state. Also we have to solve for `rec(n-k,k)` since we need to keep $k$ $1's$ separately since it might happen that in our solution none of the values is equal to $k$ in which case when distributing the answer into $k$ values we will get some of the values as $0$, hence we keep $k$ $1's$ separately to give to every item later.
 

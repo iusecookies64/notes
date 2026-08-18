@@ -627,11 +627,11 @@ This algorithm is also single source shortest path algorithm. This works in case
 
 Below is a dry run for the algorithm, here we can see that initially `distance[source] = 0`, and for other nodes distance of other nodes is infinity. After iteration 2 we have distances for all nodes, but for the -ve weight cycle, in further iterations they still will get relaxed and give smaller and smaller results.
 
-![[image-20240524173959243.png | center | 400]]
+![ center | 400](image-20240524173959243.png)
 
-![[image-20240524174204824.png | center | 400]]
+![ center | 400](image-20240524174204824.png)
 
-![[image-20240524174442631.png | center | 400]]
+![ center | 400](image-20240524174442631.png)
 
 Time complexity of this algorithm is O(v * e) which in very dense graph will be O(v^3).
 

@@ -28,7 +28,7 @@ long long getNCR(long long n, long long r)
 #### Method 2 (Pascals Triangle Method)
 The second method is to use pascal triangle law to pre-compute values of $^nC_r$ i.e using the law $^nC_r = ^{n-1}C_r + ^{n-1}C_{r-1}$. This method works for $n \leq 4000$ and lets us calculate the value of $^nC_r$ mod $P$ where $P$ can be positive integer (not necessarily a prime number). This is because we are not longer dividing to calculate the value, we are just adding.
 
-![[Pasted image 20240908172617.png | center]]
+![ center](Pasted%20image%2020240908172617.png)
 
 ```c++
 typedef long long ll;
@@ -89,7 +89,7 @@ $$\newline\sum^{m=n}_{m=k} \binom mk = \binom kk + \binom {k+1}k + \binom {k+2}k
 
 **The Reason** this formula is called hockey stick formula is because its representation in pascals triangle looks like a hockey stick.
 
-![[Pasted image 20240907143335.png | center]]
+![ center](Pasted%20image%2020240907143335.png)
 
 #### Vandermonde's Identity
 It gives a formula to calculate the number of ways to select $k$ items out of $n + m$ items i.e $\binom {n+m}k$ and it goes by,
@@ -105,7 +105,7 @@ $$\newline\sum_{i=0}^{n} \binom ni^2 = \binom {2n}{n}\newline$$
 #### Solutions Of Unit Coefficient Linear Equation
 Lets say we need to find the number of solutions to the equation $x_1 + x_2 + \dots + x_k = R$ where $R$ and $x_i \geq 0$ is a non-negative integer, then the number of solutions are equal to $\binom {R + k - 1}{k-1}$. The proof for this is simple, we take $R$ balls and $k-1$ dividers, then we arrange the dividers and balls, the dividers create $k$ partitions and the count of balls in $ith$ partition we assign to $x_i$ and adding all of the $x_i$ gives a total equal to number of balls which is $R$ i.e this gives us a solution. Hence number of solutions is simply number of ways to arrange $R$ identical balls and $k-1$ dividers.
 
-![[Pasted image 20240908173508.png | center]]
+![ center](Pasted%20image%2020240908173508.png)
 
 The problem can be restated as number of ways to divide $R$ identical items into $k$ groups.
 
@@ -118,7 +118,7 @@ $$\newline\sum _{i=0}^{n/2} \binom {n-i}{i} = Fib(n+1)\newline$$
 
 Visually this looks something like this,
 
-![[Pasted image 20240908174826.png | center]]
+![ center](Pasted%20image%2020240908174826.png)
 #### Lucas Theorem
 This theorem helps us in finding the value of $\binom nr$ mod $p$  and is given by,
 
@@ -146,11 +146,11 @@ $$\newline C_{n+1} = \sum_{i=0}^n C_iC_{n-i}, \forall \hspace{1mm} n >= 0 \hspac
 #### Number Of Paths Not Crossing Diagonal
 We need to find the number of paths from point $(0,0)$ to $(n, n)$ such that the path always stays below the diagonal (never crosses it). For more understanding consider the following diagram.
 
-![[Pasted image 20240908215601.png | center]]
+![ center](Pasted%20image%2020240908215601.png)
 
 Now to count every invalid path we can do a need little trick which is to rotate the path about the diagonal above the main diagonal *at points* where the invalid path intersects the diagonal, and each time these invalid diagonal end up at the point $(n-1, n+1)$. For example consider the invalid path in the above diagram, and if we rotate the path about the above diagonal we see that this path also ends up at the point $(n-1, n+1)$.
 
-![[Pasted image 20240908221512.png | center]]
+![ center](Pasted%20image%2020240908221512.png)
 
 Hence to the number of ways would be total number of ways subtracted from invalid number of ways.
 
@@ -167,7 +167,7 @@ which is basically the formula for $nth$ Catalan number.
 #### Number of Ways To Triangulate Convex Polygon
 The problem of counting the number of ways to triangulate a convex polygon let $f(n)$ give the number of ways for $n$ sided polygon, clearly $f(2) = f(3) = 1$. For $n \gt 3$ we consider a the following process, we will choose a side as base, in the final answer this side will be base of some triangle, for reference look at the diagram below.
 
-![[Pasted image 20240908231843.png | center]]
+![ center](Pasted%20image%2020240908231843.png)
 
 Hence if the polygon has $n$ sides, then after choosing a triangle like above we divide the polygon in two polygons. The number of sides of these polygons range from $[2, n-1]$ if one polygon has $i$ sides then other side will have $n + 1 - i$ sides where $i \in [2, n-1]$. Hence we have 
 
@@ -181,7 +181,7 @@ We need to count the number of rooted binary trees that can be made with $n$ nod
 #### Number of Non-Intersecting Handshakes
 Consider that $2n$ persons are sitting at a circular table and we need to count the number of simultaneous handshakes possible such that no arms cross each other. For example consider the example of $6$ people shown below.
 
-![[Pasted image 20240908235638.png | center]]
+![ center](Pasted%20image%2020240908235638.png)
 
 There are $5$ valid handshakes for $6$ persons which is equal to $C_3$. To solve this problem lets say there are $n$ pairs and we simply choose a pair of person, which divides the table in two halves such that on either side there are anywhere from $0$ to $n-1$ pairs. If there are $i$ pairs on one side then there will $n - 1 - i$ pairs on the other side which is again same as Catalan number.
 

@@ -30,7 +30,7 @@ int maxHappiness(int chosen, int indx) {
 In the type we have to generate the best permutation or count number of valid permutations based on the conditions given in the problem. Here the state is generally $dp(lastElement, mask)$ where $mask$ is of elements that already went into permutation and $lastElement$ is the last element that went into the permutation. Lets understand this with a famous problem.
 
 **Hamiltonian Walk Problem:** given a graph, we need to count number of *hamiltonian* walks that start at node $1$ and end at node $n$ ($n \leq 20$). A hamiltonian walk is one in which every node is visited exactly once. For example look at the graph below, one of the possible hamiltonian walks are shown by orange path. 
-![[Pasted image 20240827221809.png | center]]
+![ center](Pasted%20image%2020240827221809.png)
 
 **Approach:** Here a dp state $dp(node, mask)$ that returns the number of hamiltonian walks from $node$ to $n$, where $mask$ is of nodes that we have visited. For transition here we go over all adjacent nodes of $node$ and if they are unvisited we explore the path and add its returns value to our answer. Base case is when we reach node $n$, if at this point every node is visited then we return $1$ or else we return $0$. For easy implementation we change graph to $0$ base indexed i.e nodes are from $0$ to $n-1$.
 
@@ -164,7 +164,7 @@ int rec(int mask) {
 Consider a problem where there is an $n \times n$ grid and we need to tile this grid completely using $2\times1$ rectangular tiles, the tiles can be placed vertically or horizontally. We need to find number of ways to do this task.
 **Approach** In such problems we can use profile dp with bitmask. Each tile we represent by its end and when we are at cell $(i,j)$ we choose to place end of a $2\times1$ tile here, if we place horizontally then the cell to left will also get filled and if we place vertically then cell above will also get filled, hence we need information about cell to left and cell above to know what ways we can place tile in current cell.
 
-![[Pasted image 20240828000351.png | center | 700]]
+![ center | 700](Pasted%20image%2020240828000351.png)
 
 **Dp State:** Here a bitmask where $0$ represents empty cell and $1$ represents filled cell can be used, we will store bitmask of cells starting from cell above to the cell to left of current cell this will require $n$ bits (as shown in the figure above, only part of square grid is shown and not the whole grid). Now since cell above is empty then we must put the tile vertically as that is the only way to fill that cell. If above cell is filled then we have two choice if cell to left is not filled then we can place tile horizontally or else we cannot place any tile (tile end) in this cell and continue. Moving to next state is simply left shifting the mask and adding configuration of current cell. Final sub problem will be when row is $n$ and $mask$ is $(1<<n)-1$ i.e we move out of grid and last row is completely filled.
 
