@@ -1,8 +1,4 @@
 
-# Comprehensive Study Notes: Central Banking, Monetary Systems & Financial Intermediation
-
----
-
 ## 1. Money, Central Banking, and Money Market Instruments
 
 Money serves as the fundamental coordination mechanism in an exchange economy, resolving the classical **double coincidence of wants** problem inherent in barter systems (where exchange requires two parties to simultaneously desire what the other possesses).
@@ -21,8 +17,8 @@ Money serves as the fundamental coordination mechanism in an exchange economy, r
 | Eliminates       |         | Standardized common|         | Preserves          |
 | barter; reduces  |         | denominator for    |         | purchasing power   |
 | transaction      |         | pricing goods,     |         | and economic       |
-| costs[cite: 2]. |         | services, & debt   |         | liquidity over     |
-|                  |         |[cite: 2].         |         | time[cite: 2].    |
+| costs[cite: 2].  |         | services, & debt   |         | liquidity over     |
+|                  |         |[cite: 2].          |         | time[cite: 2].     |
 +------------------+         +--------------------+         +--------------------+
 
 ```
@@ -91,15 +87,15 @@ Where:
           +------------------------------+------------------------------+
           |                                                             |
           v                                                             v
-+------------------------------------+        +------------------------------------+
-| THE MONETARIST PERSPECTIVE         |        | THE KEYNESIAN PERSPECTIVE          |
-| (Direct Transmission Channel)      |        | (Indirect Transmission Channel)    |
-| ΔMs ===> ΔGDP (Nominal Output)     |        | ΔMs ===> ΔInterest Rates (r)       |
++-------------------------------------+        +------------------------------------+
+| THE MONETARIST PERSPECTIVE          |        | THE KEYNESIAN PERSPECTIVE          |
+| (Direct Transmission Channel)       |        | (Indirect Transmission Channel)    |
+| ΔMs ===> ΔGDP (Nominal Output)      |        | ΔMs ===> ΔInterest Rates (r)       |
 | If real output (RO) operates at full|        |    ===> ΔInvestment & Consumption  |
-| capacity, any increase in Ms flows |        |    ===> ΔAggregate Demand & GDP    |
-| directly into the Price Level (PL) |        |   [cite: 2].                      |
-| (Inflation)[cite: 2].             |        |                                    |
-+------------------------------------+        +------------------------------------+
+| capacity, any increase in Ms flows  |        |    ===> ΔAggregate Demand & GDP    |
+| directly into the Price Level (PL)  |        |   [cite: 2].                       |
+| (Inflation)[cite: 2].               |        |                                    |
++-------------------------------------+        +------------------------------------+
 
 ```
 
