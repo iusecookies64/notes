@@ -1,0 +1,8 @@
+{
+  "promptDelete": false,
+  "spellcheck": true,
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "./",
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative"
+}

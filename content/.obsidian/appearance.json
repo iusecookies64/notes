@@ -1,0 +1,12 @@
+{
+  "cssTheme": "Ukiyo",
+  "theme": "obsidian",
+  "accentColor": "#c44ce6",
+  "baseFontSize": 18,
+  "textFontFamily": "JetBrains Mono,SN Pro",
+  "monospaceFontFamily": "JetBrains Mono,SN Pro",
+  "interfaceFontFamily": "JetBrains Mono,SN Pro",
+  "enabledCssSnippets": [
+    "my-custom"
+  ]
+}
