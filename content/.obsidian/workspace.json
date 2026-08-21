@@ -13,30 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MSC DSAI/Trimester 3/Natural Language Processing/03. POS and NER.md",
+                "file": "MSC DSAI/Trimester 3/Natural Language Processing/10. Text Classification.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03. POS and NER"
-            }
-          },
-          {
-            "id": "dfc4f3155dbd3c3f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mathematics/Probability and Statistics/Introduction to Probability (STAT110)/02. Conditional Probability.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "02. Conditional Probability"
+              "title": "10. Text Classification"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -70,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "20250104",
+                "query": "Stopword",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -197,17 +182,22 @@
       "bases:Create new base": false
     }
   },
-  "active": "dfc4f3155dbd3c3f",
+  "active": "66c712a38f72b987",
   "lastOpenFiles": [
+    "MSC DSAI/Trimester 3/Natural Language Processing/09. Natural Language Understanding With BERT.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/10. Text Classification.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/08. The Transformer Revolution.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/07. Sequential Modelling - The RNN Era.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/06. Modern Word Embedding.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/05. Traditional Word Embedding.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/03. POS and NER.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/02. Text Preprocessing and Cleaning.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/01. Introduction to NLP and Necessary Linguistics.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/04. Text Corpora and Corpus Linguistics.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/04. Text Corpora and Corpus Linguistics.md",
     "Mathematics/Probability and Statistics/Introduction to Probability (STAT110)/02. Conditional Probability.md",
     "Mathematics/Probability and Statistics/Introduction to Probability (STAT110)/Pasted image 20260820101318.png",
     "Mathematics/Probability and Statistics/Introduction to Probability (STAT110)/01. Probability and Counting.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/04. Text Corpora and Corpus Linguistics.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/06. Modern Word Embedding.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/05. Traditional Word Embedding.md",
     "MSC DSAI/Trimester 3/Untitled.md",
     "MSC DSAI/Trimester 3/Natural Language Processing",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/PDF Notes Links.md",
@@ -239,10 +229,6 @@
     "CP & DSA/Disjoint Set Union/DSU Notes.md",
     "Pasted image 20250115083903.png",
     "Pasted image 20250920135026.png",
-    "MSC DSAI/Trimester 3/Introduction Finance/Week 3 - Types of Financial Securities.md",
-    "MSC DSAI/Trimester 3/Introduction Finance/Week 4 - Functions and Workings of Secondary Markets.md",
-    "MSC DSAI/Trimester 3/Introduction Finance/Week 5 - Equity Portfolio Management I.md",
-    "MSC DSAI/Trimester 3/ML Model Engineering/Week 9 - Feature Engineering and Feature Stores.md",
-    "MSC DSAI/Trimester 3/ML Model Engineering/Week 8 - Trade-offs and Product Considerations.md"
+    "MSC DSAI/Trimester 3/Introduction Finance/Week 3 - Types of Financial Securities.md"
   ]
 }
