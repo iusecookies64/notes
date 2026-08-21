@@ -7,6 +7,9 @@
   "monospaceFontFamily": "JetBrains Mono,SN Pro",
   "interfaceFontFamily": "JetBrains Mono,SN Pro",
   "enabledCssSnippets": [
-    "my-custom"
+    "my-custom",
+    "hide_images_explorer",
+    "code_block_nowrap",
+    "centered_images"
   ]
 }

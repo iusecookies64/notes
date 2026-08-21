@@ -1,0 +1,9 @@
+/* Hide Images from the explorer */
+
+div[data-path$='.png'], 
+div[data-path$='.jpg'], 
+div[data-path$='.jpeg'], 
+div[data-path$='.webp'],
+div[data-path$='.gif'] { 
+    display: none !important; 
+}
