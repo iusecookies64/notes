@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MSC DSAI/Trimester 3/Natural Language Processing/06. Modern Word Embedding.md",
+                "file": "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/01. Big Data Constraints And Scaling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "06. Modern Word Embedding"
+              "title": "01. Big Data Constraints And Scaling"
             }
           }
         ]
@@ -184,16 +184,21 @@
   },
   "active": "66c712a38f72b987",
   "lastOpenFiles": [
+    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/03. The MapReduce Programming Model.md",
+    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/01. Big Data Constraints And Scaling.md",
+    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/02. Distributed System Challenges.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/07. Sequential Modelling - The RNN Era.md",
+    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics",
+    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/06. Modern Word Embedding.md",
     "Mathematics/Probability and Statistics/02. Conditional Probability.md",
     "Mathematics/Probability and Statistics/01. Probability and Counting.md",
     "Mathematics/Probability and Statistics/01. Probability and Counting-1786939573014.webp",
-    "MSC DSAI/Trimester 3/Natural Language Processing/06. Modern Word Embedding.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/10. Text Classification.md",
     "Miscellaneous/Markdown Features.md",
     "Mathematics/Probability and Statistics/Pasted image 20260822093327.png",
     "MSC DSAI/Trimester 3/Natural Language Processing/09. Natural Language Understanding With BERT.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/08. The Transformer Revolution.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/07. Sequential Modelling - The RNN Era.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/05. Traditional Word Embedding.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/03. POS and NER.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/02. Text Preprocessing and Cleaning.md",
@@ -201,7 +206,6 @@
     "MSC DSAI/Trimester 3/Natural Language Processing/04. Text Corpora and Corpus Linguistics.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/04. Text Corpora and Corpus Linguistics.md",
     "Mathematics/Probability and Statistics/Pasted image 20260820101318.png",
-    "MSC DSAI/Trimester 3/Untitled.md",
     "MSC DSAI/Trimester 3/Natural Language Processing",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/PDF Notes Links.md",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week13_Retention_Notes.pdf",
@@ -212,7 +216,6 @@
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week8_Retention_Notes.pdf",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week7_Retention_Notes.pdf",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week6_Retention_Notes.pdf",
-    "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week5_Retention_Notes.pdf",
     "Mathematics/Probability and Statistics/01. Probability and Counting-1786979394933.webp",
     "Mathematics/Probability and Statistics/Pasted image 20260817090750.png",
     "Mathematics/Probability and Statistics/regression_towards_the_mean.png",
@@ -226,8 +229,6 @@
     "Pasted image 20250104154439.png",
     "Core CS/Computer Organization and Architecture/Nand2Tetris (Part I)/1. Boolean Logic And Logic Gates.md",
     "CP & DSA/Dynamic Programming/More Interesting Ideas.md",
-    "CP & DSA/Dynamic Programming/Dp With Bitmasking.md",
-    "CP & DSA/Dynamic Programming/Basic DP Forms.md",
-    "CP & DSA/Disjoint Set Union/DSU Notes.md"
+    "CP & DSA/Dynamic Programming/Dp With Bitmasking.md"
   ]
 }
