@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "3aca8f106dad8c9d",
+        "id": "b98978c1f58f4fe2",
         "type": "tabs",
         "children": [
           {
-            "id": "7ac1a5259e0b9c5f",
+            "id": "fdf063ed98e36261",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MSC DSAI/Trimester 3/Fundamentals of Finance/Week 3 - Types of Financial Securities.md",
+                "file": "MSC DSAI/Trimester 3/Fundamentals of Finance/Week 9 - Derivatives, Pricing, Strategies and Risk Management I.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Week 3 - Types of Financial Securities"
+              "title": "Week 9 - Derivatives, Pricing, Strategies and Risk Management I"
             }
           }
         ]
@@ -182,8 +182,25 @@
       "bases:Create new base": false
     }
   },
-  "active": "7ac1a5259e0b9c5f",
+  "active": "fdf063ed98e36261",
   "lastOpenFiles": [
+    "MSC DSAI/Trimester 3/Fundamentals of Finance/Week 10 - Derivatives, Pricing, Strategies and Risk Management II.md",
+    "MSC DSAI/Trimester 3/Fundamentals of Finance/Week 9 - Derivatives, Pricing, Strategies and Risk Management I.md",
+    "MSC DSAI/Trimester 3/Fundamentals of Finance/09. Derivatives - Pricing, Strategies and Risk Management.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/06. Modern Word Embedding.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/05. Traditional Word Embedding.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/04. Text Corpora and Corpus Linguistics.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/03. POS and NER.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/02. Text Preprocessing and Cleaning.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/01. Introduction to NLP and Necessary Linguistics.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/07. Sequential Modelling - The RNN Era.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/08. The Transformer Revolution.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/09. Natural Language Understanding With BERT.md",
+    "MSC DSAI/Trimester 3/Natural Language Processing/10. Text Classification.md",
+    "MSC DSAI/Trimester 3/Fundamentals of Finance/Week 5 - Equity Portfolio Management I.md",
+    "MSC DSAI/Trimester 3/Fundamentals of Finance/Week 4 - Functions and Workings of Secondary Markets.md",
+    "MSC DSAI/Trimester 3/Fundamentals of Finance/Week 3 - Types of Financial Securities.md",
+    "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week1_Retention_Notes.pdf",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/Week 2 - Central Banks, Comercial Banks and Investment Banks.md",
     "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/11. Distributed ML I - Concepts and Algorithms.md",
     "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/10. Data Partitioning II - Optimization and Skew.md",
@@ -194,25 +211,9 @@
     "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/12. Distributed ML II - Architectures (TensorFlow).md",
     "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/06. Spark Core II (Execution Model).md",
     "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/05. Spark Core I (RDD Fundamentals).md",
-    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/04. Batch Processing Architectures - Hadoop Vs Spark.md",
-    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/03. The MapReduce Programming Model.md",
-    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/02. Distributed System Challenges.md",
-    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics/01. Big Data Constraints And Scaling.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/07. Sequential Modelling - The RNN Era.md",
     "MSC DSAI/Trimester 3/Big Data Platforms And Analytics",
-    "MSC DSAI/Trimester 3/Big Data Platforms And Analytics.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/06. Modern Word Embedding.md",
-    "Mathematics/Probability and Statistics/02. Conditional Probability.md",
-    "Mathematics/Probability and Statistics/01. Probability and Counting.md",
     "Mathematics/Probability and Statistics/01. Probability and Counting-1786939573014.webp",
-    "MSC DSAI/Trimester 3/Natural Language Processing/10. Text Classification.md",
-    "Miscellaneous/Markdown Features.md",
     "Mathematics/Probability and Statistics/Pasted image 20260822093327.png",
-    "MSC DSAI/Trimester 3/Natural Language Processing/09. Natural Language Understanding With BERT.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/08. The Transformer Revolution.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/05. Traditional Word Embedding.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/03. POS and NER.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/02. Text Preprocessing and Cleaning.md",
     "Mathematics/Probability and Statistics/Pasted image 20260820101318.png",
     "MSC DSAI/Trimester 3/Natural Language Processing",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week13_Retention_Notes.pdf",
@@ -222,7 +223,6 @@
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week9_Retention_Notes.pdf",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week8_Retention_Notes.pdf",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week7_Retention_Notes.pdf",
-    "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week6_Retention_Notes.pdf",
     "Mathematics/Probability and Statistics/01. Probability and Counting-1786979394933.webp",
     "Mathematics/Probability and Statistics/Pasted image 20260817090750.png",
     "Mathematics/Probability and Statistics/regression_towards_the_mean.png",

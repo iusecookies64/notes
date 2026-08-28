@@ -237,43 +237,23 @@ $$Y_{\text{equivalent}} = \frac{Y_{\text{muni}}}{1 - t}$$
 
 Corporate bonds feature distinct contractual covenants and claims:
 
-  
-
 - **Secured Bonds:** Backed by specific tangible assets or collateral (e.g., real estate, machinery, rolling stock). If default occurs, asset proceeds settle the claim.
-    
-      
     
 - **Debentures:** Unsecured debt backed solely by the general creditworthiness and operating cash flows of the issuing corporation.
     
-      
-    
 - **Subordinated Debt:** Junior debentures ranking below senior debt instruments in liquidation priority, commanding higher yields.
-    
-      
     
 - **Callable Bonds:** Grants the issuer the contractual right to redeem ("call") the bond before maturity at a preset call price. Issuers exercise call options when market interest rates fall, allowing them to refinance at lower rates. Investors bear **Reinvestment Risk** and demand a higher yield.
     
-      
-    
 - **Convertible Bonds:** Grants the investor the right to convert the bond into a specified number of common shares at a set conversion ratio. Because investors gain equity upside exposure, convertibles carry lower coupon yields than standard debt.
-    
-      
-    
 
 ### Mortgages and Mortgage-Backed Securities (MBS)
 
 A mortgage is an amortizing loan secured by residential or commercial real property.
 
-  
-
 - **Fixed-Rate Mortgage:** The interest rate and monthly payment remain fixed across the term (e.g., 15 or 30 years).
     
-      
-    
 - **Adjustable-Rate Mortgage (ARM):** The interest rate resets periodically based on a benchmark index (e.g., SOFR, Treasury yield) plus a fixed margin.
-    
-      
-    
 
 #### The Securitization Pipeline and Pass-Through Securities
 
@@ -289,30 +269,20 @@ A mortgage is an amortizing loan secured by residential or commercial real prope
 
 Securitization bundles thousands of illiquid, individual mortgages into a singular, liquid security known as a **Mortgage-Backed Security (MBS)**. Cash flows generated from monthly homeowner principal and interest payments pass through directly to MBS investors.
 
-  
-
 #### Prepayment Risk
 
 Unlike standard Treasuries with fixed bullet maturities, mortgages carry embedded prepayment options:
 
-  
-
 - **Falling Interest Rates:** Homeowners refinance mortgages at lower prevailing rates. Principal is returned prematurely to the MBS investor, forcing them to reinvest the returned capital in lower-yielding assets (**Contraction Risk**).
     
-      
-    
 - **Rising Interest Rates:** Homeowners delay moving or refinancing. The expected maturity of the MBS lengthens precisely when investors prefer to redeploy capital at higher yields (**Extension Risk**).
-    
-      
-    
 
+---
 ## 3. Financial Derivatives: Futures Contracts
 
 ### First Principles of Derivatives
 
 A derivative is a financial contract whose economic value is derived entirely from the price movement of an underlying asset:
-
-  
 
 ```
    ┌────────────────────────────────────────┐
@@ -331,45 +301,25 @@ A derivative is a financial contract whose economic value is derived entirely fr
 
 The three primary economic functions of derivatives are:
 
-  
-
 - **Hedging:** Eliminating price risk by locking in future transaction costs or sales revenues, transferring volatility off the balance sheet.
-    
-      
     
 - **Speculation:** Deploying capital based on directional market views, providing necessary risk absorption and liquidity to the financial system.
     
-      
-    
 - **Price Discovery:** Aggregating global market expectations efficiently, allowing derivative prices to lead physical spot market valuations at low transaction costs.
-    
-      
-    
-
+ 
 ### The Futures Contract Defined
 
 A **Futures Contract** is a standardized, legally binding obligation between two parties to buy or sell a specified quantity and grade of an underlying asset at a predetermined price (the futures price) on a specified future settlement date.
 
-  
-
 - **Obligation vs. Right:** Both parties are legally bound. The long position **must** purchase the asset; the short position **must** deliver/sell the asset. There is no optionality.
-    
-      
-    
+     
 - **Standardization:** Contract parameters—including lot size, delivery dates, quality specifications, and tick increments—are strictly fixed by the exchange (e.g., NSE, CME).
-    
-      
-    
+     
 - **Exit Mechanism:** Market participants close out their obligations prior to expiration by executing an offsetting or reversing trade (e.g., selling an identical contract previously bought). Most exchange contracts settle financially via cash rather than physical delivery.
-    
-      
-    
-
+ 
 ### Clearinghouse Architecture and Risk Mitigation
 
 To prevent counterparty default risk across millions of daily trades, the clearinghouse operates as a central counterparty (CCP) using a mechanism called **novation**:
-
-  
 
 ```
                          [Without Clearinghouse]
@@ -386,44 +336,25 @@ To prevent counterparty default risk across millions of daily trades, the cleari
 
 The CCP manages system risk through three layers:
 
-  
-
 1. **Initial Margin:** A mandatory upfront good-faith cash deposit (typically $3\text{ to }10\%$ of total notional exposure) required from both parties to open a leveraged position.
     
-      
-    
 2. **Mark-to-Market (MTM) Settlement:** Positions are revalued against daily settlement prices at the close of every trading session. Accrued profits are credited, and accrued losses are debited from the participant's margin account in real time, preventing uncollateralized losses from accumulating.
-    
-      
-    
+     
 3. **Clearinghouse Guarantee:** By stepping into every transaction as the buyer to every seller and the seller to every buyer, the clearinghouse absorbs individual member defaults without disrupting payouts to the winning counterparty.
-    
-      
-    
-
+ 
 ### Payoff Mathematics and Structural Asymmetry
 
 #### Mathematical Payoff Formulation
 
 Let:
 
-  
-
 - $F_0 = \text{Entry Futures Price}$
-    
-      
     
 - $S_T = \text{Final Settlement / Spot Price at Expiry}$
     
-      
-    
 - $Q = \text{Contract Multiplier / Lot Size}$
-    
-      
-    
 
 $$\text{Profit}_{\text{Long}} = (S_T - F_0) \times Q$$
-
 $$\text{Profit}_{\text{Short}} = (F_0 - S_T) \times Q$$
 
 ```
@@ -442,14 +373,9 @@ $$\text{Profit}_{\text{Short}} = (F_0 - S_T) \times Q$$
 ```
 
 - **Long Position (Buyer):** Enters an obligation to purchase. Profits linearly as $S_T > F_0$. Maximum gain is theoretically unlimited; maximum loss is capped only by $S_T = 0$.
-    
-      
-    
+     
 - **Short Position (Seller):** Enters an obligation to sell. Profits linearly as $S_T < F_0$. Maximum gain occurs if $S_T = 0$; maximum loss is theoretically unlimited.
-    
-      
-    
-
+ 
 ### Corporate Hedging Applications
 
 ```
@@ -482,17 +408,15 @@ $$\text{Profit}_{\text{Short}} = (F_0 - S_T) \times Q$$
 |**Risk Posture**|Risk-averse; pays to eliminate volatility|Risk-seeking; absorbs volatility for return|
 |**Liquidity Function**|Consumes exchange liquidity|Provides exchange liquidity to hedgers|
 
+---
+
 ## 4. Financial Derivatives: Options Contracts
 
 ### First Principles of Options and the Asymmetry of Optionality
 
 An **Option** is a derivative contract granting the buyer the legal **right, but not the obligation**, to buy or sell a specified quantity of an underlying asset at a predetermined price (**Strike Price**, $X$) on or before a specified date (**Expiration**, $T$).
 
-  
-
 For this unilateral right, the buyer pays a non-refundable upfront cash fee to the seller (**Writer**), known as the **Option Premium** ($P$).
-
-  
 
 ```
                       ┌─────────────────────────────────────────┐
@@ -517,34 +441,19 @@ For this unilateral right, the buyer pays a non-refundable upfront cash fee to t
 #### Call Option (Right to Buy)
 
 - **Buyer's Perspective:** Confers the right to buy the underlying at strike price $X$. Exercised only if the spot market price $S_T > X$.
-    
-      
-    
+     
 - **Intrinsic Value:**
-    
-      
-    
-    $$\text{IV}_{\text{Call}} = \max(0, S_t - X)$$
-    
-
+     $$\text{IV}_{\text{Call}} = \max(0, S_t - X)$$
+ 
 #### Put Option (Right to Sell)
 
 - **Buyer's Perspective:** Confers the right to sell the underlying at strike price $X$. Exercised only if the spot market price $S_T < X$.
     
-      
-    
 - **Intrinsic Value:**
-    
-      
-    
     $$\text{IV}_{\text{Put}} = \max(0, X - S_t)$$
-    
-
 #### Moneyness States
 
 The relationship between current spot price ($S$) and strike price ($X$) defines moneyness:
-
-  
 
 |**Moneyness State**|**Call Option (S vs. X)**|**Put Option (S vs. X)**|**Intrinsic Value Status**|
 |---|---|---|---|
@@ -555,8 +464,6 @@ The relationship between current spot price ($S$) and strike price ($X$) defines
 ### Determinants of Option Premiums
 
 An option's total premium consists of **Intrinsic Value** plus **Time Value**:
-
-  
 
 $$\text{Premium} = \text{Intrinsic Value} + \text{Time Value}$$
 
@@ -578,12 +485,7 @@ $$\text{Premium} = \text{Intrinsic Value} + \text{Time Value}$$
 
 1. **Time to Expiration ($T - t$):** Longer horizons increase the probability that market volatility will move the underlying into profitable territory. As expiration approaches, time value decays to zero—a dynamic known as **Theta Decay**.
     
-      
-    
 2. **Implied Volatility ($\sigma$):** Volatility widens the expected distribution of future asset prices. Because the option buyer's downside is capped at the premium while upside remains open, higher volatility increases option value for both calls and puts.
-    
-      
-    
 
 ### The Four Fundamental Payoff Profiles
 
@@ -627,17 +529,15 @@ $$\text{Premium} = \text{Intrinsic Value} + \text{Time Value}$$
 |**Settlement**|Daily margin for sellers; optionality held by buyer|Daily Mark-to-Market cash settlement for all|
 |**Payoff Geometry**|Non-linear, kinked payoff structures|Purely linear, direct 1-to-1 delta exposure|
 
+---
+
 ## 5. Collective Investment Vehicles: Mutual Funds and ETFs
 
 ### First Principles of Asset Pooling and Intermediation
 
 Small retail investors face significant structural barriers: limited capital, high relative transaction fees, lack of deep analytical capabilities, and an inability to achieve portfolio diversification across asset classes.
 
-  
-
 A **Mutual Fund** resolves these frictions through institutional pooling:
-
-  
 
 ```
     Retail Wallets                                            Diversified Portfolio
@@ -655,28 +555,15 @@ A **Mutual Fund** resolves these frictions through institutional pooling:
 
 The vehicle bridges five distinct economic gaps:
 
-  
-
 1. **Denomination Intermediation:** Aggregates small sums to purchase high-denomination securities (e.g., commercial paper or sovereign bonds).
-    
-      
     
 2. **Diversification:** Spreads capital across hundreds of individual holdings, eliminating non-systematic (company-specific) risk.
     
-      
-    
 3. **Liquidity Intermediation:** Enables investors to redeem units rapidly, even if the fund holds less liquid underlying securities.
-    
-      
     
 4. **Economies of Scale:** Reduces transaction costs, custodial fees, and research overhead on a per-unit basis.
     
-      
-    
 5. **Managerial Expertise:** Provides professional oversight, execution, and security selection.
-    
-      
-    
 
 ### Structural Mechanics: Open-End Funds vs. Closed-End Funds
 
@@ -684,37 +571,23 @@ The vehicle bridges five distinct economic gaps:
 
 - **Share Capital:** Variable and unlimited; units are issued or redeemed continuously on demand based on investor cash inflows and outflows.
     
-      
-    
 - **Pricing Engine:** Transacts exclusively once per day at the official market close **Net Asset Value (NAV)**. Units do not trade on public secondary exchanges.
-    
-      
-    
 
 #### Closed-End Funds
 
 - **Share Capital:** Fixed capital structure; issues a fixed number of shares via an Initial Public Offering (IPO) with no ongoing unit creation.
     
-      
-    
 - **Pricing Engine:** Listed and traded on secondary stock exchanges (e.g., NSE, NYSE) throughout the trading day. Market supply and demand cause the trading price to trade at a **Premium** or **Discount** relative to the underlying fund NAV.
-    
-      
-    
 
 #### Net Asset Value (NAV) Formulation
 
 Fund NAV represents the per-unit market value of all underlying assets net of accrued operational liabilities:
-
-  
-
+ 
 $$\text{NAV} = \frac{\text{Market Value of Assets} - \text{Total Liabilities}}{\text{Total Units Outstanding}}$$
 
 ### The Mechanics of Systematic Investment Plans (SIPs)
 
 A Systematic Investment Plan (SIP) automates periodic capital deployment (e.g., fixed monthly deductions). This structure introduces **Rupee-Cost Averaging**:
-
-  
 
 ```
                               ┌───────────────────────────┐
@@ -734,30 +607,17 @@ A Systematic Investment Plan (SIP) automates periodic capital deployment (e.g., 
 
 Rupee-cost averaging mathematically lowers the average purchase cost per unit over time relative to simple arithmetic market price averages, eliminating market timing errors.
 
-  
-
 ### Broad Mutual Fund Classifications
 
 - **Equity Funds:** Invest primarily in publicly traded stocks. Focused on long-term capital appreciation; carries higher market volatility.
     
-      
-    
 - **Debt / Fixed-Income Funds:** Invest in government securities, corporate debentures, and money market paper. Focuses on capital preservation and regular income generation.
-    
-      
     
 - **Hybrid Funds:** Blends debt and equity allocations dynamically or statically to balance capital growth with income stability.
     
-      
-    
 - **Money Market / Liquid Funds:** Invest in short-term instruments maturing in under 91 days, serving as an institutional cash surrogate.
     
-      
-    
 - **Index Funds:** Passive strategies designed to replicate the return profile of a target benchmark index (e.g., Nifty 50, S&P 500) at low expense ratios.
-    
-      
-    
 
 ### Exchange-Traded Funds (ETFs) and Alternative Investment Structures
 
@@ -775,28 +635,19 @@ Rupee-cost averaging mathematically lowers the average purchase cost per unit ov
 
 Lightly regulated collective investment vehicles restricted to accredited and institutional investors:
 
-  
-
 - **Unconstrained Mandates:** Free to deploy leverage, short sales, complex derivative structures, and illiquid unlisted equity.
-    
-      
     
 - **Compensation Structure:** Operates on the classic **"2 and 20"** model: a $2\%$ fixed annual management fee based on Assets Under Management (AUM), plus a $20\%$ performance fee on profits generated above a hurdle rate.
     
-      
-    
 - **Liquidity:** Enforces multi-year lock-up periods with limited quarterly or annual redemption windows.
-    
-      
-    
+
+---
 
 ## 6. Risk Management and Retirement Systems: Insurance and Pensions
 
 ### Economic Foundations of Insurance
 
 Insurance is a risk-transfer mechanism designed for **risk-averse** economic agents. It converts an uncertain, potentially catastrophic financial loss into a small, predictable, and certain periodic cash outlay: the **Premium**.
-
-  
 
 ```
     Individual Loss Exposures                                    Calculable Group Risk
@@ -810,8 +661,6 @@ Insurance is a risk-transfer mechanism designed for **risk-averse** economic age
 ```
 
 By pooling large numbers of independent, uncorrelated risk exposures, the insurer relies on the **Law of Large Numbers**: the aggregate empirical loss converges toward the actuarially expected mathematical loss, enabling accurate premium pricing.
-
-  
 
 ### The Six Foundational Principles of Insurance Contracts
 
@@ -836,30 +685,17 @@ By pooling large numbers of independent, uncorrelated risk exposures, the insure
 ```
 
 1. **Insurable Interest:** The policyholder must have a direct, verifiable financial stake in the preservation of the insured person or asset. An economic loss must be sustained if the asset is damaged or the individual dies.
-    
-      
-    
+     
 2. **Utmost Good Faith (_Uberrima Fides_):** Both parties must fully and honestly disclose all material information. Withholding or misrepresenting health conditions or asset risks voids the contract.
     
-      
-    
-3. **Principle of Indemnity:** The insurer compensates the policyholder only to the extent of the actual financial loss incurred, restoring the insured to their prior financial state. The policyholder cannot profit from a claim payout.
-    
-      
-    
+ 3. **Principle of Indemnity:** The insurer compensates the policyholder only to the extent of the actual financial loss incurred, restoring the insured to their prior financial state. The policyholder cannot profit from a claim payout.
+     
 4. **Subrogation:** Upon settling an indemnity claim, the insurer legally assumes all rights of the insured to pursue recovery from any negligent third party responsible for the loss, preventing double recovery by the insured.
-    
-      
-    
+     
 5. **Risk Pooling:** Spreads losses over thousands of policyholders, ensuring individual claims are absorbed smoothly by collected premiums.
-    
-      
-    
+     
 6. **Calculability / Measurability:** Insured events must have quantifiable financial values and statistically estimable probabilities of occurrence to allow accurate actuarial pricing.
-    
-      
-    
-
+ 
 ### Life Insurance vs. Property and Casualty (P&C) Insurance
 
 |**Characteristic**|**Life Insurance**|**Property & Casualty (P&C) / General**|
@@ -889,20 +725,11 @@ By pooling large numbers of independent, uncorrelated risk exposures, the insure
 
 Pensions are contractual asset accumulation mechanisms designed to fund post-employment consumption. Global pension growth is driven by structural shifts:
 
-  
-
 - **Urbanization and Nuclearization:** The breakdown of traditional multi-generational family support structures requires formal financial self-reliance in retirement.
-    
-      
     
 - **Longevity Expansion:** Increasing life expectancy requires income coverage across retirement horizons that often span two to three decades.
     
-      
-    
 - **Earlier Retirement Patterns:** Corporate trends compress the prime earning window while extending the post-retirement consumption phase.
-    
-      
-    
 
 ### Structural Architectures: Defined Benefit vs. Defined Contribution
 
@@ -963,7 +790,5 @@ Pensions are contractual asset accumulation mechanisms designed to fund post-emp
 ```
 
 Insurance companies and pension funds act as key institutional intermediaries. Because liabilities (claim occurrences and retirement dates) are actuarially predictable and span decades, these institutions can hold long-dated, less liquid assets.
-
-  
 
 They channel institutional capital into sovereign bonds, private corporate debt, listed equities, and major infrastructure projects, providing stable non-bank capital that fuels long-term economic growth.
