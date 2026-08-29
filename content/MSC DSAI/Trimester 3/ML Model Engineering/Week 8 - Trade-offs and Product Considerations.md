@@ -1,4 +1,3 @@
-
 ## The 4-Way Production Trade-Off (Tug-of-War)
 
 Deploying machine learning models in production requires balancing competing system constraints rather than optimizing for raw offline accuracy alone. Production ML systems operate inside a continuous multi-dimensional trade-off between four primary forces: **Accuracy**, **Latency**, **Cost**, and **User Experience (UX)**.

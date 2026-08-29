@@ -166,8 +166,6 @@ Time value reflects the probability that the option will move further into the m
 
 An option trade has two complementary counterparties: the **Long Position (Buyer)** and the **Short Position (Seller/Writer)**.
 
-  
-
 ### Mathematical Definitions at Expiration ($T$)
 
 - **Long Call Payoff (Gross):**
