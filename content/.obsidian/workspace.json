@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MSC DSAI/Trimester 3/ML Model Engineering/Week 2 - Model Inferencing (Batch vs Online vs Streaming).md",
-                "mode": "preview",
+                "file": "MSC DSAI/Trimester 3/ML Model Engineering/Week 7 - Model Optimization and Standardization.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Week 2 - Model Inferencing (Batch vs Online vs Streaming)"
+              "title": "Week 7 - Model Optimization and Standardization"
             }
           }
         ]
@@ -184,14 +184,14 @@
   },
   "active": "a534e6cd27a7ed20",
   "lastOpenFiles": [
-    "MSC DSAI/Trimester 3/ML Model Engineering/Week 1 - Intro To ML Model Engineering and Lifecycle.md",
-    "MSC DSAI/Trimester 3/ML Model Engineering/Week 3 - Model Serving Patterns and Containerization.md",
-    "MSC DSAI/Trimester 3/ML Model Engineering/Week 4 - Deployment Pipelines and MLOps Basics.md",
-    "MSC DSAI/Trimester 3/ML Model Engineering/Week 2 - Model Inferencing (Batch vs Online vs Streaming).md",
-    "MSC DSAI/Trimester 3/ML Model Engineering/Week 5 - Monitoring and Observability for ML Systems.md",
     "MSC DSAI/Trimester 3/ML Model Engineering/Week 6 - Continuous Training and Retraining WorkflowsUntitled.md",
-    "MSC DSAI/Trimester 3/ML Model Engineering/Week 7 - Model Optimization and Standardization.md",
+    "MSC DSAI/Trimester 3/ML Model Engineering/Week 5 - Monitoring and Observability for ML Systems.md",
     "MSC DSAI/Trimester 3/ML Model Engineering/Week 8 - Trade-offs and Product Considerations.md",
+    "MSC DSAI/Trimester 3/ML Model Engineering/Week 7 - Model Optimization and Standardization.md",
+    "MSC DSAI/Trimester 3/ML Model Engineering/Week 4 - Deployment Pipelines and MLOps Basics.md",
+    "MSC DSAI/Trimester 3/ML Model Engineering/Week 3 - Model Serving Patterns and Containerization.md",
+    "MSC DSAI/Trimester 3/ML Model Engineering/Week 2 - Model Inferencing (Batch vs Online vs Streaming).md",
+    "MSC DSAI/Trimester 3/ML Model Engineering/Week 1 - Intro To ML Model Engineering and Lifecycle.md",
     "MSC DSAI/Trimester 3/ML Model Engineering/Week 9 - Feature Engineering and Feature Stores.md",
     "MSC DSAI/Trimester 3/ML Model Engineering/Week 10 - Data Engineering and Real-Time Pipelines for ML.md",
     "MSC DSAI/Trimester 3/ML Model Engineering/Week 11 - Security Compliance And Responsible AI.md",
