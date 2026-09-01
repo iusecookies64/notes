@@ -1,5 +1,3 @@
-# Production Feature Engineering & Feature Stores
-
 ## 1. The Transition: Notebooks to Production
 
 In standard machine learning experimentation, feature engineering is typically performed inside isolated notebooks using in-memory data structures (e.g., Pandas DataFrames) over static snapshots of data. Common notebook transformations include:

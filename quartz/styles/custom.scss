@@ -49,3 +49,17 @@
   table-layout: auto !important; /* Allows cells to size naturally based on content */
 }
 
+/* Scale down all MathJax equations to match the body text */
+mjx-container, .MathJax, .math {
+  font-size: 0.9em !important; 
+}
+
+/* Optional: Finely control inline math vs block math */
+span.math.inline mjx-container {
+  font-size: 0.88em !important;
+}
+
+div.math.display mjx-container {
+  font-size: 0.95em !important;
+}
+

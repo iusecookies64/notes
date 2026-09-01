@@ -170,7 +170,7 @@ Modern MLOps architectures operate as a **dual-track hybrid system**, where soft
                                                              • Staging / Prod
                                                                         ▲
                                                                         │ (Pulls from)
-  TRACK 2: ML TRAINING PIPELINE (Data & Model Engineering)             │
+  TRACK 2: ML TRAINING PIPELINE (Data & Model Engineering)              │
   [ Data Lake ] ──► [ Validate Data ] ──► [ Train & Eval ] ──► [ Model Registry ]
 ```
 
