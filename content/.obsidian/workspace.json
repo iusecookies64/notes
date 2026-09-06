@@ -80,7 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 354.5
+    "width": 306.5
   },
   "right": {
     "id": "b8c4a4ae9b34cdf8",
@@ -184,15 +184,20 @@
   },
   "active": "a41db98605494234",
   "lastOpenFiles": [
-    "Mathematics/Discrete Mathematics/Solving Recurrence Relation.md",
+    "Mathematics/Probability and Statistics/Pasted image 20260906171155.png",
+    "Mathematics/Probability and Statistics/Pasted image 20260906093026.png",
+    "Mathematics/Probability and Statistics/Pasted image 20260904172012.png",
+    "Mathematics/Probability and Statistics/Pasted image 20260904171725.png",
+    "Mathematics/Probability and Statistics/01. Probability and Counting.md",
     "Mathematics/Probability and Statistics/02. Conditional Probability.md",
+    "Mathematics/Probability and Statistics/Pasted image 20260904135652.png",
+    "Mathematics/Discrete Mathematics/Solving Recurrence Relation.md",
     "Random Coin.md",
     "Mathematics/Discrete Mathematics",
     "Mathematics/Probability and Statistics/Untitled",
     "Mathematics/Probability and Statistics/Pasted image 20260901164825.png",
     "Mathematics/Probability and Statistics/Pasted image 20260901145902.png",
     "Mathematics/Probability and Statistics/Pasted image 20260901144459.png",
-    "Mathematics/Probability and Statistics/01. Probability and Counting.md",
     "MSC DSAI/Trimester 3/ML Model Engineering/Week 5 - Monitoring and Observability for ML Systems.md",
     "MSC DSAI/Trimester 3/ML Model Engineering/Week 6 - Continuous Training and Retraining WorkflowsUntitled.md",
     "MSC DSAI/Trimester 3/ML Model Engineering/Week 7 - Model Optimization and Standardization.md",
@@ -214,7 +219,6 @@
     "MSC DSAI/Trimester 3/Fundamentals of Finance/09. Derivatives - Pricing, Strategies and Risk Management.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/06. Modern Word Embedding.md",
     "MSC DSAI/Trimester 3/Natural Language Processing/05. Traditional Word Embedding.md",
-    "MSC DSAI/Trimester 3/Natural Language Processing/04. Text Corpora and Corpus Linguistics.md",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week1_Retention_Notes.pdf",
     "MSC DSAI/Trimester 3/Big Data Platforms And Analytics",
     "Mathematics/Probability and Statistics/01. Probability and Counting-1786939573014.webp",
@@ -225,10 +229,6 @@
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week12_Retention_Notes.pdf",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week11_Retention_Notes.pdf",
     "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week10_Retention_Notes.pdf",
-    "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week9_Retention_Notes.pdf",
-    "Mathematics/Probability and Statistics/01. Probability and Counting-1786979394933.webp",
-    "Mathematics/Probability and Statistics/Pasted image 20260817090750.png",
-    "Mathematics/Probability and Statistics/regression_towards_the_mean.png",
-    "Mathematics/Probability and Statistics/01. Probability and Counting-1786972783873.webp"
+    "MSC DSAI/Trimester 3/Fundamentals of Finance/FOF_Week9_Retention_Notes.pdf"
   ]
 }
