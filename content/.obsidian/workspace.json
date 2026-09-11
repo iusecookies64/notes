@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mathematics/Introduction To Probability/03. Random Variables And Their Distributions.md",
+                "file": "Mathematics/Introduction To Probability/02. Conditional Probability.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03. Random Variables And Their Distributions"
+              "title": "02. Conditional Probability"
             }
           },
           {
@@ -198,6 +198,7 @@
   },
   "active": "a92cc78acadbfe64",
   "lastOpenFiles": [
+    "Mathematics/Introduction To Probability/01. Probability and Counting.md",
     "prompts.md",
     "Mathematics/Introduction To Probability/03. Random Variables And Their Distributions.md",
     "Mathematics/Introduction To Probability/Pasted image 20260909103337.png",
@@ -211,7 +212,6 @@
     "Mathematics/Introduction To Probability/Pasted image 20260908095542.png",
     "Mathematics/Introduction To Probability/Pasted image 20260908095006.png",
     "Mathematics/Introduction To Probability/Pasted image 20260908093252.png",
-    "Mathematics/Introduction To Probability/01. Probability and Counting.md",
     "Mathematics/Introduction To Probability/02. Conditional Probability.md",
     "Mathematics/Discrete Mathematics/Solving Recurrence Relation.md",
     "Random Coin.md",
