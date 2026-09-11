@@ -4,5 +4,6 @@
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "./",
   "useMarkdownLinks": true,
-  "newLinkFormat": "relative"
+  "newLinkFormat": "relative",
+  "settingsPopoutWindow": false
 }

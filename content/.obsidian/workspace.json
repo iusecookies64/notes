@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d17c0f4e8ec91cb8",
+            "id": "a92cc78acadbfe64",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,6 +19,20 @@
               },
               "icon": "lucide-file",
               "title": "03. Random Variables And Their Distributions"
+            }
+          },
+          {
+            "id": "d17c0f4e8ec91cb8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "prompts.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "prompts"
             }
           }
         ]
@@ -182,22 +196,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "4ca88576478b0a7c",
+  "active": "a92cc78acadbfe64",
   "lastOpenFiles": [
-    "Mathematics/Introduction To Probability/Pasted image 20260909103337.png",
+    "prompts.md",
     "Mathematics/Introduction To Probability/03. Random Variables And Their Distributions.md",
+    "Mathematics/Introduction To Probability/Pasted image 20260909103337.png",
     "Mathematics/Introduction To Probability/Pasted image 20260909094127.png",
     "Mathematics/Introduction To Probability/Pasted image 20260909094052.png",
     "Mathematics/Introduction To Probability/Pasted image 20260908230750.png",
     "Mathematics/Introduction To Probability/Pasted image 20260908152647.png",
     "Mathematics/Introduction To Probability/Pasted image 20260908124432.png",
     "Miscellaneous/Markdown Features.md",
-    "prompts.md",
     "Mathematics/Introduction To Probability/Pasted image 20260908114021.png",
     "Mathematics/Introduction To Probability/Pasted image 20260908095542.png",
     "Mathematics/Introduction To Probability/Pasted image 20260908095006.png",
     "Mathematics/Introduction To Probability/Pasted image 20260908093252.png",
-    "Mathematics/Introduction To Probability/Pasted image 20260908093219.png",
     "Mathematics/Introduction To Probability/01. Probability and Counting.md",
     "Mathematics/Introduction To Probability/02. Conditional Probability.md",
     "Mathematics/Discrete Mathematics/Solving Recurrence Relation.md",
