@@ -1,6 +1,6 @@
 {
   "cssTheme": "Ukiyo",
-  "theme": "moonstone",
+  "theme": "obsidian",
   "accentColor": "#c44ce6",
   "baseFontSize": 18,
   "textFontFamily": "JetBrains Mono,SN Pro",
@@ -10,6 +10,7 @@
     "my-custom",
     "code_block_nowrap",
     "centered_images",
-    "hide_images_explorer"
+    "hide_images_explorer",
+    "centered_tables"
   ]
 }

@@ -1,0 +1,23 @@
+/* Center all tables and their wrappers in Obsidian
+.table-wrapper, 
+table, 
+.cm-embed-block.cm-table-widget {
+  margin-inline: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: table !important;
+} */
+
+
+/* Center tables completely in both Reading view and Live Preview */
+.markdown-rendered .table-wrapper,
+.cm-embed-block:has(.cm-table-widget) {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.markdown-rendered table,
+.cm-embed-block .cm-table-widget table {
+  margin-inline: auto !important;
+}
