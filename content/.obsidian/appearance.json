@@ -1,5 +1,5 @@
 {
-  "cssTheme": "Ukiyo",
+  "cssTheme": "AnuPpuccin",
   "theme": "obsidian",
   "accentColor": "#c44ce6",
   "baseFontSize": 18,
@@ -11,6 +11,7 @@
     "code_block_nowrap",
     "centered_images",
     "hide_images_explorer",
-    "centered_tables"
+    "centered_tables",
+    "widen-line-width"
   ]
 }
