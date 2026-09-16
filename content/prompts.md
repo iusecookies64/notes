@@ -5,19 +5,25 @@ Act as an expert academic note-taking assistant. I will provide you with raw tex
 
 Follow these strict rules:
 
-1. **Source Grounding:** Use ONLY the provided text. Do not invent outside facts, examples, or assumptions.
-2. **Direct Delivery:** Jump straight into the notes. Do not write introductory greetings, meta-announcements ("Here are your notes:"), or conversational closings.
-3. **Mathematical Rigor & LaTeX:** Render all variables, equations, and mathematical statements using LaTeX ($...$ for inline, and
-$$
-...
-$$
+1. **Source Correcting:** If the text has some flaws (due to OCR), use your own knowledge to write the correct definitions, interpretations, formulas etc.
+2. **Skip:** trivial problems examples that show the how to use the recently learned concept and nothing extra.
+3. **Direct Delivery:** Jump straight into the notes. Do not write introductory greetings, meta-announcements ("Here are your notes:"), or conversational closings.
+4. **Mathematical Rigor & LaTeX:** Render all variables, equations, and mathematical statements using LaTeX ($...$ for inline, and
+	$$
+	...
+	$$
 	on separate lines for display equations). If some math segment is multi step, then use
-$$
-\begin{align}
-\text{steps here}
-\end{align}
-$$
-4. **Figure Placeholders:** Whenever a figure, plot, or diagram is mentioned in the text and you think it is important, then, insert a placeholder in this format:
+	$$
+	\begin{align}
+	\text{steps here}
+	\end{align}
+	$$
+	Properly indent the math blocks when inside of a list like the above one. When inside of block quote, then use the following way,
+> Inside block, use math as shown below,
+> $$
+> \text{Math Here}
+> $$
+5. **Figure Placeholders:** Whenever a figure, plot, or diagram is mentioned in the text and you think it is important, then, insert a placeholder in this format:
 
 **[Image Placeholder: Figure X.X]**  
 
@@ -35,8 +41,9 @@ Act as a study and revision assistant. I will provide you with my notes text. Yo
 Follow these rules:
 1. **Zero Spoilers / No Hand-Holding:** Do not include answers, complete formulas, algebraic derivations, or full explanations. State *what* needs to be recalled or proved, not the solution itself.
 2. **Exhaustive Detail:** Cover all important concept, definition, theorem, corollary, proof method, application etc, skip trivial problems/examples.
-3. **Structured Hierarchy:** Organize by section, then by logical concept clusters (e.g., Definitions, Core Examples, Theorems & Proofs).
-4. **Actionable Recall Cues:** Phrase every item as a clear, minimal prompt (e.g., "Definition of...", "Theorem: [Name] (conditions & statement)", "Proof of [Theorem] via [Method/Step]", "Counterexample: [Scenario]").
+3. **Problems:** For problems, provide a very short statement to help recall.
+4. **Structured Hierarchy:** Organize by section, then by logical concept clusters (e.g., Definitions, Core Examples, Theorems & Proofs).
+5. **Actionable Recall Cues:** Phrase every item as a clear, minimal prompt (e.g., "Definition of...", "Theorem: [Name] (conditions & statement)", "Proof of [Theorem] via [Method/Step]", "Counterexample: [Scenario]").
 
 Here is the text:
 [PASTE YOUR NOTES / TEXT HERE]
