@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mathematics/Calculus And Analytic Geometry (9e)/03. Application Of Derivatives.md",
+                "file": "Mathematics/Calculus (Apostol)/00. Introduction.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03. Application Of Derivatives"
+              "title": "00. Introduction"
             }
           },
           {
@@ -198,30 +198,35 @@
   },
   "active": "49c1703f7b0394fc",
   "lastOpenFiles": [
+    "Mathematics/Calculus (Apostol)/01. Integral Calculus.md",
+    "Mathematics/Calculus (Apostol)/02. Applications of Integration.md",
+    "Mathematics/Calculus (Apostol)/00. Prime, Countability, Irrationals.md",
+    "Mathematics/Calculus (Apostol)/00. Introduction.md",
+    "Mathematics/Calculus And Analytic Geometry (9e)/03. Application Of Derivatives.md",
+    "Mathematics/Calculus (Apostol)",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922205728.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922205646.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922205544.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922204946.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922204810.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922204624.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922204221.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922203556.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922200718.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922182122.png",
     "prompts.md",
     "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
     "scripts/convert_pdf_to_images.py",
     "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
     "Mathematics/Calculus And Analytic Geometry (9e)/02. Differentiation.md",
-    "Mathematics/Calculus And Analytic Geometry (9e)/03. Application Of Derivatives.md",
     "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Screenshot from 2026-09-22 11-57-38.png",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Screenshot from 2026-09-22 11-55-14.png",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922114848.png",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality 2.md",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality 1.md",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922092830.png",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922091155.png",
     "Mathematics/Introduction To Probability/04. Expectation.md",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260922090005.png",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260921230459.png",
     "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces.md",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260921200345.png",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260921195506.png",
     "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
     "Mathematics/Linear Algebra (Strang)",
-    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260921175659.png",
     "Mathematics/Calculus And Analytic Geometry (9e)/04. Integration.md",
     "Mathematics/Calculus And Analytic Geometry (9e)/01. Limits And Continuity.md",
     "Mathematics/Calculus And Analytic Geometry (9e)/02. Different.md",
@@ -238,10 +243,6 @@
     "Core CS/Computer Organization and Architecture/1. Computer Abstractions And Technology.md",
     "Mathematics/Introduction To Probability/03. Random Variables And Their Distributions.md",
     "Mathematics/Introduction To Probability/01. Probability and Counting.md",
-    "Mathematics/Introduction To Probability/02. Conditional Probability.md",
-    "Miscellaneous/Markdown Features.md",
-    "Mathematics/Discrete Mathematics/Solving Recurrence Relation.md",
-    "Mathematics/Discrete Mathematics",
-    "Mathematics/Probability and Statistics/Untitled"
+    "Mathematics/Discrete Mathematics"
   ]
 }
