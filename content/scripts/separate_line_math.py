@@ -34,6 +34,6 @@ def process_path(target_path: Path):
         print(f"Processed: {file_path}")
 
 if __name__ == "__main__":
-    path = "/home/iusecookies64/Desktop/Tushar/notes/content/Mathematics/Calculus And Analytic Geometry (9e)/03. Application Of Derivatives.md"
+    path = "/home/iusecookies64/Desktop/Tushar/notes/content/Mathematics/Calculus And Analytic Geometry (9e)/05. Applications Of Integration.md"
 
     process_path(Path(path))
