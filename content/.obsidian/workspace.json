@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Core CS/COA/DDCA Onur Mutlu/04. Sequential Logic Design II — Finite State Machines.md",
+                "file": "Mathematics/Calculus And Analytic Geometry (9e)/05. Applications Of Integration.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04. Sequential Logic Design II — Finite State Machines"
+              "title": "05. Applications Of Integration"
             }
           }
         ]
@@ -184,21 +184,22 @@
   },
   "active": "5d62863683acab13",
   "lastOpenFiles": [
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220551.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220535.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220516.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220454.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220427.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220417.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220356.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220335.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220309.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220209.png",
-    "Core CS/COA/DDCA Onur Mutlu/Pasted image 20260925220158.png",
-    "l3.md",
-    "Core CS/COA/DDCA Onur Mutlu/04. Sequential Logic Design II — Finite State Machines.md",
-    "Mathematics/Calculus And Analytic Geometry (9e)/05. Applications Of Integration.md",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926181721.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926180651.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926180248.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926180057.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926161210.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926155638.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926155531.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926154608.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926154321.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926153949.png",
+    "Mathematics/Calculus And Analytic Geometry (9e)/Pasted image 20260926153857.png",
     "Mathematics/Calculus And Analytic Geometry (9e)/04. Integration.md",
+    "Mathematics/Genome Math Symbols.md",
+    "Core CS/COA/DDCA Onur Mutlu/04. Sequential Logic Design II — Finite State Machines.md",
+    "l3.md",
+    "Mathematics/Calculus And Analytic Geometry (9e)/05. Applications Of Integration.md",
     "Mathematics/Calculus And Analytic Geometry (9e)/01. Limits And Continuity.md",
     "Mathematics/Calculus And Analytic Geometry (9e)/03. Application Of Derivatives.md",
     "Core CS/COA/DDCA Onur Mutlu/03. Combinational Logic II & Sequential Logic (Memory Foundations).md",
@@ -224,7 +225,6 @@
     "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality 2.md",
-    "Mathematics/Linear Algebra (Strang)/04. Orthogonality 1.md",
     "Mathematics/Linear Algebra (Strang)",
     "scripts/separate_line_math.py",
     "scripts/script.py",
