@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CP & DSA/Disjoint Set Union/DSU Notes.md",
+                "file": "Mathematics/Calculus And Analytic Geometry (9e)/06. Transcendental Functions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DSU Notes"
+              "title": "06. Transcendental Functions"
             }
           }
         ]
@@ -184,6 +184,9 @@
   },
   "active": "5d62863683acab13",
   "lastOpenFiles": [
+    "Mathematics/Calculus And Analytic Geometry (9e)/06. Transcendental Functions-1790751893878.webp",
+    "Mathematics/Calculus And Analytic Geometry (9e)/06. Transcendental Functions-1790751858411.webp",
+    "CP & DSA/Disjoint Set Union/DSU Notes.md",
     "Mathematics/Calculus And Analytic Geometry (9e)/06. Transcendental Functions.md",
     "Core CS/COA/DDCA Onur Mutlu/01. Introduction — Fundamentals, Systems & Trade-Offs.md",
     "Mathematics/Introduction To Probability/01. Probability and Counting.md",
@@ -197,7 +200,6 @@
     "Programming Languages/PHP/Pasted image 20250726234314.webp",
     "Programming Languages/PHP/Pasted image 20250726233915.webp",
     "Programming Languages/PHP/Pasted image 20250726225502.webp",
-    "Programming Languages/PHP/Pasted image 20250726174448.webp",
     "scripts/convert_png_to_webp.py",
     "scripts/file_size_distribution.py",
     "prompts.md",
@@ -221,8 +223,6 @@
     "Mathematics/FLT Proof/transcript/Chapter 13: p-adic Valuations and p-adic Numbers.md",
     "Mathematics/FLT Proof/transcript/Chapter 12: Galois Representations, Ramification, and Frobenius.md",
     "Mathematics/FLT Proof/transcript/Chapter 11: Field Extensions and Galois Theory.md",
-    "Mathematics/FLT Proof/transcript/Chapter 10: Rings, Fields, Ideals, and Unique Factorization.md",
-    "Mathematics/FLT Proof/transcript/Chapter 9: Groups, Homomorphisms, and Group Actions.md",
     "Mathematics/FLT Proof/transcript",
     "Mathematics/FLT Proof/transcripts.md/Chapter 2 - Basic Set",
     "Mathematics/FLT Proof/transcripts.md/Chapter 1: Introduction",
