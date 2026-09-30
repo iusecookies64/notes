@@ -229,7 +229,7 @@
   "ProcessCurrentNoteEnlargeOrReduce": "Always",
   "ProcessCurrentNoteSkipFormats": "tif,tiff,heic",
   "ProcessCurrentNoteIgnoreFolders": "",
-  "ProcessAllVaultconvertTo": "disabled",
+  "ProcessAllVaultconvertTo": "webp",
   "ProcessAllVaultquality": 0.75,
   "ProcessAllVaultResizeModalresizeMode": "None",
   "ProcessAllVaultResizeModaldesiredWidth": 500,
@@ -237,7 +237,7 @@
   "ProcessAllVaultResizeModaldesiredLength": 500,
   "ProcessAllVaultEnlargeOrReduce": "Always",
   "ProcessAllVaultSkipFormats": "",
-  "ProcessAllVaultskipImagesInTargetFormat": false,
+  "ProcessAllVaultskipImagesInTargetFormat": true,
   "annotationPresets": {
     "drawing": [
       {

@@ -313,7 +313,7 @@ int minCostBFS01(vector<vector<char>>& grid, int n, int m)
 
 **Problem 2:** Given a grid of size n x m. There are 3 islands on the grid namely island of 1's, island of 2's and island of 3's as shown in the example figure. Some of the cells are blocked (cells with # in the example). A player can move freely withing its island or to another connected island, for example player on island 2 can move to any cell in island 2 and to any cell in island 3 as they are directly connected. Now we want to build bridges in cells such that all the three islands are connected. Find minimum number of cells we need to make bridges on to connect all three islands.
 
-![image-20240524113521083](image-20240524113521083.png)
+![image-20240524113521083](image-20240524113521083.webp)
 
 **Solution:** The idea is that it is always optimal to build bridge through a point whose sum of distance from the 3 components is minimal. We can do a bfs algorithm to find distance of each cell from component 1, 2 and 3. Then we loop over the cells and find the minimum value of `distanceFrom1 + distanceFrom2 + distanceFrom3`. If the cell is empty then cost will sum - 2 (since we have added 1 for each component i.e 3 times but need only one time) and if the cell is on an island then cost is sum - 1.
 
@@ -627,11 +627,11 @@ This algorithm is also single source shortest path algorithm. This works in case
 
 Below is a dry run for the algorithm, here we can see that initially `distance[source] = 0`, and for other nodes distance of other nodes is infinity. After iteration 2 we have distances for all nodes, but for the -ve weight cycle, in further iterations they still will get relaxed and give smaller and smaller results.
 
-![ center | 400](image-20240524173959243.png)
+![ center | 400](image-20240524173959243.webp)
 
-![ center | 400](image-20240524174204824.png)
+![ center | 400](image-20240524174204824.webp)
 
-![ center | 400](image-20240524174442631.png)
+![ center | 400](image-20240524174442631.webp)
 
 Time complexity of this algorithm is O(v * e) which in very dense graph will be O(v^3).
 

@@ -163,11 +163,11 @@ Here we have to first find center of the tree as shown above, then we have 2 cas
 
 1. If there is only one center then the diameter is even. So we will go to every child of center and then find number of vertices at distance $(\frac d2) - 1$​ where $d$ is diameter. In dfs we can pass center as parent so that child dfs doesn't reach other child nodes.
 
-   ![ center](image-20240530214005178.png)
+   ![ center](image-20240530214005178.webp)
 
 2. The second case is when the diameter is odd, there there are $2$ centers lets call them $c1$ and $c2$. Then the number of diameters will be number of vertices at distance $\lfloor \frac d2 \rfloor$ from $c1$ multiplied with nodes at distance $\lfloor \frac d2 \rfloor$ from $c2$. For center $c1$ we can pass parent as $c2$ so that dfs doesn't go into $c2's$​ sub tree and vice versa.
 
-![ center](image-20240530220231243.png)
+![ center](image-20240530220231243.webp)
 
 Below is the implementation of this solution.
 
@@ -229,15 +229,15 @@ void solve()
 
 **Centroid** of a tree is a vertex such that if we hang tree from this vertex then all of the child vertices of this vertex will have subtree size $<= \frac N2$ where $N$ is the number of vertices.
 
-![image-20240531124058342](image-20240531124058342.png)
+![image-20240531124058342](image-20240531124058342.webp)
 
 The center of a tree and centroid are not necessarily the same node, in most they are but we can make cases when they are not the same vertex. For example a tree in which there is a long path and one end of the path has lot of nodes will have centroid near to the crowded end while center will still be center of diameter.
 
-![image-20240531124755353](image-20240531124755353.png)
+![image-20240531124755353](image-20240531124755353.webp)
 
 At max a tree can have two centroids, this only happens when subtree of $2$ nodes if of size $\frac N2$ each as shown below.
 
-![image-20240531134822623](image-20240531134822623.png)
+![image-20240531134822623](image-20240531134822623.webp)
 
 **Finding The Centroid**
 
@@ -247,7 +247,7 @@ If none of the vertex have this property then we can say that current vertex is 
 
 **Note:** for current $vertex$ we only check for $childVertex$ because we are sure that the remaining subtree of its parent is surely of size $<= \frac N2$ this is becaues the reason we are at current node is because its subtree size if more than half, then remaining subtree must be less than half.
 
-![image-20240531130537985](image-20240531130537985.png)
+![image-20240531130537985](image-20240531130537985.webp)
 
 Below is the code implementation of this approach.
 
