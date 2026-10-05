@@ -114,6 +114,5 @@ Clean up any garbled truth tables, state transition tables, or comparison grids 
 
 Input files are attached.
 
----
 
 
