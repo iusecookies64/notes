@@ -204,12 +204,6 @@
       "height": "",
       "wrap": false
     },
-    "f90c6a2483f94c5c2abe40b4b4331b91": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
     "ebfa838313c6dd4a1a58430edde4edf7": {
       "position": "center",
       "width": "",
@@ -223,68 +217,62 @@
       "wrap": false
     }
   },
-  "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices.md": {
-    "6b7e066deed03cee3b4ec35c6a9b42e0": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "baf2d802cc7d138c86a20c89a529e457": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "a250fb38ab22b8659995467c1c162f8a": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "cae4db62d5463eebe83c32e291bcd20b": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "bb80478ef6d3654685c4edb853024739": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "346654e50e8fb8d4ce3c39939c6f7aa2": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "f82c35c92555b8bdbff3fa1292a7a04b": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "fa1212eca3158292bd3b24e81ad1b32f": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "dd2282194074b04c3665ca1e4d14281b": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
+  "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md": {
     "ea200e9eb5a44c5d774e304b6e0e2b30": {
       "position": "center",
       "width": "",
       "height": "",
       "wrap": false
     },
-    "4635d27282c92bfa0435781fe6bd485b": {
+    "fe560d4cb97c7bb1dccae946c64b74fb": {
+      "position": "center",
+      "width": "",
+      "height": "",
+      "wrap": false
+    },
+    "cc8bbc1a1e117161c6c067485c744bd6": {
+      "position": "center",
+      "width": "",
+      "height": "",
+      "wrap": false
+    },
+    "ae181ff99fc185010c9e5270e5adf51f": {
+      "position": "center",
+      "width": "",
+      "height": "",
+      "wrap": false
+    },
+    "402acf73e8c3561473ccd217ccbdbd74": {
+      "position": "center",
+      "width": "",
+      "height": "",
+      "wrap": false
+    },
+    "b55e8ee9418e965edd6e4257d43745fb": {
+      "position": "center",
+      "width": "",
+      "height": "",
+      "wrap": false
+    },
+    "f30d2d4d27c4322f5941698fa3e4c7d0": {
+      "position": "center",
+      "width": "",
+      "height": "",
+      "wrap": false
+    },
+    "e307f36d8ace639733a3542ea2e16d40": {
+      "position": "center",
+      "width": "",
+      "height": "",
+      "wrap": false
+    },
+    "9e246e745daf8c30700ffcbee844ee02": {
+      "position": "center",
+      "width": "",
+      "height": "",
+      "wrap": false
+    },
+    "d3d595a3b8c72981f1d93d1823b017d1": {
       "position": "center",
       "width": "",
       "height": "",

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices.md",
+                "file": "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01. Vectors And Matrices"
+              "title": "02. Solving Linear Equations"
             }
           },
           {
@@ -210,29 +210,29 @@
       "bases:Create new base": false
     }
   },
-  "active": "5d62863683acab13",
+  "active": "4ca88576478b0a7c",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations-1791196240691.webp",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
+    "Mathematics/Genome Math Symbols.md",
+    "prompts.md",
+    "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
     "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791178643182.webp",
     "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791178635456.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791177314793.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791122890360.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791122605771.webp",
-    "Mathematics/Genome Math Symbols.md",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices.md",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791122251781.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791120741656.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791120712848.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791120528828.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791120324920.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/01. Vectors And Matrices-1791119956603.webp",
-    "Mathematics/Linear Algebra (Strang) - Formatted/06. Eigen Values and Eigen Vectors.md",
-    "Mathematics/Linear Algebra (Strang) - Formatted/05. Determinants.md",
-    "Mathematics/Linear Algebra (Strang) - Formatted/04. Orthogonality.md",
-    "Mathematics/Linear Algebra (Strang) - Formatted/03. The Four Fundamental Subspaces.md",
-    "Mathematics/Linear Algebra (Strang) - Formatted/02. Solving Linear Equations.md",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices-1791177314793.webp",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices-1791122890360.webp",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices-1791122605771.webp",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices-1791122251781.webp",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices-1791120741656.webp",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices-1791120712848.webp",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices-1791120528828.webp",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices-1791120324920.webp",
+    "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
+    "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
+    "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
+    "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces.md",
     "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
-    "Mathematics/Linear Algebra (Strang) - Formatted",
-    "prompts.md",
+    "Mathematics/Linear Algebra (Strang)",
     "Mathematics/Calculus And Analytic Geometry (9e)/06. Transcendental Functions.md",
     "CP & DSA/Disjoint Set Union/DSU Notes.md",
     "Core CS/COA/DDCA Onur Mutlu/01. Introduction — Fundamentals, Systems & Trade-Offs.md",
