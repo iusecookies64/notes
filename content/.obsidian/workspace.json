@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "06c4cfe903631116",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "04. Orthogonality"
+            }
+          },
+          {
             "id": "8352146e1e52fb9e",
             "type": "leaf",
             "state": {
@@ -35,7 +49,8 @@
               "title": "prompts"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -196,8 +211,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "6646a8faaf7d6cb5",
+  "active": "06c4cfe903631116",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791537813883.webp",
+    "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791536743870.webp",
+    "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791535252427.webp",
+    "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791533082468.webp",
+    "scripts/file_token_count.py",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791474751349.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791474300360.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791473935630.webp",
@@ -210,11 +230,7 @@
     "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces-1791384513570.webp",
     "figure_3_5_network_graph.svg",
     "figure_3_4_big_picture.svg",
-    "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces-1791381866130.webp",
-    "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces-1791302020039.webp",
-    "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces-1791301856771.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
-    "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations-1791215190111.webp",
     "Mathematics/Genome Math Symbols.md",
     "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
     "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
@@ -242,7 +258,6 @@
     "Mathematics/FLT Proof/transcripts.md/Chapter 2 - Basic Set",
     "Mathematics/FLT Proof/transcripts.md/Chapter 1: Introduction",
     "Mathematics/FLT Proof",
-    "scripts/pdf_to_markdown.py",
-    "Core CS/COA/DDCA Onur Mutlu"
+    "scripts/pdf_to_markdown.py"
   ]
 }
