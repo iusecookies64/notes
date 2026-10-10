@@ -37,23 +37,62 @@ Here is the textbook text:
 
 ### Generate Skeleton Index
 
-Act as an expert study and revision assistant. I will provide you with my notes text. Your task is to generate an active-recall "Pure Skeleton Index" based strictly on the provided content. The index must act like a rigorous closed-book exam or test paper—forcing complete active recall without providing any hints, solutions, formulas, or hand-holding.
+Act as an expert academic study and revision assistant across any technical or theoretical subject. I will provide you with my notes text. Your task is to generate an active-recall "Pure Skeleton Index" based strictly on the provided content. The index must act like a rigorous closed-book examination paper—forcing complete active recall without providing any hints, solutions, formulas, or hand-holding.
 
 Follow these strict rules:
 
-1. **Zero Spoilers / Exam Conditions (No Hand-Holding):**
-   - **No Formulas or Values:** Do not state the final equation, formula, matrix expression, bound, or value to be remembered or derived (e.g., write *"Formulas for projection vector $p$ and projection matrix $P$"* instead of *"Formula for $P = Q Q^T$"*; write *"Express the diagonal entry $P_{ii}$ and establish its bounds"* instead of revealing $P_{ii} = \|p_i\|^2$ or $0 \le P_{ii} \le 1$).
-   - **No Proof Tricks or Methods:** Never reveal the proof technique, intermediate algebraic substitution, or trick (e.g., write *"Prove that $A^T A x = \mathbf{0} \implies Ax = \mathbf{0}$ (both geometrically and algebraically)"* instead of revealing *"via $\|Ax\|^2$"* or *"via subspace intersection"*).
-   - **No Solution Conditions:** Do not leak answers when asking to evaluate or prove a condition (e.g., write *"State and prove the necessary and sufficient condition under which $P_1 P_2$ is a projection matrix"* instead of stating *"iff $P_1 P_2 = P_2 P_1$"*; write *"Evaluate and justify $P_C A$, $A P_R$, and $P_C A P_R$"* instead of stating they all equal $A$).
-2. **Exhaustive Conceptual Coverage:**
-   - Cover every important definition, geometric intuition, theorem, corollary, structural decomposition, analytical derivation, and exercise. Skip only trivial arithmetic examples.
-3. **Actionable Test Prompts:**
-   - Phrase every item as an active testing directive using command verbs: *"Define..."*, *"State the condition for..."*, *"State and prove [Theorem Name]"*, *"Derive the formula for..."*, *"Determine..."*, *"Evaluate and justify..."*, *"Compare..."*.
-   - Do not include parenthetical answers, hints, or solution steps in the cues.
-4. **Problems & Exercises:**
-   - Give only the exercise number, title, and the problem setup/question. The student must recall the strategy, setup, and solution entirely from scratch.
-5. **Structured Hierarchy:**
-   - Mirror the notes' structure: Organize by section, then group into logical clusters (e.g., `### Definitions`, `### Geometric Intuition & Properties`, `### Theorems & Proofs` / `### Derivations & Theorems`, `### Problem Set`).
+1. **Strict 1:1 Sequential Order (No Conceptual Pooling):**
+   - The skeleton index must strictly follow the exact 1-to-1 sequential, chronological order of the headings, subheadings, and topics as they appear in the source notes from top to bottom.
+   - Do NOT pool or group items across sections into artificial buckets (e.g., do NOT lump all definitions together or all theorems together). Follow the natural narrative flow of the notes.
+
+2. **2-Tier Nested Expanding List (`<details>` / `<summary>`):**
+   - Format the skeleton index as a 2-tier collapsible list using standard HTML5 `<details>` and `<summary>` tags:
+     - **Tier 1 (Section Level):** Each main section is an expandable block:
+       ```html
+       <details>
+       <summary><b>[Section Number & Title]</b></summary>
+
+       ...
+       </details>
+       ```
+     - **Tier 2 (Subsection Level):** Inside each section, each subsection / major heading is an expandable block:
+       ```html
+       <details>
+       <summary><b>[Subsection Title]</b></summary>
+
+       ...
+       </details>
+       ```
+     - **Tier 3 (Topic Prompts):** Inside each subsection, list each active-recall prompt as a simple flat bullet point (`- ...`). There must be **no further nesting** inside subsections.
+   - **Markdown & LaTeX Syntax Inside `<details>`:** Always include **one blank line** immediately after `<summary>...</summary>` and **one blank line** before `</details>`. This is required for Obsidian, Quartz, and Markdown parsers to properly render LaTeX and bullet points.
+
+3. **Strict LaTeX Delimiters (`$` and `$$`):**
+   - All mathematical variables, equations, vectors, matrices, bounds, and symbols MUST use proper LaTeX delimiters:
+     - Inline math: `$ ... $` (e.g., `$Ax = b$`, `$\mathbb{R}^n$`, `$V^\perp$`).
+     - Display / block equations:
+       $$
+       \text{math here}
+       $$
+       on separate lines.
+   - Never write naked mathematical symbols or plaintext formulas without delimiters.
+
+4. **Zero Spoilers / Exam Conditions (No Hand-Holding):**
+   - **No Formulas, Equations, or Values in Theory Items:** For theoretical concepts and derivations, state *what* needs to be recalled or derived, but never disclose the resulting formula, equation, numerical value, bound, or conclusion (e.g., write *"Derive the expression for [Metric/Variable]"* instead of stating the formula itself; write *"State the bounds on [Parameter]"* instead of writing the bounds).
+   - **No Proof or Derivation Hints:** Never reveal the proof technique, intermediate algebraic trick, substitution, or critical shortcut (e.g., write *"Prove [Theorem/Law/Property] analytically and conceptually"* rather than hinting at the intermediate identity or technique used).
+   - **No Leaked Conclusions:** Do not spoil the outcome when asking to evaluate, compare, or explain behavior (e.g., write *"Analyze the effect of [X] on [Y]"* instead of stating *"Why [X] increases [Y]"*).
+   - **Strictly No Solutions:** Exclude all answers, derivations, and solution steps from the prompts.
+
+5. **Full Problem & Example Statements (Never Require Memorizing the Question):**
+   - For all exercises, practice problems, and non-trivial worked examples, **state the problem statement completely and in full**. Include all given premises, specifications, initial conditions, numbers, data points, and the exact question or claim to be solved/calculated/proved.
+   - The user must never be forced to memorize what the problem was asking—they should only have to supply the *solution, proof, derivation, or calculation*.
+   - Never attach the solution, intermediate steps, hints, or final answers inside the problem statement.
+
+6. **Actionable Test Prompts:**
+   - Phrase theoretical items as active test questions or challenges using strong imperative verbs: *"Define..."*, *"State the necessary conditions for..."*, *"State and prove [Theorem/Law Name]"*, *"Derive the governing equation for..."*, *"Explain the mechanism behind..."*, *"Compare [X] vs [Y] in terms of [Criteria]"*, *"Determine..."*, *"Evaluate and justify..."*.
+   - Never include parenthetical answers, hints, or solution steps in the cues.
+
+7. **Exhaustive Conceptual Coverage:**
+   - Cover every core definition, governing law/theorem, principle, mechanism, mathematical derivation, model, trade-off, and non-trivial exercise. Skip only trivial arithmetic examples.
 
 Here is the text:
 [PASTE YOUR NOTES / TEXT HERE]
