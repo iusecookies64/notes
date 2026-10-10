@@ -149,4 +149,88 @@ Clean up any garbled truth tables, state transition tables, or comparison grids 
 Input files are attached.
 
 
+---
+
+### Textbook Images To Notes
+
+I am studying calculus from the book *Calculus and Analytic Geometry (9e)*. Whenever I finish reading a section of a chapter, I want notes to revise later. The notes must be neatly formatted Markdown intended for an Obsidian vault. The book's pages have been extracted into images and placed in the `extracted/` directory.
+
+Go through the provided page range and create comprehensive theoretical notes covering each and every concept taught in those pages.
+
+---
+
+### Core Instructions
+
+#### 1. Mathematical Precision & LaTeX Formatting (CRITICAL / TOP PRIORITY)
+Math is the most important part of these notes.
+- **Math Block Delimiters (`$$`):**
+  - The opening `$$` and closing `$$` **MUST** be on their own separate lines.
+  - **Never** write inline math blocks like `$$formula$$` on a single line.
+  - This rule applies universally across every context:
+    - **Top-level text:**
+      ```markdown
+      $$
+      f(x) = \int_1^x \frac{1}{t} \, dt
+      $$
+      ```
+    - **Inside Callouts / Blockquotes:**
+      ```markdown
+      > [!abstract] Definition: ...
+      > $$
+      > f(x_1) \neq f(x_2) \quad \text{whenever } x_1 \neq x_2
+      > $$
+      ```
+    - **Inside Lists and Nested Lists:** Match list indentation for the delimiters:
+      ```markdown
+      1. **Case 1:** Explanation here:
+         $$
+         \ln(ax) = \ln a + \ln x
+         $$
+      ```
+- **Multi-line Algebraic Derivations:**
+  - Use `\begin{align} ... \end{align}` inside `$$ ... $$` with `&` alignment and `\\` line breaks for multi-step proofs and derivations.
+- **LaTeX Conventions:**
+  - Use standard symbols.
+  - Inline math must use `$formula$` with no spaces immediately inside the dollar signs.
+
+#### 2. Section Separators (`---`)
+- Horizontal rules (`---`) are **STRICTLY** reserved for separating major top-level sections (e.g., between `# Overview` and `# 6.1 ...`, or between `# 6.1 ...` and `# 6.2 ...`).
+- **DO NOT** use `---` within a given section (no dividers between subsections, proofs, or callouts).
+
+#### 3. Heading Structure
+- `# X.Y Section Title` (H1) for major sections.
+- `## Topic Name` (H2) for main subtopics.
+- `### Specific Concept` (H3) for sub-sections.
+- so on.
+
+#### 4. Obsidian Callouts & Figure Placeholders
+- Use appropriate Obsidian callout syntax for key theoretical components:
+  - `> [!abstract] Definition: ...`
+  - `> [!theorem] Theorem Name`
+  - `> [!warning] Notational Caution`
+  - `> [!summary] Summary of ...`
+  - `> [!note] Theoretical Remark on ...`
+- **Figures / Diagrams:** Leave placeholders using callouts:
+  ```markdown
+  > [!figure] Figure Placeholder: Figure X.Y
+  ```
+
+#### 5. Scope & Theoretical Depth
+- **Cover ALL theory:** Include every definition, theorem, corollary, full step-by-step proof etc present in the texbook.
+- **Skip Examples & Problems:** Do not include numerical examples, exercises, or problem sets; focus 100% on theory.
+
+#### 6. Output File Location & Naming
+- Create the markdown file named after the chapter inside the `Markdown Notes/` directory (e.g., `Markdown Notes/Transcendental Functions.md`).
+- If a file for that chapter already exists, append numbers: `2`, `3`, and so on.
+
+#### 7. Directly start with the task
+- You don't need to investigate, or do anything, all files are already present in `./extracted/page-{number}.png` format.
+- Read any of the previous notes, and then directly start with the task (use your view file tool).
+
+---
+
+### Page Range for Current Task
+The page range for this task is: 541 - 544 (section 6.11 theory)
+
+
 
