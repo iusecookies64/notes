@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "prompts.md",
+                "file": "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "prompts"
+              "title": "01. Vectors And Matrices"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -196,9 +197,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "06c4cfe903631116",
+  "active": "8352146e1e52fb9e",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces.md",
     "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
+    "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
+    "prompts.md",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791537813883.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791536743870.webp",
@@ -208,16 +213,11 @@
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791474751349.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791474300360.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1791473935630.webp",
-    "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces.md",
-    "prompts.md",
-    "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
     "Mathematics/Linear Algebra (Strang)/figure_3_5_network_graph.svg",
     "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces-1791384513570.webp",
     "figure_3_5_network_graph.svg",
     "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
     "Mathematics/Genome Math Symbols.md",
-    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
-    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
     "Mathematics/Linear Algebra (Strang)",
     "Mathematics/Calculus And Analytic Geometry (9e)/06. Transcendental Functions.md",
     "CP & DSA/Disjoint Set Union/DSU Notes.md",

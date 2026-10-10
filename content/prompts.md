@@ -37,14 +37,23 @@ Here is the textbook text:
 
 ### Generate Skeleton Index
 
-Act as a study and revision assistant. I will provide you with my notes text. Your task is to generate an active-recall "Pure Skeleton Index" based strictly on the provided content.
+Act as an expert study and revision assistant. I will provide you with my notes text. Your task is to generate an active-recall "Pure Skeleton Index" based strictly on the provided content. The index must act like a rigorous closed-book exam or test paper—forcing complete active recall without providing any hints, solutions, formulas, or hand-holding.
 
-Follow these rules:
-1. **Zero Spoilers / No Hand-Holding:** Do not include answers, complete formulas, algebraic derivations, or full explanations. State *what* needs to be recalled or proved, not the solution itself.
-2. **Exhaustive Detail:** Cover all important concept, definition, theorem, corollary, proof method, application etc, skip trivial problems/examples.
-3. **Problems:** For problems, provide a short statement or setup followed by the things need to be calculated.
-4. **Structured Hierarchy:** Organize by section, then by logical concept clusters (e.g., Definitions, Core Examples, Theorems & Proofs).
-5. **Actionable Recall Cues:** Phrase every item as a clear, minimal prompt (e.g., "Definition of...", "Theorem: [Name] (conditions & statement)", "Proof of [Theorem] via [Method/Step]", "Counterexample: [Scenario]").
+Follow these strict rules:
+
+1. **Zero Spoilers / Exam Conditions (No Hand-Holding):**
+   - **No Formulas or Values:** Do not state the final equation, formula, matrix expression, bound, or value to be remembered or derived (e.g., write *"Formulas for projection vector $p$ and projection matrix $P$"* instead of *"Formula for $P = Q Q^T$"*; write *"Express the diagonal entry $P_{ii}$ and establish its bounds"* instead of revealing $P_{ii} = \|p_i\|^2$ or $0 \le P_{ii} \le 1$).
+   - **No Proof Tricks or Methods:** Never reveal the proof technique, intermediate algebraic substitution, or trick (e.g., write *"Prove that $A^T A x = \mathbf{0} \implies Ax = \mathbf{0}$ (both geometrically and algebraically)"* instead of revealing *"via $\|Ax\|^2$"* or *"via subspace intersection"*).
+   - **No Solution Conditions:** Do not leak answers when asking to evaluate or prove a condition (e.g., write *"State and prove the necessary and sufficient condition under which $P_1 P_2$ is a projection matrix"* instead of stating *"iff $P_1 P_2 = P_2 P_1$"*; write *"Evaluate and justify $P_C A$, $A P_R$, and $P_C A P_R$"* instead of stating they all equal $A$).
+2. **Exhaustive Conceptual Coverage:**
+   - Cover every important definition, geometric intuition, theorem, corollary, structural decomposition, analytical derivation, and exercise. Skip only trivial arithmetic examples.
+3. **Actionable Test Prompts:**
+   - Phrase every item as an active testing directive using command verbs: *"Define..."*, *"State the condition for..."*, *"State and prove [Theorem Name]"*, *"Derive the formula for..."*, *"Determine..."*, *"Evaluate and justify..."*, *"Compare..."*.
+   - Do not include parenthetical answers, hints, or solution steps in the cues.
+4. **Problems & Exercises:**
+   - Give only the exercise number, title, and the problem setup/question. The student must recall the strategy, setup, and solution entirely from scratch.
+5. **Structured Hierarchy:**
+   - Mirror the notes' structure: Organize by section, then group into logical clusters (e.g., `### Definitions`, `### Geometric Intuition & Properties`, `### Theorems & Proofs` / `### Derivations & Theorems`, `### Problem Set`).
 
 Here is the text:
 [PASTE YOUR NOTES / TEXT HERE]
