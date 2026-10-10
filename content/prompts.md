@@ -45,26 +45,12 @@ Follow these strict rules:
    - The skeleton index must strictly follow the exact 1-to-1 sequential, chronological order of the headings, subheadings, and topics as they appear in the source notes from top to bottom.
    - Do NOT pool or group items across sections into artificial buckets (e.g., do NOT lump all definitions together or all theorems together). Follow the natural narrative flow of the notes.
 
-2. **2-Tier Nested Expanding List (`<details>` / `<summary>`):**
-   - Format the skeleton index as a 2-tier collapsible list using standard HTML5 `<details>` and `<summary>` tags:
-     - **Tier 1 (Section Level):** Each main section is an expandable block:
-       ```html
-       <details>
-       <summary><b>[Section Number & Title]</b></summary>
-
-       ...
-       </details>
-       ```
-     - **Tier 2 (Subsection Level):** Inside each section, each subsection / major heading is an expandable block:
-       ```html
-       <details>
-       <summary><b>[Subsection Title]</b></summary>
-
-       ...
-       </details>
-       ```
-     - **Tier 3 (Topic Prompts):** Inside each subsection, list each active-recall prompt as a simple flat bullet point (`- ...`). There must be **no further nesting** inside subsections.
-   - **Markdown & LaTeX Syntax Inside `<details>`:** Always include **one blank line** immediately after `<summary>...</summary>` and **one blank line** before `</details>`. This is required for Obsidian, Quartz, and Markdown parsers to properly render LaTeX and bullet points.
+2. **Markdown Heading Hierarchy:**
+   - Format the skeleton index simply using standard Markdown headings and bullet lists:
+     - `## [Section Number & Title]` for main sections.
+     - `### [Subsection Title]` for subsections within a section.
+     - `**[Topic Title]**` for specific topics within a subsection.
+     - Bullet points (`- ...`) under the topic headings for further active-recall prompts and cues.
 
 3. **Strict LaTeX Delimiters (`$` and `$$`):**
    - All mathematical variables, equations, vectors, matrices, bounds, and symbols MUST use proper LaTeX delimiters:
