@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
+                "file": "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05. Determinants"
+              "title": "06. Eigen Values and Eigen Vectors"
             }
           }
         ]
@@ -184,6 +184,11 @@
   },
   "active": "9b6e0115fa5fab0a",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/figure_6_1_eigenvectors.png",
+    "Mathematics/Linear Algebra (Strang)/figure_6_1_eigenvectors.svg",
+    "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
+    "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
+    "Mathematics/Linear Algebra (Strang)/figure_3_5_network_graph.svg",
     "Mathematics/FLT Proof/transcript/Chapter 25- Serre, Ribet, and the Frey Curve.md",
     "Mathematics/FLT Proof/transcript/Chapter 23- Four Clues Connecting Elliptic Curves and Modular Forms.md",
     "Mathematics/FLT Proof/transcript/Chapter 11- Field Extensions and Galois Theory.md",
@@ -214,13 +219,8 @@
     "Mathematics/Linear Algebra (Strang)/05. Determinants-figure-5.9.png",
     "Mathematics/Linear Algebra (Strang)/05. Determinants-1791806837644.webp",
     "Mathematics/Linear Algebra (Strang)/05. Determinants-1791803458799.webp",
-    "Mathematics/Linear Algebra (Strang)/05. Determinants-1791803348067.webp",
-    "Mathematics/Linear Algebra (Strang)/05. Determinants-1791803220308.webp",
     "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces.md",
     "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
-    "prompts.md",
-    "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
-    "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
     "scripts/file_token_count.py",
     "Mathematics/Linear Algebra (Strang)",
     "scripts/convert_png_to_webp.py",
