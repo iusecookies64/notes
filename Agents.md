@@ -19,6 +19,7 @@ These guidelines apply whenever creating, synthesizing, or cleaning up academic 
 ### 2.1 Scope & Theoretical Depth
 - **Comprehensive Theory:** Cover every core theoretical concept: definitions, theorems, lemmas, corollaries, mechanisms, models, and complete step-by-step mathematical proofs.
 - **Skip Examples & Exercises:** Unless explicitly instructed otherwise, exclude numerical examples, practice problems, and arithmetic exercises. The notes should focus 100% on theory and fundamental principles.
+- Only cover what is theory taught in the material, and nothing else (unless asked otherwise).
 
 ### 2.2 Mathematical Rigor & LaTeX Formatting (Critical / Top Priority)
 Math formatting is of paramount importance. Adhere strictly to the following rules:
