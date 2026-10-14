@@ -11,11 +11,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-PDF_PATH = SCRIPT_DIR / "06. Eigen Values and Eigen Vectors.pdf"
-OUT_DIR = Path(SCRIPT_DIR / "extracted")
-DPI = 200
-
+PDF_DIR = Path("/home/iusecookies64/Desktop/Tushar/notes/tempp/Linear Algebra")
+PDF_PATH = PDF_DIR / "Introduction to Linear Algebra (Sixth Edition).pdf"
+OUT_DIR = PDF_DIR / "extracted"
+DPI = 300
 
 def convert_with_pymupdf() -> int:
     import fitz  # PyMuPDF
@@ -23,8 +22,10 @@ def convert_with_pymupdf() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     doc = fitz.open(PDF_PATH)
     for i, page in enumerate(doc, start=1):
+        if i < 295 or i > 343:
+            continue
         pix = page.get_pixmap(dpi=DPI)
-        out = OUT_DIR / f"page-{i:02d}.png"
+        out = OUT_DIR / f"page-{i-9:02d}.png"
         pix.save(out)
         print(f"Wrote {out}")
     return len(doc)
@@ -71,10 +72,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
-"""
-you have to convert the scanned handwritten notes in @[05. Determinants.pdf] into digital markdown notes (obsidian), each page is a scanned image and have be extracted out into the
-  @[extracted] folder, go through each one and provide a single markdown file with the same name, leave placeholders for figures/diagrams, use latex for maths. Flag any mistakes (don't fix
-  yourself) in the text.
-"""

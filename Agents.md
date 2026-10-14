@@ -1,6 +1,6 @@
 # Agent Guidelines
 
-This document provides instructions and standards for CLI-based AI agents working within this repository. Follow these guidelines strictly when writing study notes, revising materials, or generating active-recall indexes.
+This document provides instructions and standards for CLI-based AI agents working within this repository. Follow these guidelines strictly when writing study notes, or generating active-recall indexes.
 
 ---
 
