@@ -22,7 +22,7 @@ def convert_with_pymupdf() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     doc = fitz.open(PDF_PATH)
     for i, page in enumerate(doc, start=1):
-        if i < 295 or i > 343:
+        if i < 225 or i > 294:
             continue
         pix = page.get_pixmap(dpi=DPI)
         out = OUT_DIR / f"page-{i-9:02d}.png"
