@@ -16,13 +16,13 @@ This document provides instructions and standards for CLI-based AI agents workin
 
 These guidelines apply whenever creating, synthesizing, or cleaning up academic and technical study notes from textbooks, lecture slides, transcripts, or images.
 
-### 2.1 Scope & Theoretical Depth
-- **Comprehensive Theory:** Cover every core theoretical concept: definitions, theorems, lemmas, corollaries, mechanisms, models, and complete step-by-step mathematical proofs.
-- **Skip Examples & Exercises:** Unless explicitly instructed otherwise, exclude numerical examples, practice problems, and arithmetic exercises. The notes should focus 100% on theory and fundamental principles.
-- Only cover what is theory taught in the material, and nothing else (unless asked otherwise).
+### 2.1 Scope & Theoretical Rigor
+- **Comprehensive Theory:** Focus 100% on theory and fundamental principles. Unless explicitly instructed otherwise, exclude numerical examples, practice problems, and arithmetic exercises.
+- **Analytical Proofs & Formalization:** When source material introduces concepts conversationally, relies on examples to justify claims, or defers proofs, supply the standard analytical proofs, derivations, and precise terminology for those concepts.
+- **Strict Scope Boundary:** Theoretical formalization must strictly support concepts *already introduced* in the material. Do not import unmentioned advanced topics, future chapters, or external syllabus material.
 
-### 2.2 Mathematical Rigor & LaTeX Formatting (Critical / Top Priority)
-Math formatting is of paramount importance. Adhere strictly to the following rules:
+### 2.2 LaTeX & Math Formatting
+Formatting must strictly follow these rules:
 
 1. **Inline Math (`$ ... $`):**
    - Use for all individual variables, symbols, constants, logic levels, signals, bounds, and timing parameters (e.g., `$x$`, `$V_{DD}$`, `$t_{pd}$`, `$\mathbb{R}^n$`).
@@ -101,6 +101,10 @@ Use standard Obsidian callout syntax for key theoretical components:
 ### 2.6 Source Correction & Jargon Accuracy
 - **OCR Flaws:** Repair OCR artifacts, broken line wraps, and garbled symbols using subject matter knowledge.
 - **Transcripts / Spoken Audio:** Correct phonetic speech-to-text misinterpretations into standard domain terminology (e.g., convert "sea moss" to "CMOS", "key map" to "K-map", "t p d" to propagation delay $t_{pd}$).
+
+**Don't Do's**
+- If asked to write notes, you are only supposed to write the notes, testing if it's formatted correctly is not your job, so jump directly to writing and then finish.
+- Don't explore other files, unless asked otherwise. Just focus of the task assigned, everything you need to know is present in this file.
 
 ---
 
