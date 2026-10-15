@@ -9,6 +9,8 @@ This document provides instructions and standards for CLI-based AI agents workin
 - **Direct Delivery:** Jump straight into the requested task, frontmatter, or content. Avoid conversational pleasantries, introductory announcements (e.g., "Sure, here are your notes:"), or conversational sign-offs.
 - **Obsidian & Quartz Compatibility:** All markdown produced must render cleanly in both Obsidian and Quartz.
 - **Documentation Integrity:** Preserve existing structure, references, and frontmatter unless explicitly tasked with modifying them.
+- Always jump directly to the task, don't try to explore files you are not asked to use.
+- Don't run any scripts, unless asked otherwise. If the task requires you to run scripts, but user not mentioned, then ask first.
 
 ---
 
@@ -102,10 +104,6 @@ Use standard Obsidian callout syntax for key theoretical components:
 - **OCR Flaws:** Repair OCR artifacts, broken line wraps, and garbled symbols using subject matter knowledge.
 - **Transcripts / Spoken Audio:** Correct phonetic speech-to-text misinterpretations into standard domain terminology (e.g., convert "sea moss" to "CMOS", "key map" to "K-map", "t p d" to propagation delay $t_{pd}$).
 
-**Don't Do's**
-- If asked to write notes, you are only supposed to write the notes, testing if it's formatted correctly is not your job, so jump directly to writing and then finish.
-- Don't explore other files, unless asked otherwise. Just focus of the task assigned, everything you need to know is present in this file.
-
 ---
 
 ## 3. Skeleton Index Guidelines
@@ -163,3 +161,12 @@ Format the skeleton index cleanly using standard Markdown headings and bullet li
 ### 3.7 Exhaustive Conceptual Coverage
 - Cover every core definition, governing law/theorem, principle, mechanism, mathematical derivation, model, trade-off, and non-trivial exercise.
 - Skip only trivial arithmetic examples.
+
+### Important
+- If asked to make notes, then you don't have to make the skeleton index, the request for making skeleton index will be made explicitly.
+
+---
+
+## 4. Present Task
+
+Read pages associated with section 6.3 from @tempp/Linear Algebra/extracted directory using view_file and the section spans from page 246 to 256. Then add the notes in the file @content/Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md (end of the file).
