@@ -28,7 +28,7 @@ def count_tokens_in_file(file_path: str, model: str = "gpt-4o") -> int:
 
 
 if __name__ == "__main__":
-  file_path = "/home/iusecookies64/Desktop/Tushar/notes/content/Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces.md"
+  file_path = "/home/iusecookies64/Desktop/Tushar/notes/tempp/Linear Algebra/06. Eigenvalues and Eigenvectors.md"
   model_name = "gpt-5"
 
   try:
