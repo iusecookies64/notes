@@ -165,8 +165,3 @@ Format the skeleton index cleanly using standard Markdown headings and bullet li
 ### Important
 - If asked to make notes, then you don't have to make the skeleton index, the request for making skeleton index will be made explicitly.
 
----
-
-## 4. Present Task
-
-Read pages associated with section 6.3 from @tempp/Linear Algebra/extracted directory using view_file and the section spans from page 246 to 256. Then add the notes in the file @content/Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md (end of the file).
