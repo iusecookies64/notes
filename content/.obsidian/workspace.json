@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "9b6e0115fa5fab0a",
+            "id": "1fa779de712e825d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -182,8 +182,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "9b6e0115fa5fab0a",
+  "active": "1fa779de712e825d",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
+    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md",
+    "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
+    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792294445890.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792221402440.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792221386179.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
@@ -193,14 +197,9 @@
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1792215314732.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1792214924058.webp",
     "Untitled.md",
-    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md",
-    "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
-    "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792032147855.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792031756777.webp",
     "06. Eigenvalues and Eigenvectors.md",
-    "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors-1791954215362.webp",
-    "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors-1791951160937.webp",
     "scripts/temp.py",
     "Mathematics/FLT Proof/transcript/Chapter 25- Serre, Ribet, and the Frey Curve.md",
     "Mathematics/FLT Proof/transcript/Chapter 23- Four Clues Connecting Elliptic Curves and Modular Forms.md",

@@ -163,5 +163,5 @@ Format the skeleton index cleanly using standard Markdown headings and bullet li
 - Skip only trivial arithmetic examples.
 
 ### Important
-- If asked to make notes, then you don't have to make the skeleton index, the request for making skeleton index will be made explicitly.
+- When writing/editing notes, make sure to add/update the skeleton index at the end of the notes accordingly.
 
