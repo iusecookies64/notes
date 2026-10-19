@@ -20,20 +20,6 @@
               "icon": "lucide-file",
               "title": "06. Eigenvalues and Eigenvectors"
             }
-          },
-          {
-            "id": "9b204466a1707b8e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "06. Eigen Values and Eigen Vectors"
-            }
           }
         ]
       }
@@ -198,9 +184,10 @@
   },
   "active": "1fa779de712e825d",
   "lastOpenFiles": [
-    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792336152344.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md",
+    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792390929985.webp",
+    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792336152344.webp",
     "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD).md",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792298570405.webp",
     "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
@@ -212,9 +199,7 @@
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1792216624646.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1792215492425.webp",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1792215314732.webp",
-    "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1792214924058.webp",
     "Untitled.md",
-    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792032147855.webp",
     "06. Eigenvalues and Eigenvectors.md",
     "scripts/temp.py",
     "Mathematics/FLT Proof/transcript/Chapter 25- Serre, Ribet, and the Frey Curve.md",
