@@ -9,6 +9,7 @@ This document provides instructions and standards for CLI-based AI agents workin
 - **Direct Delivery:** Jump straight into the requested task, frontmatter, or content. Avoid conversational pleasantries, introductory announcements (e.g., "Sure, here are your notes:"), or conversational sign-offs.
 - **Obsidian & Quartz Compatibility:** All markdown produced must render cleanly in both Obsidian and Quartz.
 - **Documentation Integrity:** Preserve existing structure, references, and frontmatter unless explicitly tasked with modifying them.
+- **Source-Bound:** Only include content present in the provided material. Do not add external definitions, theorems, proofs, or concepts from outside the source unless asket otherwise.
 - Always jump directly to the task, don't try to explore files you are not asked to use.
 - Don't run any scripts, unless asked otherwise. If the task requires you to run scripts, but user not mentioned, then ask first.
 
@@ -19,8 +20,8 @@ This document provides instructions and standards for CLI-based AI agents workin
 These guidelines apply whenever creating, synthesizing, or cleaning up academic and technical study notes from textbooks, lecture slides, transcripts, or images.
 
 ### 2.1 Scope & Theoretical Rigor
-- **Comprehensive Theory:** Focus 100% on theory and fundamental principles. Unless explicitly instructed otherwise, exclude numerical examples, practice problems, and arithmetic exercises.
-- **Strict Scope Boundary:** Theoretical formalization must strictly support concepts *already introduced* in the material. Do not import unmentioned advanced topics, future chapters, or external syllabus material.
+- **Complete Coverage:** Cover all theory present in the material — every definition, theorems (with proof if present), corollary, and remark.
+- **Comprehensive Theory:** Focus 100% on theory and principles as presented in the source. Unless explicitly instructed otherwise, exclude numerical examples, practice problems, and arithmetic exercises.
 
 ### 2.2 LaTeX & Math Formatting
 Formatting must strictly follow these rules:
@@ -100,7 +101,7 @@ Use standard Obsidian callout syntax for key theoretical components:
 - **Tables & Truth Tables:** Clean up broken OCR tables, truth tables, state transition tables, or comparison grids into properly formatted, aligned Markdown tables.
 
 ### 2.6 Source Correction & Jargon Accuracy
-- **OCR Flaws:** Repair OCR artifacts, broken line wraps, and garbled symbols using subject matter knowledge.
+- **OCR Flaws:** Repair OCR artifacts, broken line wraps, and garbled symbols using domain terminology.
 - **Transcripts / Spoken Audio:** Correct phonetic speech-to-text misinterpretations into standard domain terminology (e.g., convert "sea moss" to "CMOS", "key map" to "K-map", "t p d" to propagation delay $t_{pd}$).
 
 ---
@@ -158,7 +159,7 @@ Format the skeleton index cleanly using standard Markdown headings and bullet li
 - Never write naked mathematical symbols or plaintext formulas.
 
 ### 3.7 Exhaustive Conceptual Coverage
-- Cover every core definition, governing law/theorem, principle, mechanism, mathematical derivation, model, trade-off, and non-trivial exercise.
+- Cover every core definition, governing law/theorem, principle, mechanism, mathematical derivation, model, trade-off, and non-trivial exercise from the source notes.
 - Skip only trivial arithmetic examples.
 
 ### Important
