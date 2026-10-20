@@ -20,7 +20,6 @@ These guidelines apply whenever creating, synthesizing, or cleaning up academic 
 
 ### 2.1 Scope & Theoretical Rigor
 - **Comprehensive Theory:** Focus 100% on theory and fundamental principles. Unless explicitly instructed otherwise, exclude numerical examples, practice problems, and arithmetic exercises.
-- **Analytical Proofs & Formalization:** When source material introduces concepts conversationally, relies on examples to justify claims, or defers proofs, supply the standard analytical proofs, derivations, and precise terminology for those concepts.
 - **Strict Scope Boundary:** Theoretical formalization must strictly support concepts *already introduced* in the material. Do not import unmentioned advanced topics, future chapters, or external syllabus material.
 
 ### 2.2 LaTeX & Math Formatting
