@@ -112,7 +112,8 @@ plugins:
     options:
       # theme: ukiyo
       # theme: esther-inspired
-      theme: catppuccin
+      # theme: catppuccin
+      theme: primary
       mode: both
   - source: "@quartz-community/remove-draft"
     enabled: true

@@ -1,0 +1,1 @@
+Go through the extracted pages from the linear algebra book related to section 6.4, the section ranges from page 262 to 268, then add the notes for this section according to the guidelines in the notes @[content/Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md]
