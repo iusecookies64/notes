@@ -391,38 +391,6 @@
       "wrap": false
     }
   },
-  "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md": {
-    "948ec2b7e7618f5eec225121e5163bed": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "d5173085023936187c1221638176d522": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "26ee8a687483b2900fa34fdb4e93bea0": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "428cd1e04468c50d15d5c2ddbcade746": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "660301faefb7c4ac2974c53bd9aa60c0": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    }
-  },
   "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md": {
     "caf9b928e7bfba902ad9188dda19da9a": {
       "position": "center",
@@ -443,12 +411,6 @@
       "wrap": false
     },
     "13636011695dc0c92f9c25917b4f2444": {
-      "position": "center",
-      "width": "",
-      "height": "",
-      "wrap": false
-    },
-    "3f2ab91d66ad11fb16def9574153b817": {
       "position": "center",
       "width": "",
       "height": "",
@@ -498,13 +460,13 @@
     }
   },
   "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD).md": {
-    "a18460176613bb822c1ceb0b1a62d412": {
+    "b557b4569cd9fccc11decd1e19d900de": {
       "position": "center",
       "width": "",
       "height": "",
       "wrap": false
     },
-    "b557b4569cd9fccc11decd1e19d900de": {
+    "28c5b6f18381110dc4f2c0b3c049e976": {
       "position": "center",
       "width": "",
       "height": "",
