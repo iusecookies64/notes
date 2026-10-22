@@ -1,5 +1,5 @@
 ---
-title: My Notes
+title: Unserious Notes
 ---
 
 This is made using Quartz.
