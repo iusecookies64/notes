@@ -18,7 +18,7 @@ These guidelines apply whenever creating or editing academic and technical study
 ### 2.1 Scope & Theoretical Rigor
 - **Complete Coverage:** Cover all theory present in the material — every definition, theorems (with proof if present), corollary, and remark.
 - **Comprehensive Theory:** Focus 100% on theory and principles as presented in the source. Unless explicitly instructed otherwise, exclude numerical examples, practice problems, and arithmetic exercises.
-- **Source-Bound:** Only include content present in the provided material. Do not add external definitions, theorems, proofs, or concepts from outside the source unless asket otherwise.
+- **Source-Bound:** Only include content present in the provided material. Do not add external definitions, theorems, proofs, or concepts from outside the source unless asked otherwise.
 - **Sync Skeleton Index:** Make sure to add/update the skeleton index at the end of the notes accordingly.
 
 ### 2.2 LaTeX & Math Formatting
