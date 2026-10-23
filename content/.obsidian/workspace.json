@@ -35,7 +35,8 @@
               "title": "06. Eigenvalues and Eigenvectors"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -196,11 +197,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "1fa779de712e825d",
+  "active": "1edd1152e32de0ed",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD).md",
     "Mathematics/Linear Algebra (Strang)/rotating vectors.mp4",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md",
-    "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD).md",
     "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD)-1792592788522.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
     "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD)-1792564112429.webp",
@@ -242,7 +243,6 @@
     "scripts/file_size_distribution.py",
     "Mathematics/History",
     "Mathematics/FLT Proof/transcript",
-    "Mathematics/FLT Proof/transcripts.md/Chapter 2 - Basic Set",
-    "Mathematics/FLT Proof/transcripts.md/Chapter 1: Introduction"
+    "Mathematics/FLT Proof/transcripts.md/Chapter 2 - Basic Set"
   ]
 }
