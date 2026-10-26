@@ -1,3 +1,6 @@
-We are in the process of developing notes for Linear Algebra (strang's book). Read @Agents/NoteWritingGuidelines.md for guidelines.
+Read @Agents/GeneralGuidelines.md for general guidelines.
+Read @Agents/NoteWritingGuidelines.md for note writing guidelines.
 
-We recently updated the guidelines to move to more conversational style of writing and are in the processing the existing notes to that way. Currently we are in the note @content/Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md and in it we have updated parts of section 6.3 and the section 6.4 completely, the first 2 sections and starting of the section 6.3 (up to (not including) Matrix Congruence and Sylvester's Law of Inertia) needs to be updated. Read the notes and update them according to the updated guidelines. Also make sure the entire note has no duplicate theory and have logical flow of topics. So you only have to plan first, figure the flow of topics, what should be moved etc, then spawn subagents to do dedicated re-write for dedicated subsections.
+We are in the process of developing notes for Linear Algebra (strang's book). 
+
+For this task, you have to write notes for section 7.2 which ranges from page-297.png to page-301.png. The pages are present in @tempp/Linear Algebra/extracted. The note should be written in the file @content/Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition.md.

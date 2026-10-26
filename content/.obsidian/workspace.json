@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mathematics/Linear Algebra (Strang)/7.1 Singular Values and Singular Vectors.md",
+                "file": "Mathematics/Linear Algebra (Strang)/08. Linear Transformations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "7.1 Singular Values and Singular Vectors"
+              "title": "08. Linear Transformations"
             }
           }
         ]
@@ -184,12 +184,20 @@
   },
   "active": "1edd1152e32de0ed",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition.md",
+    "Mathematics/Linear Algebra (Strang)/08. Linear Transformations.md",
+    "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition-1792991748886.webp",
+    "Mathematics/Linear Algebra (Strang)/image-compression.mp4",
+    "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition-1792988518844.webp",
+    "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition-1792988040543.webp",
+    "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD).md",
+    "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition-1792986253699.webp",
+    "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition-1792986217695.webp",
     "index.md",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors.md",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792932666096.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792932493013.webp",
     "Mathematics/Linear Algebra (Strang)/7.1 Singular Values and Singular Vectors.md",
-    "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD).md",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
     "Mathematics/Linear Algebra (Strang)/subspaces_and_projectors.mp4",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1792774929826.webp",
@@ -202,11 +210,6 @@
     "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD)-1792592788522.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
     "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD)-1792564112429.webp",
-    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792556938156.webp",
-    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792554173673.webp",
-    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792474259550.webp",
-    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792390929985.webp",
-    "Mathematics/Linear Algebra (Strang)/06. Eigenvalues and Eigenvectors-1792336152344.webp",
     "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
     "06. Eigenvalues and Eigenvectors.md",
     "scripts/temp.py",
@@ -222,12 +225,10 @@
     "Mathematics/FLT Proof/transcript/Chapter 26- The Final Proof of Fermat’s Last Theorem.md",
     "Mathematics/FLT Proof/transcript/Chapter 13- p-adic Valuations and p-adic Numbers.md",
     "Mathematics/FLT Proof/transcript/Chapter 10- Rings, Fields, Ideals, and Unique Factorization.md",
-    "Mathematics/FLT Proof/transcript/Chapter 6- Matrices, Linear Systems, and Determinants.md",
     "scripts/hiphen_to_colon.py",
     "scripts/file_token_count.py",
     "Mathematics/Linear Algebra (Strang)",
     "scripts/convert_png_to_webp.py",
-    "scripts/file_size_distribution.py",
-    "Mathematics/History"
+    "scripts/file_size_distribution.py"
   ]
 }
