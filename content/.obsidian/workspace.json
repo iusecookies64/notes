@@ -184,6 +184,10 @@
   },
   "active": "1edd1152e32de0ed",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/shift_not_linear.mp4",
+    "Mathematics/Linear Algebra (Strang)/shift_not_linear.webm",
+    "Mathematics/Linear Algebra (Strang)/08. Linear Transformations-1793004322881.webp",
+    "Mathematics/Linear Algebra (Strang)/08. Linear Transformations-1793004254925.webp",
     "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition.md",
     "Mathematics/Linear Algebra (Strang)/08. Linear Transformations.md",
     "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition-1792991748886.webp",
@@ -207,9 +211,7 @@
     "Mathematics/Linear Algebra (Strang)/rotating vectors.mp4",
     "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
     "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
-    "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD)-1792592788522.webp",
     "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
-    "Mathematics/Linear Algebra (Strang)/07. The Singular Value Decomposition (SVD)-1792564112429.webp",
     "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
     "06. Eigenvalues and Eigenvectors.md",
     "scripts/temp.py",
@@ -224,11 +226,9 @@
     "Mathematics/FLT Proof/transcript/Chapter 17- Torsion Points, Tate Modules, and Galois Representations.md",
     "Mathematics/FLT Proof/transcript/Chapter 26- The Final Proof of Fermat’s Last Theorem.md",
     "Mathematics/FLT Proof/transcript/Chapter 13- p-adic Valuations and p-adic Numbers.md",
-    "Mathematics/FLT Proof/transcript/Chapter 10- Rings, Fields, Ideals, and Unique Factorization.md",
     "scripts/hiphen_to_colon.py",
     "scripts/file_token_count.py",
     "Mathematics/Linear Algebra (Strang)",
-    "scripts/convert_png_to_webp.py",
-    "scripts/file_size_distribution.py"
+    "scripts/convert_png_to_webp.py"
   ]
 }
