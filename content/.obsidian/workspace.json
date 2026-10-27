@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1edd1152e32de0ed",
+            "id": "1ec798a3f1585567",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,17 +22,17 @@
             }
           },
           {
-            "id": "6b83c8fec964e703",
+            "id": "76f93d73e65aba9b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mathematics/Linear Algebra (Strang)/08. Linear Transformations.md",
+                "file": "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "08. Linear Transformations"
+              "title": "03. The Four Fundamental Subspaces"
             }
           }
         ],
@@ -197,15 +197,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "6b83c8fec964e703",
+  "active": "76f93d73e65aba9b",
   "lastOpenFiles": [
+    "Mathematics/Linear Algebra (Strang)/08. Linear Transformations.md",
+    "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
+    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
     "Mathematics/Linear Algebra (Strang)/08. Linear Transformations-1793068976480.webp",
     "Mathematics/Linear Algebra (Strang)/shift_not_linear.mp4",
     "Mathematics/Linear Algebra (Strang)/shift_not_linear.webm",
     "Mathematics/Linear Algebra (Strang)/08. Linear Transformations-1793004322881.webp",
     "Mathematics/Linear Algebra (Strang)/08. Linear Transformations-1793004254925.webp",
     "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition.md",
-    "Mathematics/Linear Algebra (Strang)/08. Linear Transformations.md",
     "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition-1792991748886.webp",
     "Mathematics/Linear Algebra (Strang)/image-compression.mp4",
     "Mathematics/Linear Algebra (Strang)/07. Singular Value Decomposition-1792988518844.webp",
@@ -220,13 +222,10 @@
     "Mathematics/Linear Algebra (Strang)/7.1 Singular Values and Singular Vectors.md",
     "Mathematics/Linear Algebra (Strang)/04. Orthogonality.md",
     "Mathematics/Linear Algebra (Strang)/subspaces_and_projectors.mp4",
-    "Mathematics/Linear Algebra (Strang)/04. Orthogonality-1792774929826.webp",
     "Mathematics/Linear Algebra (Strang)/complementarity_three_panel_3d.html",
     "Untitled.md",
     "Mathematics/Linear Algebra (Strang)/03. The Four Fundamental Subspaces.md",
     "Mathematics/Linear Algebra (Strang)/rotating vectors.mp4",
-    "Mathematics/Linear Algebra (Strang)/02. Solving Linear Equations.md",
-    "Mathematics/Linear Algebra (Strang)/01. Vectors And Matrices.md",
     "Mathematics/Linear Algebra (Strang)/06. Eigen Values and Eigen Vectors.md",
     "Mathematics/Linear Algebra (Strang)/05. Determinants.md",
     "06. Eigenvalues and Eigenvectors.md",
