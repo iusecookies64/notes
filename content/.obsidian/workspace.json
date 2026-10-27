@@ -35,7 +35,8 @@
               "title": "08. Linear Transformations"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -196,7 +197,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "1edd1152e32de0ed",
+  "active": "6b83c8fec964e703",
   "lastOpenFiles": [
     "Mathematics/Linear Algebra (Strang)/08. Linear Transformations-1793068976480.webp",
     "Mathematics/Linear Algebra (Strang)/shift_not_linear.mp4",

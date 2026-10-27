@@ -2,14 +2,41 @@
 /* ==================== GLOBAL CENTER ALIGNMENT ==================== */
 
 /* 1. Target Reading Mode Images */
-.markdown-rendered img {
+/* .markdown-rendered img {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+} */
+
+/* 2. Target Live Preview Image Wrappers */
+/* .markdown-source-view.mod-cm6 .cm-content .image-embed {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: max-content !important;
+    max-width: 100% !important;
+} */
+
+/* 3. Ensure internal image inside Live Preview wrapper stays centered */
+/* .markdown-source-view.mod-cm6 .cm-content .image-embed img {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+} */
+
+/* ==================== GLOBAL CENTER ALIGNMENT ==================== */
+
+/* 1. Target Reading Mode Images and Videos */
+.markdown-rendered img,
+.markdown-rendered video {
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
 }
 
-/* 2. Target Live Preview Image Wrappers */
-.markdown-source-view.mod-cm6 .cm-content .image-embed {
+/* 2. Target Live Preview Image and Video Wrappers */
+.markdown-source-view.mod-cm6 .cm-content .image-embed,
+.markdown-source-view.mod-cm6 .cm-content .video-embed {
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -17,8 +44,9 @@
     max-width: 100% !important;
 }
 
-/* 3. Ensure internal image inside Live Preview wrapper stays centered */
-.markdown-source-view.mod-cm6 .cm-content .image-embed img {
+/* 3. Ensure internal image/video inside Live Preview wrapper stays centered */
+.markdown-source-view.mod-cm6 .cm-content .image-embed img,
+.markdown-source-view.mod-cm6 .cm-content .video-embed video {
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
