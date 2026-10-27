@@ -73,6 +73,7 @@ Formatting must strictly follow these rules:
   - `# X.Y Section Title` (H1) for major top-level sections.
   - `## Topic Name` (H2) for main subtopics.
   - `### Concept Name` (H3) for subsections and specific concepts.
+  - `#### Problem XY: Relevant Title` (H4) for selected problems (only when asked specifically).
 - **Section Separators (`---`):**
   - Horizontal rules (`---`) are **strictly reserved** for separating major top-level `#` (H1) sections (e.g., between `# Overview`, `# 1.1 ...`, and `# Skeleton Index`).
   - **Do NOT** use `---` within a section (no dividers between subsections, proofs, or callouts).
@@ -80,11 +81,12 @@ Formatting must strictly follow these rules:
 ### 1.5 Obsidian Callouts & Proofs
 Use standard Obsidian callout syntax as visual anchors for formal theoretical components, while keeping the surrounding explanation in conversational prose (do not trap the entire note inside callouts):
 - `> [!abstract] Definition: [Term]` — for formal definitions and axioms.
+- `> [!abstract] Problem Statement` — for selected problem statements.
 - `> [!theorem] [Theorem / Law Name]` — for formal theorems, laws, lemmas, and corollaries.
 - `> [!warning] [Caution / Pitfall]` — for common misconceptions or notational cautions.
 - `> [!summary] [Summary]` — for section or concept summaries.
 - `> [!note] [Theoretical Remark]` — for key conceptual remarks, intuitions, and design trade-offs.
-- **Proofs:** Place proofs directly **below** the corresponding `> [!theorem]` callout in regular text (not inside a callout). Begin with `**Proof:**`, walk through the logical and algebraic steps conversationally so the reasoning behind each step is clear, and conclude with `$\blacksquare$`.
+- **Proofs/Solutions:** Place proofs/solutions directly **below** the corresponding callout in regular text (not inside a callout). Begin with `**Proof/Solution:**`, walk through the logical and algebraic steps conversationally so the reasoning behind each step is clear, and conclude with `$\blacksquare$`.
 
 ### 1.6 Figures, Diagrams & Tables
 - **Contextual Placement:** Weave figure references directly into the conceptual flow where the concept is explained—never batch or dump all images at the end of the note.
