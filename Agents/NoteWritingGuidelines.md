@@ -8,11 +8,19 @@ This document provides instructions and formatting standards for CLI-based AI ag
 
 These guidelines apply whenever creating or editing academic and technical study notes from textbooks, lecture slides, transcripts, or images.
 
-### 1.1 Scope & Theoretical Rigor
-- **Complete Coverage:** Cover all theory present in the material — every definition, theorem (with proof if present), corollary, and remark.
-- **Theory-Only on Initial Note Generation:** When generating notes from source material, focus 100% on theory and principles. Exclude in-text numerical examples, practice problems, and arithmetic exercises unless explicitly instructed otherwise. *(Note: Selected problems from dedicated problem sets may be added to the notes later by the user or upon request; once present in the notes, they must be preserved and indexed in the Skeleton Index).*
+### 1.1 Scope & Theoretical Rigor: New Notes vs. Updating Existing Notes
+- **Complete Theoretical Coverage:** Cover all theory present in the material — every definition, theorem (with proof if present), corollary, and remark.
 - **Source-Bound Content:** Only include concepts, definitions, theorems, and proofs present in the provided material. Do not invent or import external facts from outside the source unless asked otherwise. However, you **are** encouraged to use natural conversational phrasing, motivating questions, and intuitive transitions to explain the source material clearly.
-- **Sync Skeleton Index:** Always add or update the Skeleton Index at the end of the notes whenever note content (including newly added problems) is created or modified.
+- **Writing New Notes from Source (Initial Generation):**
+  - Focus **100% on theory and principles**.
+  - **Exclude** in-text numerical examples, practice problems, and arithmetic exercises unless explicitly instructed otherwise.
+  - Selected problems from dedicated problem sets may be added later by the user or upon explicit request; once added, they must be preserved and indexed.
+- **Updating / Refactoring an Existing Note:**
+  - **Preserve All Existing Content:** Keep all theoretical topics, in-text examples, curated exercises/problems, and image attachments that are already present in the note. Never drop an example or problem that the user previously included.
+  - **Standardize Existing Examples into Callouts:** If an existing note contains worked examples (whether already inside a callout or written in plain text), keep them and wrap the example prompt in an `> [!example] Example: [Relevant Title]` callout, with the `**Solution:**` placed in regular conversational text directly below the callout (concluding with `$\blacksquare$`).
+  - **Standardize Existing Exercises/Problems:** Wrap each curated exercise prompt in a self-contained `> [!abstract] Problem Statement` callout (expanding shared-stem prompts if needed so each problem is self-contained), with `**Solution:**` directly below in regular text.
+  - **Fix Structural & Formatting Inconsistencies:** Repair skipped or inconsistent heading levels, legacy callout tags (e.g., convert `[!info] Definition` to `[!abstract] Definition: ...` and `[!abstract] Theorem` to `[!theorem] ...`), broken LaTeX delimiters, and misplaced subsections.
+- **Sync Skeleton Index:** Always add or update the Skeleton Index at the end of the notes whenever note content (including preserved examples and problems) is created or modified.
 
 ### 1.2 Conversational Style & Narrative Flow
 - **Tutor-Like Voice:** Write the notes in an engaging, **conversational style**—as if explaining the concepts 1-on-1 to a peer or student. Avoid dry, robotic, or overly terse encyclopedia-style prose.
@@ -69,11 +77,14 @@ Formatting must strictly follow these rules:
    ```
 
 ### 1.4 Heading Structure & Section Dividers
-- **Heading Hierarchy:**
-  - `# X.Y Section Title` (H1) for major top-level sections.
-  - `## Topic Name` (H2) for main subtopics.
-  - `### Concept Name` (H3) for subsections and specific concepts.
-  - `#### Problem XY: Relevant Title` (H4) for selected problems (only when asked specifically).
+- **Strict Heading Hierarchy (Never Skip Levels):**
+  - `# X.Y Section Title` (H1) for major top-level sections (including top-level `# Chapter X Additional Exercises` if present).
+  - `## Topic Name` (H2) for main subtopics within a section (including `## X.Y Exercises` for end-of-section problem sets).
+  - `### Concept Name` (H3) for specific subsections, sub-concepts, or individual proofs under an H2 topic.
+  - **Problem Headings (No Skipped Levels):** Always place problem headings one level directly below their parent container so no heading level is skipped:
+    - Under a top-level `# Chapter X Additional Exercises` (H1), use `## Problem XY: Relevant Title` (H2) (or group under `## Additional Problems` (H2) and use `### Problem XY: Relevant Title` (H3)).
+    - Under a section-level `## X.Y Exercises` (H2), use `### Problem XY: Relevant Title` (H3).
+    - Under a subtopic-level `### [Problem Category]` (H3), use `#### Problem XY: Relevant Title` (H4).
 - **Section Separators (`---`):**
   - Horizontal rules (`---`) are **strictly reserved** for separating major top-level `#` (H1) sections (e.g., between `# Overview`, `# 1.1 ...`, and `# Skeleton Index`).
   - **Do NOT** use `---` within a section (no dividers between subsections, proofs, or callouts).
@@ -81,12 +92,13 @@ Formatting must strictly follow these rules:
 ### 1.5 Obsidian Callouts & Proofs
 Use standard Obsidian callout syntax as visual anchors for formal theoretical components, while keeping the surrounding explanation in conversational prose (do not trap the entire note inside callouts):
 - `> [!abstract] Definition: [Term]` — for formal definitions and axioms.
-- `> [!abstract] Problem Statement` — for selected problem statements.
 - `> [!theorem] [Theorem / Law Name]` — for formal theorems, laws, lemmas, and corollaries.
+- `> [!example] Example: [Relevant Title]` — for worked in-text examples (when preserving examples in existing notes or when explicitly asked to include examples).
+- `> [!abstract] Problem Statement` — for curated problem/exercise statements.
 - `> [!warning] [Caution / Pitfall]` — for common misconceptions or notational cautions.
 - `> [!summary] [Summary]` — for section or concept summaries.
 - `> [!note] [Theoretical Remark]` — for key conceptual remarks, intuitions, and design trade-offs.
-- **Proofs/Solutions:** Place proofs/solutions directly **below** the corresponding callout in regular text (not inside a callout). Begin with `**Proof/Solution:**`, walk through the logical and algebraic steps conversationally so the reasoning behind each step is clear, and conclude with `$\blacksquare$`.
+- **Proofs/Solutions:** Place proofs and solutions directly **below** the corresponding theorem, example, or problem callout in regular text (not inside a callout). Begin with `**Proof:**` or `**Solution:**`, walk through the logical and algebraic steps conversationally so the reasoning behind each step is clear, and conclude with `$\blacksquare$`.
 
 ### 1.6 Figures, Diagrams & Tables
 - **Contextual Placement:** Weave figure references directly into the conceptual flow where the concept is explained—never batch or dump all images at the end of the note.
