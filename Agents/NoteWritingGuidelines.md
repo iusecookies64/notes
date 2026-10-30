@@ -1,74 +1,61 @@
 # Note Writing & Skeleton Index Guidelines
 
-This document provides instructions and formatting standards for CLI-based AI agents working within this repository. Follow these guidelines strictly when writing study notes or generating active-recall indexes, alongside the operating rules in `Agents/GeneralGuidelines.md`.
+Follow these formatting and writing standards strictly when creating study notes or active-recall indexes, alongside `Agents/GeneralGuidelines.md`.
 
 ---
 
 ## 1. Note Writing Guidelines
 
-These guidelines apply whenever creating or editing academic and technical study notes from textbooks, lecture slides, transcripts, or images.
-
-### 1.1 Scope & Theoretical Rigor: New Notes vs. Updating Existing Notes
-- **Complete Theoretical Coverage:** Cover all theory present in the material — every definition, theorem (with proof if present), corollary, and remark.
-- **Source-Bound Content:** Only include concepts, definitions, theorems, and proofs present in the provided material. Do not invent or import external facts from outside the source unless asked otherwise. However, you **are** encouraged to use natural conversational phrasing, motivating questions, and intuitive transitions to explain the source material clearly.
-- **Writing New Notes from Source (Initial Generation):**
+### 1.1 Scope & Theoretical Rigor
+- **Complete Coverage:** Cover all theory in the source material—every definition, theorem (with proof if present), corollary, and remark.
+- **Source-Bound:** Only include concepts, definitions, theorems, and proofs from the provided source. Do not import external facts unless asked, though conversational phrasing, motivating questions, and intuitive explanations are encouraged.
+- **New Notes (Initial Generation):**
   - Focus **100% on theory and principles**.
-  - **Exclude** in-text numerical examples, practice problems, and arithmetic exercises unless explicitly instructed otherwise.
-  - Selected problems from dedicated problem sets may be added later by the user or upon explicit request; once added, they must be preserved and indexed.
-- **Updating / Refactoring an Existing Note:**
-  - **Preserve All Existing Content:** Keep all theoretical topics, in-text examples, curated exercises/problems, and image attachments that are already present in the note. Never drop an example or problem that the user previously included.
-  - **Standardize Existing Examples into Callouts:** If an existing note contains worked examples (whether already inside a callout or written in plain text), keep them and wrap the example prompt in an `> [!example] Example: [Relevant Title]` callout, with the `**Solution:**` placed in regular conversational text directly below the callout (concluding with `$\blacksquare$`).
-  - **Standardize Existing Exercises/Problems:** Wrap each curated exercise prompt in a self-contained `> [!abstract] Problem Statement` callout (expanding shared-stem prompts if needed so each problem is self-contained), with `**Solution:**` directly below in regular text.
-  - **Fix Structural & Formatting Inconsistencies:** Repair skipped or inconsistent heading levels, legacy callout tags (e.g., convert `[!info] Definition` to `[!abstract] Definition: ...` and `[!abstract] Theorem` to `[!theorem] ...`), broken LaTeX delimiters, and misplaced subsections.
-- **Sync Skeleton Index:** Always add or update the Skeleton Index at the end of the notes whenever note content (including preserved examples and problems) is created or modified.
+  - **Exclude** in-text numerical examples, practice problems, and arithmetic exercises unless asked otherwise.
+  - Selected problems added later must be preserved and indexed.
+- **Updating / Refactoring Existing Notes:**
+  - **Preserve All Content:** Keep all existing theory, in-text examples, curated problems, and images. Never drop previously included examples or problems.
+  - **Standardize Examples:** Wrap worked example prompts in `> [!example] Example: [Relevant Title]` callouts, with `**Solution:**` in regular text directly below (ending with `$\blacksquare$`).
+  - **Standardize Problems:** Wrap curated exercise prompts in self-contained `> [!abstract] Problem Statement` callouts (expanding shared stems if needed), with `**Solution:**` in regular text below.
+  - **Fix Formatting:** Repair skipped heading levels, legacy callout tags (e.g., `[!info] Definition` $\to$ `[!abstract] Definition: ...`, `[!abstract] Theorem` $\to$ `[!theorem] ...`), broken LaTeX delimiters, and misplaced subsections.
+- **Sync Skeleton Index:** Always add or update the `# Skeleton Index` at the end of the file whenever notes are created or modified.
 
-### 1.2 Conversational Style & Narrative Flow
-- **Tutor-Like Voice:** Write the notes in an engaging, **conversational style**—as if explaining the concepts 1-on-1 to a peer or student. Avoid dry, robotic, or overly terse encyclopedia-style prose.
-- **Motivate & Unpack:** Bridge formal theory with intuition:
-  - Lead into definitions and theorems with motivating context or questions (e.g., *"Why do we need this condition?"*, *"Notice what happens if we relax this assumption..."*).
-  - After stating a formal definition, equation, or theorem, unpack what it actually means in plain language (e.g., *"Let's break down what each term in this equation is doing..."*, *"In other words, this guarantees that..."*).
-- **Flowing Prose Over Bullet Dumps:** Default to natural, connected paragraphs for explanations, physical/mathematical intuition, and derivations. Reserve bullet points and numbered lists for genuinely discrete items (e.g., enumerating assumptions, distinct cases, or component properties).
+### 1.2 Conversational Style & Flow
+- **Tutor-Like Voice:** Write in an engaging, 1-on-1 conversational style rather than dry, robotic, encyclopedia-style prose.
+- **Motivate & Unpack:**
+  - Lead into definitions and theorems with motivating context or questions (e.g., *"Why do we need this condition?"*).
+  - Unpack formal definitions, equations, and theorems in plain language afterward (e.g., *"In other words, this guarantees that..."*).
+- **Prose Over Bullet Dumps:** Default to connected paragraphs for explanations, intuition, and derivations. Reserve lists for discrete items (e.g., assumptions, cases, or component properties).
 
 ### 1.3 LaTeX & Math Formatting
-Formatting must strictly follow these rules:
-
-1. **Inline Math (`$ ... $`):**
-   - Use for all individual variables, symbols, constants, logic levels, signals, bounds, and timing parameters (e.g., `$x$`, `$V_{DD}$`, `$t_{pd}$`, `$\mathbb{R}^n$`).
-   - Write without spaces immediately inside the dollar signs (e.g., `$formula$`, never `$ formula $`).
-   - Never write naked mathematical symbols or plaintext formulas without LaTeX delimiters.
-
-2. **Display Math Delimiters (`$$`):**
-   - The opening `$$` and closing `$$` **must always be on their own separate lines**.
-   - **Never** place math content on the same line as the delimiters (e.g., avoid `$$formula$$`).
+1. **Inline Math (`$...$`):**
+   - Use for all variables, symbols, constants, signals, bounds, and parameters (e.g., `$x$`, `$V_{DD}$`, `$t_{pd}$`, `$\mathbb{R}^n$`).
+   - Do not put spaces inside the `$` delimiters (`$formula$`, never `$ formula $`). Never write naked math symbols in plain text.
+2. **Display Math (`$$`):**
+   - Opening and closing `$$` **must always be on their own lines** (never `$$formula$$`):
    ```markdown
    $$
    f(x) = \int_1^x \frac{1}{t} \, dt
    $$
    ```
-
 3. **Multi-Step Derivations:**
-   - Use `\begin{align} ... \end{align}` or `\begin{aligned} ... \end{aligned}` inside display math blocks, with `&` alignment and `\\` line breaks:
+   - Use `\begin{aligned} ... \end{aligned}` (or `align`) inside display math with `&` alignment and `\\` line breaks:
    ```markdown
    $$
    \begin{aligned}
    F &= \overline{(A + B) \cdot (C + D)} \\
-     &= \overline{A + B} + \overline{C + D} \\
-     &= (\overline{A} \cdot \overline{B}) + (\overline{C} \cdot \overline{D})
+     &= \overline{A + B} + \overline{C + D}
    \end{aligned}
    $$
    ```
-
-4. **Display Math Inside Lists:**
-   - Indent the `$$` block to match the list item's indentation level so the equation remains part of that list item:
+4. **Display Math in Lists:** Indent the `$$` block to match the list item's indentation:
    ```markdown
    1. **Setup Time Constraint:**
       $$
       T_{c} \ge t_{pcq} + t_{pd} + t_{setup} + t_{skew}
       $$
    ```
-
-5. **Display Math Inside Callouts / Blockquotes:**
-   - Prefix every line of the display block with `>`:
+5. **Display Math in Callouts:** Prefix every line with `>`:
    ```markdown
    > [!abstract] Definition: One-to-One Function
    > $$
@@ -76,94 +63,66 @@ Formatting must strictly follow these rules:
    > $$
    ```
 
-### 1.4 Heading Structure & Section Dividers
+### 1.4 Headings & Section Dividers
 - **Strict Heading Hierarchy (Never Skip Levels):**
-  - `# X.Y Section Title` (H1) for major top-level sections (including top-level `# Chapter X Additional Exercises` if present).
-  - `## Topic Name` (H2) for main subtopics within a section (including `## X.Y Exercises` for end-of-section problem sets).
-  - `### Concept Name` (H3) for specific subsections, sub-concepts, or individual proofs under an H2 topic.
-  - **Problem Headings (No Skipped Levels):** Always place problem headings one level directly below their parent container so no heading level is skipped:
-    - Under a top-level `# Chapter X Additional Exercises` (H1), use `## Problem XY: Relevant Title` (H2) (or group under `## Additional Problems` (H2) and use `### Problem XY: Relevant Title` (H3)).
-    - Under a section-level `## X.Y Exercises` (H2), use `### Problem XY: Relevant Title` (H3).
-    - Under a subtopic-level `### [Problem Category]` (H3), use `#### Problem XY: Relevant Title` (H4).
-- **Section Separators (`---`):**
-  - Horizontal rules (`---`) are **strictly reserved** for separating major top-level `#` (H1) sections (e.g., between `# Overview`, `# 1.1 ...`, and `# Skeleton Index`).
-  - **Do NOT** use `---` within a section (no dividers between subsections, proofs, or callouts).
+  - `# X.Y Section Title` (H1) — major top-level sections (including `# Chapter X Additional Exercises` and `# Skeleton Index`).
+  - `## Topic Name` (H2) — main subtopics (including `## X.Y Exercises`).
+  - `### Concept Name` (H3) — specific subsections, sub-concepts, or proofs.
+  - **Problem Headings:** Always place problem headings one level directly below their parent container:
+    - Under H1 (`# Chapter X Additional Exercises`) $\to$ `## Problem XY: Title` (or `## Additional Problems` $\to$ `### Problem XY: Title`).
+    - Under H2 (`## X.Y Exercises`) $\to$ `### Problem XY: Title`.
+    - Under H3 (`### [Category]`) $\to$ `#### Problem XY: Title`.
+- **Section Separators (`---`):** Use `---` **only** between major top-level `#` (H1) sections. Never use `---` within a section.
 
 ### 1.5 Obsidian Callouts & Proofs
-Use standard Obsidian callout syntax as visual anchors for formal theoretical components, while keeping the surrounding explanation in conversational prose (do not trap the entire note inside callouts):
-- `> [!abstract] Definition: [Term]` — for formal definitions and axioms.
-- `> [!theorem] [Theorem / Law Name]` — for formal theorems, laws, lemmas, and corollaries.
-- `> [!example] Example: [Relevant Title]` — for worked in-text examples (when preserving examples in existing notes or when explicitly asked to include examples).
-- `> [!abstract] Problem Statement` — for curated problem/exercise statements.
-- `> [!warning] [Caution / Pitfall]` — for common misconceptions or notational cautions.
-- `> [!summary] [Summary]` — for section or concept summaries.
-- `> [!note] [Theoretical Remark]` — for key conceptual remarks, intuitions, and design trade-offs.
-- **Proofs/Solutions:** Place proofs and solutions directly **below** the corresponding theorem, example, or problem callout in regular text (not inside a callout). Begin with `**Proof:**` or `**Solution:**`, walk through the logical and algebraic steps conversationally so the reasoning behind each step is clear, and conclude with `$\blacksquare$`.
+Use callouts as visual anchors for formal blocks while keeping surrounding explanations in regular prose:
+- `> [!abstract] Definition: [Term]` — formal definitions and axioms.
+- `> [!theorem] [Theorem / Law Name]` — theorems, laws, lemmas, and corollaries.
+- `> [!example] Example: [Relevant Title]` — worked in-text examples.
+- `> [!abstract] Problem Statement` — curated problem/exercise prompts.
+- `> [!warning] [Caution / Pitfall]` — common misconceptions or cautions.
+- `> [!summary] [Summary]` — section or concept summaries.
+- `> [!note] [Theoretical Remark]` — key conceptual remarks, intuitions, and trade-offs.
+- **Proofs & Solutions:** Place directly **below** the callout in regular text (not inside a callout). Start with `**Proof:**` or `**Solution:**`, explain steps conversationally, and end with `$\blacksquare$`.
 
 ### 1.6 Figures, Diagrams & Tables
-- **Contextual Placement:** Weave figure references directly into the conceptual flow where the concept is explained—never batch or dump all images at the end of the note.
-- **Existing Image References:** If an image filename or reference exists in the source (e.g., `![](image_0.png)` or extracted page figures), place it immediately adjacent to the relevant explanation.
-- **Diagram Placeholders:** When a diagram, plot, or waveform is discussed in the source but no image file is present, insert an explicit placeholder using this exact format:
+- **Contextual Placement:** Place images (`![](image_0.png)`) immediately next to the concept they illustrate; never batch images at the end.
+- **Diagram Placeholders:** If a source figure is referenced without an image file, insert:
   ```markdown
   > [!figure] Figure Placeholder: Figure X.Y - [Brief description]
   ```
-- **Tables & Truth Tables:** Clean up broken OCR tables, truth tables, state transition tables, or comparison grids into properly formatted, aligned Markdown tables.
+- **Tables:** Format OCR tables, truth tables, and state tables into clean Markdown tables.
 
-### 1.7 Source Correction & Jargon Accuracy
-- **OCR Flaws:** Repair OCR artifacts, broken line wraps, and garbled symbols using domain terminology.
-- **Transcripts / Spoken Audio:** Correct phonetic speech-to-text misinterpretations into standard domain terminology (e.g., convert "sea moss" to "CMOS", "key map" to "K-map", "t p d" to propagation delay `$t_{pd}$`).
+### 1.7 Source Correction
+- Fix OCR artifacts, broken line wraps, and garbled symbols.
+- Correct speech-to-text errors in transcripts into proper domain terminology (e.g., "sea moss" $\to$ "CMOS", "key map" $\to$ "K-map", "t p d" $\to$ `$t_{pd}$`).
 
 ---
 
 ## 2. Skeleton Index Guidelines
 
-These guidelines apply when creating or updating an active-recall **Pure Skeleton Index** for revision and study. The skeleton index functions like a closed-book examination paper: forcing complete active recall without providing hints, solutions, formulas, or hand-holding.
+The **Skeleton Index** at the end of a note acts like a closed-book exam: testing exhaustive active recall of every concept and problem without hints, formulas, or solutions.
 
-### 2.1 Strict 1:1 Sequential Order (No Conceptual Pooling)
-- **Sequential Flow:** The skeleton index must strictly follow the exact 1-to-1 sequential, chronological order of headings, subheadings, topics, and added problems as they appear in the source notes from top to bottom.
-- **No Artificial Pooling:** Do **NOT** group items across sections into artificial buckets (e.g., do not lump all definitions together into a single "Definitions" section or all theorems into a "Theorems" section). Follow the natural narrative flow of the notes.
+### 2.1 Structure & Sequential Order
+- **Strict 1:1 Chronological Order:** Mirror the exact top-to-bottom sequence of headings, subtopics, and problems in the notes. Never pool items into artificial buckets (e.g., no separate "All Definitions" or "All Theorems" sections).
+- **Formatting Hierarchy:**
+  - Precede with `---` and `# Skeleton Index` (H1).
+  - `## [Section Number & Title]` (H2) for main sections.
+  - `### [Subsection Title]` (H3) for subsections.
+  - `**[Topic Title]**` for specific topics.
+  - Bullet points (`- ...`) for active-recall prompts.
+- **Exhaustive Coverage & LaTeX:** Cover every definition, theorem, derivation, mechanism, trade-off, and curated problem, following all LaTeX rules from **Section 1.3**.
 
-### 2.2 Placement & Heading Hierarchy
-When placed at the end of a note file, precede the index with a horizontal rule (`---`) and a top-level `# Skeleton Index` heading, then format cleanly using standard Markdown headings and bullet lists:
-- `# Skeleton Index` (H1) as the top-level container heading at the end of the note.
-- `## [Section Number & Title]` (H2) for main sections.
-- `### [Subsection Title]` (H3) for subsections within a section.
-- `**[Topic Title]**` for specific topics within a subsection.
-- Bullet points (`- ...`) under the topic headings for active-recall prompts and cues.
+### 2.2 Zero Spoilers (Exam Conditions)
+1. **No Formulas or Values in Theory Prompts:** State *what* to recall or derive, never the formula, bound, or value itself (e.g., *"Derive the expression for [Metric]"* or *"State the bounds on [Parameter]"*).
+2. **No Proof Hints:** Never reveal proof techniques, substitutions, or identities (e.g., *"Prove [Theorem] analytically and conceptually"*).
+3. **No Leaked Conclusions:** Do not spoil outcomes in prompts (e.g., *"Analyze the effect of [X] on [Y]"* instead of *"Explain why [X] increases [Y]"*).
+4. **No Solutions:** Exclude all answers, hints, parenthetical cues, and intermediate steps.
 
-### 2.3 Zero Spoilers / Exam Conditions (No Hand-Holding)
-1. **No Formulas, Equations, or Values in Theory Items:**
-   - State *what* needs to be recalled, derived, or stated; never reveal the formula, equation, numerical value, bound, or conclusion.
-   - *Example:* Write *"Derive the expression for [Metric/Variable]"* instead of writing the formula.
-   - *Example:* Write *"State the bounds on [Parameter]"* instead of stating the bounds.
-2. **No Proof or Derivation Hints:**
-   - Never disclose the proof technique, intermediate algebraic substitution, or shortcut.
-   - *Example:* Write *"Prove [Theorem/Law/Property] analytically and conceptually"* rather than hinting at the substitution or identity used.
-3. **No Leaked Conclusions:**
-   - Do not spoil the outcome when asking to evaluate, compare, or explain behavior.
-   - *Example:* Write *"Analyze the effect of [X] on [Y]"* instead of *"Explain why [X] increases [Y]"*.
-4. **Strictly No Solutions:** Exclude all answers, derivations, and solution steps from prompts.
+### 2.3 Curated Problems (Full Statements)
+- Include every curated problem from the notes with its **complete, self-contained problem statement** (all premises, initial conditions, data, and questions to solve/prove).
+- The reader should never have to memorize the question itself—only how to solve it. Exclude all hints, steps, and final answers.
 
-### 2.4 Curated Problems in the Notes (Full Problem Statements)
-- Whenever the notes contain curated exercises or problems (such as problem-set questions added after reading a section), **include them in the Skeleton Index with the problem statement written completely and in full**.
-- Include all premises, specifications, initial conditions, numbers, data points, and the exact question or claim to be solved/proved.
-- The student must never be forced to memorize what the question asked—only how to solve, derive, or prove it.
-- **Do not include** the solution, intermediate steps, hints, or final answers within the problem statement.
-
-### 2.5 Actionable Test Prompts
-- Phrase theoretical prompts as active challenges using strong imperative verbs:
-  - *"Define..."*
-  - *"State the necessary conditions for..."*
-  - *"State and prove [Theorem/Law Name]"*
-  - *"Derive the governing equation for..."*
-  - *"Explain the mechanism behind..."*
-  - *"Compare [X] vs [Y] in terms of [Criteria]"*
-  - *"Determine..."*
-  - *"Evaluate and justify..."*
-- Never include parenthetical answers, hints, or solution steps in the cues.
-
-### 2.6 Strict LaTeX Compliance
-- Follow all LaTeX formatting rules from **Section 1.3** (`$ ... $` for inline math and separate-line `$$ ... $$` for display math) for any mathematical symbols or problem statements in the index.
-
-### 2.7 Exhaustive Conceptual Coverage
-- Cover every core definition, governing law/theorem, principle, mechanism, mathematical derivation, model, trade-off, and curated problem present in the notes.
+### 2.4 Actionable Prompt Verbs
+Phrase theoretical prompts as direct challenges using strong imperative verbs:
+- *"Define..."*, *"State the necessary conditions for..."*, *"State and prove [Theorem]"*, *"Derive the governing equation for..."*, *"Explain the mechanism behind..."*, *"Compare [X] vs [Y] in terms of [Criteria]"*, *"Determine..."*, *"Evaluate and justify..."*.
