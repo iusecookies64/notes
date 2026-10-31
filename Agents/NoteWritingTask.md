@@ -4,8 +4,8 @@ Read @Agents/NoteWritingGuidelines.md for note writing guidelines.
 ---
 
 # Task
-We are in the process of developing notes for Linear Algebra book (Strang).
+We are in the process of developing notes for the book Calculus And Analytic Geometry (9ed).
 
-For this task you have to add selected exercises (with solutions) from section 8.2 and add them to the end of section 8.2 (line 760) of the note @content/Mathematics/Linear Algebra (Strang)/08. Linear Transformations.md
+For this task you have to create notes for section 8.1 and add them the note @content/Mathematics/Calculus And Analytic Geometry (9e)/08. Infinite Series.md
 
-The exercises are 13, 17, 18, 19, 20, 22, 24, 25, 27, 28, 32, 33 and they are present on the page-325.png and page-326.png present in the directory @tempp/Linear Algebra/extracted
+The section ranges from page-613.png to page-619.png and is present in the directory @tempp/Calculus/extracted

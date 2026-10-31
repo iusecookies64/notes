@@ -11,8 +11,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-PDF_DIR = Path("/home/iusecookies64/Desktop/Tushar/notes/tempp/Linear Algebra")
-PDF_PATH = PDF_DIR / "Introduction to Linear Algebra (Sixth Edition).pdf"
+PDF_DIR = Path("/home/iusecookies64/Desktop/Tushar/notes/tempp/Calculus")
+PDF_PATH = PDF_DIR / "Calculus And Analytic Geometry 9e.pdf"
 OUT_DIR = PDF_DIR / "extracted"
 DPI = 300
 
@@ -22,14 +22,13 @@ def convert_with_pymupdf() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     doc = fitz.open(PDF_PATH)
     for i, page in enumerate(doc, start=1):
-        if i < 225 or i > 294:
+        if i < 468:
             continue
         pix = page.get_pixmap(dpi=DPI)
-        out = OUT_DIR / f"page-{i-9:02d}.png"
+        out = OUT_DIR / f"page-{i-19:02d}.png"
         pix.save(out)
         print(f"Wrote {out}")
     return len(doc)
-
 
 def convert_with_pdftoppm() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
