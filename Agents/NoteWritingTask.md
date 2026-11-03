@@ -4,8 +4,4 @@ Read @Agents/NoteWritingGuidelines.md for note writing guidelines.
 ---
 
 # Task
-We are in the process of developing notes for the book Calculus And Analytic Geometry (9ed).
-
-For this task you have to create notes for section 8.1 and add them the note @content/Mathematics/Calculus And Analytic Geometry (9e)/08. Infinite Series.md
-
-The section ranges from page-613.png to page-619.png and is present in the directory @tempp/Calculus/extracted
+read the length of smooth curve proof in this note @@content/Mathematics/Calculus And Analytic Geometry (9e)/05. Applications Of Integration.md my doubt is that just showing that the sum converges is not enough to prove that the area, volume or arc length is equal to that limit. I have read in apostol that we bound the aread between two converging regions (upper and lower sums) same for volume, but how do we rigorously prove that the length is indeed given by this formula.
