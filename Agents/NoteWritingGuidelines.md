@@ -15,6 +15,7 @@ Follow these formatting and writing standards strictly when creating study notes
   - Selected problems added later must be preserved and indexed.
 - **Updating / Refactoring Existing Notes:**
   - **Preserve All Content:** Keep all existing theory, in-text examples, curated problems, and images. Never drop previously included examples or problems.
+  - **Inspect Full Outline (No Isolated Writing):** When adding new content or updating existing sections, never read or write in isolation. Always inspect all headings and subheadings first using a simple shell command (e.g., `grep -E '^#{1,6} ' <file>`). This saves tokens, reveals what the note contains, prevents duplicate writing, and enables natural backward/forward references (only when genuinely necessary, never forced) so the note reads engagingly as if authored by a single entity rather than disconnected agents.
   - **Standardize Examples:** Wrap worked example prompts in `> [!example] Example: [Relevant Title]` callouts, with `**Solution:**` in regular text directly below (ending with `$\blacksquare$`).
   - **Standardize Problems:** Wrap curated exercise prompts in self-contained `> [!abstract] Problem Statement` callouts (expanding shared stems if needed), with `**Solution:**` in regular text below.
   - **Fix Formatting:** Repair skipped heading levels, legacy callout tags (e.g., `[!info] Definition` $\to$ `[!abstract] Definition: ...`, `[!abstract] Theorem` $\to$ `[!theorem] ...`), broken LaTeX delimiters, and misplaced subsections.
