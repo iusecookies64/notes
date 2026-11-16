@@ -13,5 +13,6 @@
     "hide_images_explorer",
     "centered_tables",
     "widen-line-width"
-  ]
+  ],
+  "showRibbon": true
 }
