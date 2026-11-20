@@ -21,12 +21,16 @@ Follow these formatting and writing standards strictly when creating study notes
   - **Fix Formatting:** Repair skipped heading levels, legacy callout tags (e.g., `[!info] Definition` $\to$ `[!abstract] Definition: ...`, `[!abstract] Theorem` $\to$ `[!theorem] ...`), broken LaTeX delimiters, and misplaced subsections.
 - **Sync Skeleton Index:** Always add or update the `# Skeleton Index` at the end of the file whenever notes are created or modified.
 
-### 1.2 Conversational Style & Flow
-- **Tutor-Like Voice:** Write in an engaging, 1-on-1 conversational style rather than dry, robotic, encyclopedia-style prose.
-- **Motivate & Unpack:**
-  - Lead into definitions and theorems with motivating context or questions (e.g., *"Why do we need this condition?"*).
-  - Unpack formal definitions, equations, and theorems in plain language afterward (e.g., *"In other words, this guarantees that..."*).
-- **Prose Over Bullet Dumps:** Default to connected paragraphs for explanations, intuition, and derivations. Reserve lists for discrete items (e.g., assumptions, cases, or component properties).
+### 1.2 Writing Style: Theory vs. Problem Solutions
+- **Theory (Conversational Style):**
+  - **Tutor-Like Voice:** Write theory sections (concepts, definitions, theorems, proofs, and intuition) in an engaging, 1-on-1 conversational style rather than dry, robotic, encyclopedia-style prose.
+  - **Motivate & Unpack:**
+    - Lead into definitions and theorems with motivating context or questions (e.g., *"Why do we need this condition?"*).
+    - Unpack formal definitions, equations, and theorems in plain language afterward (e.g., *"In other words, this guarantees that..."*).
+  - **Prose Over Bullet Dumps:** Default to connected paragraphs for explanations, intuition, and derivations. Reserve lists for discrete items (e.g., assumptions, cases, or component properties).
+- **Problem Solutions (Direct & Concise — Rudin Style):**
+  - When writing solutions to exercises or curated problems, drop the conversational filler and write in a **direct, concise, and mathematically rigorous style**—economical and self-contained, as if written by Walter Rudin.
+  - State the argument or computation cleanly with zero unnecessary preamble, justifying every logical step tightly without handwaving.
 
 ### 1.3 LaTeX & Math Formatting
 1. **Inline Math (`$...$`):**
@@ -84,7 +88,7 @@ Use callouts as visual anchors for formal blocks while keeping surrounding expla
 - `> [!warning] [Caution / Pitfall]` — common misconceptions or cautions.
 - `> [!summary] [Summary]` — section or concept summaries.
 - `> [!note] [Theoretical Remark]` — key conceptual remarks, intuitions, and trade-offs.
-- **Proofs & Solutions:** Place directly **below** the callout in regular text (not inside a callout). Start with `**Proof:**` or `**Solution:**`, explain steps conversationally, and end with `$\blacksquare$`.
+- **Proofs & Solutions:** Place directly **below** the callout in regular text (not inside a callout), ending with `$\blacksquare$`. Start theorem proofs with `**Proof:**` (written in the conversational theory style) and problem solutions with `**Solution:**` (written in the direct, concise, Rudin-like style).
 
 ### 1.6 Figures, Diagrams & Tables
 - **Contextual Placement:** Place images (`![](image_0.png)`) immediately next to the concept they illustrate; never batch images at the end.
