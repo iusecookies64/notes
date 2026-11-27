@@ -7,11 +7,11 @@ Follow these formatting and writing standards strictly when creating study notes
 ## 1. Note Writing Guidelines
 
 ### 1.1 Scope & Theoretical Rigor
-- **Complete Coverage:** Cover all theory in the source material—every definition, theorem (with proof if present), corollary, and remark.
-- **Source-Bound:** Only include concepts, definitions, theorems, and proofs from the provided source. Do not import external facts unless asked, though conversational phrasing, motivating questions, and intuitive explanations are encouraged.
+- **Complete Coverage:** Cover all theory and in-text worked examples in the source material—every definition, theorem (with proof if present), corollary, remark, and worked example.
+- **Source-Bound:** Only include concepts, definitions, theorems, proofs, and examples from the provided source. Do not import external facts unless asked, though conversational phrasing, motivating questions, and intuitive explanations are encouraged.
 - **New Notes (Initial Generation):**
-  - Focus **100% on theory and principles**.
-  - **Exclude** in-text numerical examples, practice problems, and arithmetic exercises unless asked otherwise.
+  - Include all theory, principles, and **in-text worked examples** from the source.
+  - **Exclude** end-of-section practice problems and exercises unless asked otherwise.
   - Selected problems added later must be preserved and indexed.
 - **Updating / Refactoring Existing Notes:**
   - **Preserve All Content:** Keep all existing theory, in-text examples, curated problems, and images. Never drop previously included examples or problems.
@@ -21,12 +21,12 @@ Follow these formatting and writing standards strictly when creating study notes
   - **Fix Formatting:** Repair skipped heading levels, legacy callout tags (e.g., `[!info] Definition` $\to$ `[!abstract] Definition: ...`, `[!abstract] Theorem` $\to$ `[!theorem] ...`), broken LaTeX delimiters, and misplaced subsections.
 - **Sync Skeleton Index:** Always add or update the `# Skeleton Index` at the end of the file whenever notes are created or modified.
 
-### 1.2 Writing Style: Theory vs. Problem Solutions
-- **Theory (Conversational Style):**
-  - **Tutor-Like Voice:** Write theory sections (concepts, definitions, theorems, proofs, and intuition) in an engaging, 1-on-1 conversational style rather than dry, robotic, encyclopedia-style prose.
+### 1.2 Writing Style: Theory & Examples vs. Problem Solutions
+- **Theory & Worked Examples (Conversational Style):**
+  - **Tutor-Like Voice:** Write theory sections (concepts, definitions, theorems, proofs, and intuition) and in-text worked example solutions in an engaging, 1-on-1 conversational style rather than dry, robotic, encyclopedia-style prose.
   - **Motivate & Unpack:**
-    - Lead into definitions and theorems with motivating context or questions (e.g., *"Why do we need this condition?"*).
-    - Unpack formal definitions, equations, and theorems in plain language afterward (e.g., *"In other words, this guarantees that..."*).
+    - Lead into definitions, theorems, and examples with motivating context or questions (e.g., *"Why do we need this condition?"*).
+    - Unpack formal definitions, equations, theorems, and worked examples in plain language afterward, highlighting why the theory applies and what it demonstrates (e.g., *"In other words, this guarantees that..."*).
   - **Prose Over Bullet Dumps:** Default to connected paragraphs for explanations, intuition, and derivations. Reserve lists for discrete items (e.g., assumptions, cases, or component properties).
 - **Problem Solutions (Direct & Concise — Rudin Style):**
   - When writing solutions to exercises or curated problems, drop the conversational filler and write in a **direct, concise, and mathematically rigorous style**—economical and self-contained, as if written by Walter Rudin.
@@ -88,7 +88,7 @@ Use callouts as visual anchors for formal blocks while keeping surrounding expla
 - `> [!warning] [Caution / Pitfall]` — common misconceptions or cautions.
 - `> [!summary] [Summary]` — section or concept summaries.
 - `> [!note] [Theoretical Remark]` — key conceptual remarks, intuitions, and trade-offs.
-- **Proofs & Solutions:** Place directly **below** the callout in regular text (not inside a callout), ending with `$\blacksquare$`. Start theorem proofs with `**Proof:**` (written in the conversational theory style) and problem solutions with `**Solution:**` (written in the direct, concise, Rudin-like style).
+- **Proofs & Solutions:** Place directly **below** the callout in regular text (not inside a callout), ending with `$\blacksquare$`. Start theorem proofs with `**Proof:**` (conversational style), worked example solutions with `**Solution:**` (conversational style), and curated problem solutions with `**Solution:**` (direct, concise, Rudin-like style).
 
 ### 1.6 Figures, Diagrams & Tables
 - **Contextual Placement:** Place images (`![](image_0.png)`) immediately next to the concept they illustrate; never batch images at the end.
@@ -106,17 +106,17 @@ Use callouts as visual anchors for formal blocks while keeping surrounding expla
 
 ## 2. Skeleton Index Guidelines
 
-The **Skeleton Index** at the end of a note acts like a closed-book exam: testing exhaustive active recall of every concept and problem without hints, formulas, or solutions.
+The **Skeleton Index** at the end of a note acts like a closed-book exam: testing exhaustive active recall of every concept, worked example, and problem without hints, formulas, or solutions.
 
 ### 2.1 Structure & Sequential Order
-- **Strict 1:1 Chronological Order:** Mirror the exact top-to-bottom sequence of headings, subtopics, and problems in the notes. Never pool items into artificial buckets (e.g., no separate "All Definitions" or "All Theorems" sections).
+- **Strict 1:1 Chronological Order:** Mirror the exact top-to-bottom sequence of headings, subtopics, worked examples, and problems in the notes. Never pool items into artificial buckets (e.g., no separate "All Definitions" or "All Theorems" sections).
 - **Formatting Hierarchy:**
   - Precede with `---` and `# Skeleton Index` (H1).
   - `## [Section Number & Title]` (H2) for main sections.
   - `### [Subsection Title]` (H3) for subsections.
   - `**[Topic Title]**` for specific topics.
   - Bullet points (`- ...`) for active-recall prompts.
-- **Exhaustive Coverage & LaTeX:** Cover every definition, theorem, derivation, mechanism, trade-off, and curated problem, following all LaTeX rules from **Section 1.3**.
+- **Exhaustive Coverage & LaTeX:** Cover every definition, theorem, derivation, mechanism, trade-off, worked example, and curated problem, following all LaTeX rules from **Section 1.3**.
 
 ### 2.2 Zero Spoilers (Exam Conditions)
 1. **No Formulas or Values in Theory Prompts:** State *what* to recall or derive, never the formula, bound, or value itself (e.g., *"Derive the expression for [Metric]"* or *"State the bounds on [Parameter]"*).
@@ -124,8 +124,8 @@ The **Skeleton Index** at the end of a note acts like a closed-book exam: testin
 3. **No Leaked Conclusions:** Do not spoil outcomes in prompts (e.g., *"Analyze the effect of [X] on [Y]"* instead of *"Explain why [X] increases [Y]"*).
 4. **No Solutions:** Exclude all answers, hints, parenthetical cues, and intermediate steps.
 
-### 2.3 Curated Problems (Full Statements)
-- Include every curated problem from the notes with its **complete, self-contained problem statement** (all premises, initial conditions, data, and questions to solve/prove).
+### 2.3 Worked Examples & Curated Problems (Full Statements)
+- Include every in-text worked example and curated problem from the notes with its **complete, self-contained statement** (all premises, initial conditions, data, and questions to solve/prove).
 - The reader should never have to memorize the question itself—only how to solve it. Exclude all hints, steps, and final answers.
 
 ### 2.4 Actionable Prompt Verbs
